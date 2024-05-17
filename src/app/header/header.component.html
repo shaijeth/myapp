@@ -1,24 +1,28 @@
-
-
 <div class="logo">
   <a href="#"> <img src="/assets/logo.png" alt="Excelonline " /> </a>
 </div>
 
 <header class="hcontainer">
- 
+  <div class="navbar">
+    <ul class="links menu-bar">
+      <li><a href="home">Home</a></li>
+      <li><a href="about">About</a></li>
+      <li><a href="services">Services</a></li>
+      <li><a href="contact">Contact</a></li>
+      <li><a href="School">School</a></li>
+    </ul>
+    <a href="mponline" class="action_btn">Join Whatsapp Group</a>
+    <a href="mponline" class="action_btn">Log in</a>
+    <div class="toggle_btn" (click)="clikevent()" ><i [ngClass]=" isopen ? 'fa fa-close': 'fa fa-bars'"  ></i></div>
+  </div>
 
-  
-    <div class="navbar">
-      <ul class="links menu-bar">
-        <li><a href="home">Home</a></li>
-        <li><a href="about">About</a></li>
-        <li><a href="services">Services</a></li>
-        <li><a href="contact">Contact</a></li>
-        <li><a href="School">School</a></li>
-      </ul>
-      <a href="mponline" class="action_btn">Join Whatsapp Group</a>
-      <a href="mponline" class="action_btn">Log in</a>
-      <!-- <div class="toggle_btn"><i class="fa fa-bars"></i></div> -->
-    </div>
- 
+  <div class="dropdown_menu" [ngClass]="isopen? 'open': " >
+    <li><a href="home">Home</a></li>
+    <li><a href="about">About</a></li>
+    <li><a href="services">Services</a></li>
+    <li><a href="contact">Contact</a></li>
+    <li><a href="School">School</a></li>
+    <li><a href="mponline" class="action_btn">Join Whatsapp Group</a></li>
+    <li><a href="mponline" class="action_btn">Log in</a></li>
+  </div>
 </header>
