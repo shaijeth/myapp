@@ -66,6 +66,7 @@ header {
   font-weight: bold;
   cursor: pointer;
   transition: scale 0.2 ease;
+  margin-right: 10px;
 }
 
 .action_btn:hover {
@@ -79,21 +80,19 @@ header {
 
 /*drop dwon menu*/
 .dropdown_menu {
-  display: none;
+  /* display: none; */
   position: absolute;
   right: 2rem;
   top: 60px;
-  height: 0;
+  height:350;
   width: 300px;
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
+  background-color: rgba(40, 40, 40, 0.3);
+  backdrop-filter: blur(5px);
   border-radius: 10px;
   overflow: hidden;
   transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.dropdown_menu.open {
-  height: 270px;
-}
+
 .dropdown_menu li {
   padding: 0.7rem;
   display: flex;
