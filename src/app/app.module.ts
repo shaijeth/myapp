@@ -12,6 +12,8 @@ import { SchoolComponent } from './school/school.component';
 import { ServicesComponent } from './services/services.component';
 import { MponlineComponent } from './mponline/mponline.component';
 import { CounslingComponent } from './counsling/counsling.component';
+import { SignupComponent } from './signup/signup.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,11 @@ import { CounslingComponent } from './counsling/counsling.component';
     SchoolComponent,
     ServicesComponent,
     MponlineComponent,
-    CounslingComponent
+    CounslingComponent,
+    SignupComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule
   ],
