@@ -1,34 +1,64 @@
-<p>signup works!</p>
-
-<div>
 
 
-<h2>Registration Forms</h2>
+<div class="cont ">
+    
+  <div>
+    <video width="640" height="480" controls autoplay>
+      <source src="..//../assets/wellcome.mp4" type="video/mp4" />
+      <source src="movie.ogg" type="video/ogg" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="left " >
+    <h2>Registration Forms</h2>
 
-<form #signupform="ngForm"(submit)="getdata()" >
+    <form #signupform="ngForm" (submit)="getdata()">
+      <label for="type">User Type</label><br />
+      <select [(ngModel)]="userdata.type" name="type">
+        <option value="Student">Student</option>
+        <option value="Guest">Guest</option>
+        <option value="Admin">Admin</option>
+      </select>
+      <br />
+      <label for="userName">First name:</label><br />
+      <input
+        [(ngModel)]="userdata.userName"
+        type="text"
+        id="userName"
+        name="userName"
+        value="John"
+      /><br />
+      <label for="mobile">Mobile:</label><br />
+      <input
+        [(ngModel)]="userdata.mobile"
+        type="text"
+        id="mobile"
+        name="mobile"
+        value="10 Digi Number only"
+      /><br />
+      <label for="userEmail">Email:</label><br />
+      <input
+        [(ngModel)]="userdata.userEmail"
+        type="text"
+        id="userEmail"
+        name="userEmail"
+        value="xyx001@gmail.com"
+      /><br /><br />
 
-  <label for="type">User Type</label><br>
-  <select [(ngModel)]="userdata.type" name="type" >
-    <option value="Student">Student</option>
-    <option value="Guest">Guest</option>
-    <option value="Admin">Admin</option>
-</select>
-<br>
-  <label for="userName">First name:</label><br>
-  <input [(ngModel)]="userdata.userName"  type="text" id="userName" name="userName" value="John"><br>
-  <label for="mobile">Mobile:</label><br>
-  <input [(ngModel)]="userdata.mobile"  type="text" id="mobile" name="mobile" value="10 Digi Number only"><br>
-  <label for="userEmail">Email:</label><br>
-  <input [(ngModel)]="userdata.userEmail"  type="text" id="userEmail" name="userEmail" value="xyx001@gmail.com"><br><br>
+      <label for="password">Password :</label><br />
+      <input
+        [(ngModel)]="userdata.password"
+        type="password"
+        id="password"
+        name="password"
+        value="Password"
+      /><br /><br />
 
-
-  <label for="password">Password :</label><br>
-  <input [(ngModel)]="userdata.password"  type="password" id="password" name="password" value="Password"><br><br>
-
-  <input type="submit" value="Submit">
-</form> 
-{{userdata.userName}}
-{{userdata.userEmail}}
-{{userdata.mobile}}
-{{userdata.password}}
+      <input type="submit" value="Submit" />
+    </form>
+    {{ userdata.userName }}
+    {{ userdata.userEmail }}
+    {{ userdata.mobile }}
+    {{ userdata.password }}
+  </div>
 </div>
