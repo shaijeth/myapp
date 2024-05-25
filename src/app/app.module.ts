@@ -14,6 +14,9 @@ import { MponlineComponent } from './mponline/mponline.component';
 import { CounslingComponent } from './counsling/counsling.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserlistComponent } from './userlist/userlist.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,12 +30,15 @@ import { FormsModule } from '@angular/forms';
     ServicesComponent,
     MponlineComponent,
     CounslingComponent,
-    SignupComponent
+    SignupComponent,
+    DashboardComponent,
+    UserlistComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

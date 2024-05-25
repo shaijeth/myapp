@@ -1,0 +1,22 @@
+<p>user</p>
+<p>Message : {{message}}</p>
+<button (click)="onclick()">Export in excel</button>
+
+<table id="customers">
+    <th>Name</th>
+    <th>email</th>
+    <th>password</th>
+    <th>mobile</th>
+    <th>type</th>
+    <tbody>
+        <tr  *ngFor="let u of users"> 
+            <td>{{u.userName}}</td>
+            <td>{{u.userEmail}}</td>
+            <td>{{u.password}}</td>
+            <td>{{u.mobile}}</td>
+            <td>{{u.type}}</td>
+        </tr>
+       
+    </tbody>
+</table>
+  

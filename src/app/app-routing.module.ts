@@ -7,6 +7,8 @@ import { SchoolComponent } from './school/school.component';
 import { MponlineComponent } from './mponline/mponline.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserlistComponent } from './userlist/userlist.component';
 
 
 const routes: Routes = [
@@ -16,7 +18,8 @@ const routes: Routes = [
 {path:'school',component:SchoolComponent},
 {path:'mponline',component:MponlineComponent},
 {path:'signup',component:SignupComponent},
-// {path:'about',component:AboutComponent}
+{path:'dashboard',component:DashboardComponent},
+
 ];
 
 @NgModule({
