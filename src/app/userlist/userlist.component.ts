@@ -26,7 +26,7 @@ export class UserlistComponent implements OnInit {
   ngOnInit(): void {
     this.message="Default messgae : aapk aswagart hai . new mesage ke liey click kare";
       
-    this.http.get<user[]>("http://learn.excelonlineservices.com/api/Users/getusers").subscribe(
+    this.http.get<user[]>("http://learn.excelonlineservices.com/api/Users").subscribe(
       (response)=>{
         console.log(response);
         this.users = response;

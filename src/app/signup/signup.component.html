@@ -10,7 +10,7 @@
   <div class="left ">
     <h2>Registration Forms</h2>
 
-    <form #signupform="ngForm" (submit)="getdata()">
+    <form #signupform="ngForm" (submit)="createuser()">
 
 
 
@@ -53,11 +53,15 @@
           </div>
         </div>
         <div class="row p-2">
-          <div class="col"></div>
+          <div class="col"> {{message}} </div>
         </div>
+        
         <div class="row">
           <div class="col-sm">
             <input type="submit" value="Submit" />
+           
+            
+            
           </div>
 
         </div>

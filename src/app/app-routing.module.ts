@@ -14,7 +14,7 @@ import { UserlistComponent } from './userlist/userlist.component';
 const routes: Routes = [
 {path:'services',component:ServicesComponent},
 {path:'contact',component:ContactusComponent},
-{path:'home',component:HomeComponent},
+{path:'home',component:SignupComponent},
 {path:'school',component:SchoolComponent},
 {path:'mponline',component:MponlineComponent},
 {path:'signup',component:SignupComponent},
