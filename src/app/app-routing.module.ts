@@ -9,6 +9,8 @@ import { SignupComponent } from './signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserlistComponent } from './userlist/userlist.component';
+import { TempComponent } from './temp/temp.component';
+import { CourseComponent } from './course/course.component';
 
 
 const routes: Routes = [
@@ -19,6 +21,8 @@ const routes: Routes = [
 {path:'mponline',component:MponlineComponent},
 {path:'signup',component:SignupComponent},
 {path:'dashboard',component:DashboardComponent},
+{path:'temp',component:TempComponent},
+{path:'course',component:CourseComponent}
 
 ];
 

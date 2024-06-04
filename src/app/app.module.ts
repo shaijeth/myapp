@@ -17,6 +17,8 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TempComponent } from './temp/temp.component';
+import { CourseComponent } from './course/course.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { HttpClientModule } from '@angular/common/http';
     CounslingComponent,
     SignupComponent,
     DashboardComponent,
-    UserlistComponent
+    UserlistComponent,
+    TempComponent,
+    CourseComponent
   ],
   imports: [
     FormsModule,
