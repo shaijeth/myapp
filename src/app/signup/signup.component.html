@@ -7,6 +7,8 @@
       Your browser does not support the video tag.
     </video>
   </div>
+ 
+ 
   <div class="left ">
     <h2>Registration Forms</h2>
 
@@ -30,26 +32,44 @@
 
         <div class="row">
           <div class="col-sm"><label for="userName">First name:</label></div>
-          <div class="col-sm"> <input [(ngModel)]="userdata.userName" type="text" id="userName" name="userName"
-            placeholder="John" />
+          <div class="col-lg"> <input [(ngModel)]="userdata.userName" type="text" id="userName" name="userName"
+            placeholder="John" class="form-control" style="width:100%;"/>
           </div>
         </div>
         <div class="row">
           <div class="col-sm"><label for="mobile">Mobile:</label></div>
-          <div class="col-sm"> <input [(ngModel)]="userdata.mobile" type="text" id="mobile" name="mobile"
-              placeholder="10 Digi Number only" />
+
+
+          <div class="col-sm"> 
+            <!-- <input [(ngModel)]="userdata.mobile" type="text" id="mobile" name="mobile"
+            placeholder="1234567890" pattern="[0-9]{10}" required /> -->
+
+            <input [(ngModel)]="userdata.mobile"
+           type="text"
+           id="mobile"
+           name="mobile"
+           placeholder="1234567890"
+           pattern="[0-9]{10}"
+           required
+           #mobileInput="ngModel"
+           class="form-control" />
+    <div *ngIf="mobileInput.invalid && (mobileInput.dirty || mobileInput.touched)">
+        <small class="text-danger" *ngIf="mobileInput.errors?.['required']">Mobile number is required.</small>
+        <small class="text-danger" *ngIf="mobileInput.errors?.['pattern']">Mobile number must be 10 digits.</small>
+    </div>
+
           </div>
         </div>
         <div class="row">
           <div class="col-sm"> <label for="userEmail">Email:</label></div>
           <div class="col-sm"> <input [(ngModel)]="userdata.userEmail" type="text" id="userEmail" name="userEmail"
-            placeholder="xyx001@gmail.com" />
+            placeholder="xyx001@gmail.com" class="form-control" />
           </div>
         </div>
         <div class="row">
           <div class="col-sm"> <label for="password">Password :</label></div>
           <div class="col-sm"> <input [(ngModel)]="userdata.password" type="password" id="password" name="password"
-            placeholder="Password" />
+            placeholder="Password" class="form-control" />
           </div>
         </div>
         <div class="row p-2">
