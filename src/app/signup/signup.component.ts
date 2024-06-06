@@ -73,5 +73,9 @@ export class SignupComponent {
 
     console.warn(this.userdata);
   }
+ // input function for name upper case //
+  onNameInput(){
+    this.userdata.userName=this.userdata.userName.toUpperCase();
+  }
 
 }
