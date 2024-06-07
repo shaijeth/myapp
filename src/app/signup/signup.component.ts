@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
 //[{"userId":"1e29f8ce-9343-46d9-b7f1-a5b590be4e26","userName":"Diensh Verma","userEmail":"dinesh@gmail.com","password":"123","type":"Level1"},
 
@@ -32,7 +33,7 @@ export class SignupComponent {
   /**
    *
    */
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private router:Router) {}
 
   chekemail(userEmail:string){
     this.http.get("http://learn.excelonlineservices.com/api/Users/Details?useremail="+userEmail,{responseType:'text'}).subscribe(
@@ -76,6 +77,9 @@ export class SignupComponent {
  // input function for name upper case //
   onNameInput(){
     this.userdata.userName=this.userdata.userName.toUpperCase();
+  }
+  gotologin(){
+    this.router.navigate(['/login']);
   }
 
 }

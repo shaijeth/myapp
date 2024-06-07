@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { TempComponent } from './temp/temp.component';
 import { CourseComponent } from './course/course.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
 {path:'signup',component:SignupComponent},
 {path:'dashboard',component:DashboardComponent},
 {path:'temp',component:TempComponent},
-{path:'course',component:CourseComponent}
+{path:'course',component:CourseComponent},
+{path:'login',component:LoginComponent}
 
 ];
 

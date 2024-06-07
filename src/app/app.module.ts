@@ -19,6 +19,7 @@ import { UserlistComponent } from './userlist/userlist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TempComponent } from './temp/temp.component';
 import { CourseComponent } from './course/course.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CourseComponent } from './course/course.component';
     DashboardComponent,
     UserlistComponent,
     TempComponent,
-    CourseComponent
+    CourseComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,
