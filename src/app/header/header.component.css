@@ -2,6 +2,7 @@
   background-color: cadetblue;
   color: white;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  height: 50px;
 }
 
 .logo {
@@ -105,6 +106,12 @@ header {
   justify-content: center;
 }
 
+.actionbuttongroup{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
 
 @media (max-width: 992px) {
   .navbar .links,

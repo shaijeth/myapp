@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Iservice } from '../../assets/model/Iservice';
 
 interface Istudent {
@@ -12,7 +12,10 @@ interface Istudent {
   templateUrl: './course.component.html',
   styleUrl: './course.component.css'
 })
-export class CourseComponent {
+export class CourseComponent implements OnInit  {
+  ngOnInit(): void { this.loggedinuser=sessionStorage.getItem("loggedinuser");
+  }
+  loggedinuser:any="";
 
 
   servicesicon: Iservice[] = [
