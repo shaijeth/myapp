@@ -21,15 +21,16 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.islogged = sessionStorage.getItem('islogged') == 'logged';
+    this.islogged = localStorage['islogged'] == 'logged';
   }
 
   login() {
     this.router.navigate(['/login']);
   }
   logout() {
-    sessionStorage.setItem('islogged', 'loggedoff');
-    sessionStorage.setItem('loggedinuser', '');
+    localStorage.removeItem('islogged');
+    localStorage.removeItem('loggedinuser');
+    localStorage.removeItem('token');
     this.islogged = false;
     this.router.navigate(['/login']);
   }

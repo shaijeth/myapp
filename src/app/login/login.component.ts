@@ -29,25 +29,32 @@ export class LoginComponent {
     type: 'Guest',
   };
 
-  constructor(private http: HttpClient, private router: Router,private sharedservice:SharedService ) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private sharedservice: SharedService
+  ) { }
 
   userLogin() {
     this.checkLogin(this.userdata.userEmail, this.userdata.password);
   }
   checkLogin(userEmail: string, pswd: string) {
+    let DevApiUrl:string ="http://localhost/";
+    let ProdApiUrl:string ="http://learn.excelonlineservices.com/";
     this.http
-      .get <user>(
-        'http://learn.excelonlineservices.com/api/Users/CheckLogin?useremail=' +
-          userEmail +
-          '&pswd=' +
-          pswd
+      .get<user>(
+        DevApiUrl+'api/Users/CheckLogin?useremail=' +
+        userEmail +
+        '&pswd=' +
+        pswd
       )
       .subscribe(
-        (response:user) => {
-          console.log(response) ;
-          sessionStorage.setItem("islogged", "logged");
-          sessionStorage.setItem("loggedinuser",response.userName);
-          this.sharedservice.changetext("Logout");
+        (response: any) => {
+          console.log(response);
+          localStorage.setItem('islogged', 'logged');
+          localStorage.setItem('loggedinuser', response.name);
+          localStorage.setItem('token', response.token);
+          this.sharedservice.changetext('Logout');
           this.router.navigate(['/course']);
         },
         (error) => {

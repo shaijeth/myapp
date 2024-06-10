@@ -16,7 +16,7 @@ export class AuthService {
   }
 
   isloggedin():boolean{
-    if(sessionStorage.getItem('islogged') == 'logged'){
+    if(localStorage['islogged'] == 'logged'){
       this.login();
     }
     return this.loginstatus;

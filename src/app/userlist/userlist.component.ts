@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
 
@@ -16,28 +16,35 @@ interface user {
   styleUrl: './userlist.component.css'
 })
 export class UserlistComponent implements OnInit {
- message:string="No value";
-  
- users : user[]=[];
+  message: string = "";
+
+  users: user[] = [];
 
   constructor(private http: HttpClient) {
 
   }
   ngOnInit(): void {
-    this.message="Default messgae : aapk aswagart hai . new mesage ke liey click kare";
-      
-    this.http.get<user[]>("http://learn.excelonlineservices.com/api/Users").subscribe(
-      (response)=>{
+    let DevApiUrl: string = "http://localhost/";
+    let ProdApiUrl: string = "http://learn.excelonlineservices.com/";
+
+    let headers = new HttpHeaders();
+    headers = headers.append("Authorization", `Bearer ${localStorage['token']}`);
+    this.http.get<user[]>(DevApiUrl + "api/Users", { headers: headers }).subscribe(
+      (response) => {
         console.log(response);
         this.users = response;
+      },
+      (errors) => {
+        console.log(errors.message);
+        this.message = "Unauthorized access, Please login with valid credentials.";
       }
     );
-    
+
 
   }
   onclick(): void {
-   this.exportToExcel();
-    this.message="Data exports";
+    this.exportToExcel();
+    this.message = "Data exports";
   }
   exportToExcel(): void {
     const data = this.users; // Replace with your data retrieval logic

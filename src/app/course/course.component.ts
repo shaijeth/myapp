@@ -13,7 +13,7 @@ interface Istudent {
   styleUrl: './course.component.css'
 })
 export class CourseComponent implements OnInit  {
-  ngOnInit(): void { this.loggedinuser=sessionStorage.getItem("loggedinuser");
+  ngOnInit(): void { this.loggedinuser=localStorage['loggedinuser'];
   }
   loggedinuser:any="";
 
@@ -27,20 +27,5 @@ export class CourseComponent implements OnInit  {
     { icon: 'google', file: '1.pdf', desc: 'Nice 4to Meet You' },
     { icon: 'Nich', file: '1.pdf', desc: 'Nice 4to Meet You' },
   ];
-  listofstudent: Istudent[] = [
-    {
-      coursename: 'shai',
-      age: 40,
-      totalFee: 5550,
-    },
-    {
-      coursename: 'deepi',
-      age: 45,
-      totalFee: 5543,
-    },
-  ];
-
-  // student:string='ravi';
-  // age:number=20;
-  // totalFee:number=5000;
+ 
 }
