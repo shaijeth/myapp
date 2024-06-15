@@ -29,7 +29,7 @@ export class UserlistComponent implements OnInit {
 
     let headers = new HttpHeaders();
     headers = headers.append("Authorization", `Bearer ${localStorage['token']}`);
-    this.http.get<user[]>(DevApiUrl + "api/Users", { headers: headers }).subscribe(
+    this.http.get<user[]>(ProdApiUrl + "api/Users", { headers: headers }).subscribe(
       (response) => {
         console.log(response);
         this.users = response;

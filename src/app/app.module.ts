@@ -20,6 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TempComponent } from './temp/temp.component';
 import { CourseComponent } from './course/course.component';
 import { LoginComponent } from './login/login.component';
+import { AboutComponent } from './about/about.component';
+import { ImgcrationComponent } from './imgcration/imgcration.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { LoginComponent } from './login/login.component';
     UserlistComponent,
     TempComponent,
     CourseComponent,
-    LoginComponent
+    LoginComponent,
+    AboutComponent,
+    ImgcrationComponent
   ],
   imports: [
     FormsModule,

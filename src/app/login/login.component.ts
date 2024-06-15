@@ -43,7 +43,7 @@ export class LoginComponent {
     let ProdApiUrl:string ="http://learn.excelonlineservices.com/";
     this.http
       .get<user>(
-        DevApiUrl+'api/Users/CheckLogin?useremail=' +
+        ProdApiUrl+'api/Users/CheckLogin?useremail=' +
         userEmail +
         '&pswd=' +
         pswd

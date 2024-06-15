@@ -57,10 +57,10 @@ FDE49E
 .rightcontainer {
     /* display: flex;
     flex-direction: column; */
-
+/* width 100% ki hai for full screen in course jo 70% thi  */
     background-color: #c5e7ea;
     border-radius: 5px;
-    width: 70%;
+    width: 100%;
     height: 550px;
     padding: 10px;
     margin: 5px;

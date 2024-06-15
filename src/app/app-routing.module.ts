@@ -13,20 +13,24 @@ import { TempComponent } from './temp/temp.component';
 import { CourseComponent } from './course/course.component';
 import { LoginComponent } from './login/login.component';
 import { authGuard } from './auth.guard';
+import { AboutComponent } from './about/about.component';
+import { ImgcrationComponent } from './imgcration/imgcration.component';
 
 
 const routes: Routes = [
   {path:'',component:SignupComponent},
 {path:'services',component:ServicesComponent,canActivate:[authGuard]},
 {path:'contact',component:ContactusComponent},
-{path:'home',component:SignupComponent},
+{path:'home',component:HomeComponent},
 {path:'school',component:SchoolComponent, canActivate:[authGuard]},
 {path:'mponline',component:MponlineComponent},
 {path:'signup',component:SignupComponent},
 {path:'dashboard',component:DashboardComponent,canActivate:[authGuard]},
 {path:'temp',component:TempComponent},
 {path:'course',component:CourseComponent,canActivate:[authGuard]},
-{path:'login',component:LoginComponent}
+{path:'login',component:LoginComponent},
+{path:'about',component:AboutComponent},
+{path:'imgcration',component:ImgcrationComponent }
 
 ];
 
