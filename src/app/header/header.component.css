@@ -1,19 +1,36 @@
 .hcontainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  background-color: cadetblue;
+  background-color: rgb(241, 190, 156);
   color: white;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  height: 100px;
+  height: 70px;
+  
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+  border-radius: 5px;
+  /* padding: 10px 20px;
+  margin-right: 10px; */
 }
 
-.logo img {
+.dflex-C {
+  display: flex;
+  flex-direction: row;
+  
+
+}
+
+.lmslogo img{
   width: 15%;
+  border-radius: 10px;
+  margin-left: 10px;
 }
 
 li {
   list-style: none;
+  
 }
 
 a {
@@ -32,13 +49,14 @@ header {
 }
 
 .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 40px;
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  
 }
 
 .navbar .log a {
