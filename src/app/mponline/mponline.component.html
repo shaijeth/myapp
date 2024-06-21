@@ -6,12 +6,11 @@
   <div class="rightcontainer">
     <div class="appcontainer">
       <div class="app-grid">
-       <div *ngFor="let s of listofstudent">
-        {{s.studentname}},{{s.age}},{{s.totalFee}}
-      </div>
+        <div *ngFor="let s of listofstudent">
+          {{ s.studentname }},{{ s.age }},{{ s.totalFee }}
+        </div>
 
         <div class="app-item" *ngFor="let item of servicesicon">
-    
           <div>
             <img class="img" src="/assets/mponline/{{ item.icon }}.jpeg" />
             <div class="app-name">{{ item.icon }}</div>
@@ -27,8 +26,6 @@
             <div class="center">center</div>
           </div>
         </div>
-
-
       </div>
     </div>
   </div>

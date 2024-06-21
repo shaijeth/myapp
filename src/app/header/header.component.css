@@ -8,24 +8,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-
-  border-radius: 5px;
-  /* padding: 10px 20px;
+  /* border-radius: 5px;
+  padding: 10px 20px;
   margin-right: 10px; */
 }
 
 .dflex-C {
   display: flex;
   flex-direction: row;
-  
+  gap: 20px;
 
 }
 
 .lmslogo img{
-  width: 15%;
+  width: 65px;
   border-radius: 10px;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 li {

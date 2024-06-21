@@ -1,30 +1,36 @@
-
 <header class="hcontainer">
+
   <div class="lmslogo">
     <a href="#"> <img src="/assets/lms logo.png" alt="Excelonline " /> </a>
   </div>
-  <div class="navbar">
-    <div >
 
-  <ul class="dflex-C">
-      <a href="home">Home</a>
-      <li><a href="about">About</a></li>
-      <li><a href="services">Services</a></li>
-      <li><a href="contact">Contact</a></li>
-      <li><a href="school">School</a></li>
-      <li><a href="dashboard">dashboard</a></li>
-    </ul>
-  </div>
+  <div class="navbar">
+    <div>
+      <ul class="dflex-C">
+        <a href="home">Home</a>
+        <li><a href="about">About</a></li>
+        <li><a href="services">Services</a></li>
+        <li><a href="contact">Contact</a></li>
+        <li><a href="school">School</a></li>
+        <li><a href="dashboard">dashboard</a></li>
+      </ul>
+    </div>
+
     <div class="actionbuttongroup">
       <div (click)="Joinwhatsapp()" class="action_btn">Join Whatsapp Group</div>
-      <div *ngIf="!islogged" (click)="login()" class="action_btn">{{buttontext}} </div>
+      <div *ngIf="!islogged" (click)="login()" class="action_btn">
+        {{ buttontext }}
+      </div>
       <div *ngIf="islogged" (click)="logout()" class="action_btn">Log out</div>
     </div>
-   
-    <div class="toggle_btn" (click)="clikevent()" ><i [ngClass]=" isopen ? 'fa fa-close': 'fa fa-bars'"  ></i></div>
+
+    <div class="toggle_btn" (click)="clikevent()">
+      <i [ngClass]="isopen ? 'fa fa-close' : 'fa fa-bars'"></i>
+    </div>
+    
   </div>
 
-  <div class="dropdown_menu" *ngIf="isopen" >
+  <div class="dropdown_menu" *ngIf="isopen">
     <li><a href="home">Home</a></li>
     <li><a href="about">About</a></li>
     <li><a href="services">Services</a></li>

@@ -15,7 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { authGuard } from './auth.guard';
 import { AboutComponent } from './about/about.component';
 import { ImgcrationComponent } from './imgcration/imgcration.component';
-
+import { UploadComponent } from './upload/upload.component';
 
 const routes: Routes = [
   {path:'',component:SignupComponent},
@@ -30,7 +30,8 @@ const routes: Routes = [
 {path:'course',component:CourseComponent,canActivate:[authGuard]},
 {path:'login',component:LoginComponent},
 {path:'about',component:AboutComponent},
-{path:'imgcration',component:ImgcrationComponent }
+{path:'imgcration',component:ImgcrationComponent },
+{path:'upload',component:UploadComponent}
 
 ];
 

@@ -22,6 +22,7 @@ import { CourseComponent } from './course/course.component';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 import { ImgcrationComponent } from './imgcration/imgcration.component';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ImgcrationComponent } from './imgcration/imgcration.component';
     CourseComponent,
     LoginComponent,
     AboutComponent,
-    ImgcrationComponent
+    ImgcrationComponent,
+    UploadComponent
   ],
   imports: [
     FormsModule,
