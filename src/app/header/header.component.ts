@@ -10,6 +10,7 @@ import { SharedService } from '../shared.service';
 export class HeaderComponent implements OnInit {
   islogged: boolean = false;
   buttontext:string="";
+  loggedinuser: any;
   /**
    *
    */
@@ -22,6 +23,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.islogged = localStorage['islogged'] == 'logged';
+    this.loggedinuser = localStorage['loggedinuser'];
   }
 
   login() {
