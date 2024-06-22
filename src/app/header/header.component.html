@@ -1,5 +1,4 @@
 <header class="hcontainer">
-
   <div class="lmslogo">
     <a href="#"> <img src="/assets/lms logo.png" alt="Excelonline " /> </a>
   </div>
@@ -9,7 +8,30 @@
       <ul class="dflex-C">
         <a href="home">Home</a>
         <li><a href="about">About</a></li>
-        <li><a href="services">Services</a></li>
+
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Services
+              <i class="fa fa-caret-down"></i>
+            </button>
+            
+            <div class="dropdown-content">
+              <a href="counsling">counsling</a>
+              <a href="course">course</a>
+              <a href="footer">footer</a>
+              <a href="header">header</a>
+              <a href="school">school</a>
+              <a href="services">services</a>
+              <a href="signup">signup</a>
+              <a href="sitebar">sitebar</a>
+              <a href="imgcration">imgcration</a>
+              <a href="upload">upload</a>
+              <a href="userlist">userlist</a>
+              <a href="adminpanel">adminpanel</a>
+            </div>
+          </div>
+        </li>
+
         <li><a href="contact">Contact</a></li>
         <li><a href="school">School</a></li>
         <li><a href="dashboard">dashboard</a></li>
@@ -27,7 +49,6 @@
     <div class="toggle_btn" (click)="clikevent()">
       <i [ngClass]="isopen ? 'fa fa-close' : 'fa fa-bars'"></i>
     </div>
-    
   </div>
 
   <div class="dropdown_menu" *ngIf="isopen">

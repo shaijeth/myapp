@@ -16,6 +16,7 @@ import { authGuard } from './auth.guard';
 import { AboutComponent } from './about/about.component';
 import { ImgcrationComponent } from './imgcration/imgcration.component';
 import { UploadComponent } from './upload/upload.component';
+import { AdminpanelComponent } from './adminpanel/adminpanel.component';
 
 const routes: Routes = [
   {path:'',component:SignupComponent},
@@ -31,7 +32,8 @@ const routes: Routes = [
 {path:'login',component:LoginComponent},
 {path:'about',component:AboutComponent},
 {path:'imgcration',component:ImgcrationComponent },
-{path:'upload',component:UploadComponent}
+{path:'upload',component:UploadComponent},
+{path:'adminpanel',component:AdminpanelComponent}
 
 ];
 

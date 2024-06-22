@@ -23,6 +23,7 @@ import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 import { ImgcrationComponent } from './imgcration/imgcration.component';
 import { UploadComponent } from './upload/upload.component';
+import { AdminpanelComponent } from './adminpanel/adminpanel.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { UploadComponent } from './upload/upload.component';
     LoginComponent,
     AboutComponent,
     ImgcrationComponent,
-    UploadComponent
+    UploadComponent,
+    AdminpanelComponent
   ],
   imports: [
     FormsModule,
