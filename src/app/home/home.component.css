@@ -1,151 +1,81 @@
-/* General Styles */
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-/* Header Section */
-header {
-    background: #0073e6;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+header, footer {
+    background-color: #007BFF;
     color: #fff;
-    padding: 20px 0;
+    padding: 1em 0;
     text-align: center;
 }
 
-header h1 {
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
     margin: 0;
-    font-size: 2.5em;
+    font-weight: normal;
 }
 
-header p {
-    font-size: 1.2em;
+p {
+    margin: 0 0 1em;
+    line-height: 1.6;
 }
 
-/* Video Section */
-video {
-    display: block;
-    max-width: 80%;
-    margin: 20px auto;
-    border: 5px solid #0073e6;
-    border-radius: 10px;
-}
-
-/* Problem Statement and Solution Sections */
 section {
-    background: #fff;
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+    margin: 2em 0;
 }
 
-section h2 {
-    color: #0073e6;
-    font-size: 1.8em;
-    margin-bottom: 10px;
-}
-
-section ul {
+ul {
     list-style: none;
     padding: 0;
 }
 
-section ul li {
-    background: #eef;
-    margin: 5px 0;
-    padding: 10px;
-    border-left: 5px solid #0073e6;
+li {
+    margin: 0.5em 0;
 }
 
-/* CTA Buttons */
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 10px 0;
-    font-size: 1.1em;
-    color: #fff;
-    background-color: #0073e6;
-    border: none;
+.course-item {
+    padding: 1em;
+    background-color: #e9ecef;
     border-radius: 5px;
-    text-align: center;
-    text-decoration: none;
+    cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.btn:hover {
-    background-color: #005bb5;
-}
-
-/* Specific CTA Buttons */
-.btn-primary {
-    background-color: #28a745;
-}
-
-.btn-primary:hover {
-    background-color: #218838;
-}
-
-.btn-secondary {
-    background-color: #0073e6;
-}
-
-.btn-secondary:hover {
-    background-color: #005bb5;
-}
-
-/* Footer Section */
-footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-}
-
-footer p {
-    margin: 5px 0;
-}
-
-footer a {
-    color: #0073e6;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2em;
-    }
-
-    header p {
-        font-size: 1em;
-    }
-
-    video {
-        max-width: 100%;
-    }
-
-    section {
-        padding: 15px;
-    }
-
-    section h2 {
-        font-size: 1.5em;
-    }
-
-    .btn {
-        font-size: 1em;
-        padding: 8px 15px;
-    }
+.course-item:hover {
+    background-color: #dee2e6;
 }

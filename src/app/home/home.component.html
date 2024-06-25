@@ -1,90 +1,61 @@
-
-
-
-
-    <header>
-      <h1>Learn Digital Marketing in Hindi</h1>
-      <p>
-        Master the skills of digital marketing with expert guidance in your own
-        language
-      </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My LMS</title>
+    <link rel="stylesheet" href="home.component.css">
+</head>
+<body>
+    <header class="container">
+        <h1>Welcome to My LMS</h1>
+        <nav>
+            <ul>
+                <li><a href="profile">Profile</a></li>
+                <li><a href="course">Courses</a></li>
+                <li><a href="logout">Logout</a></li>
+            </ul>
+        </nav>
     </header>
-    <main>
-      <video src="your-video-link.mp4" controls>
-        Your browser does not support the video tag.
-      </video>
-      <section>
-        <h2>Are You Struggling with Digital Marketing?</h2>
-        <ul>
-          <li>Difficulty understanding complex concepts in English.</li>
-          <li>Lack of practical knowledge and hands-on experience.</li>
-          <li>
-            Overwhelming amount of information available online without proper
-            guidance.
-          </li>
-          <li>
-            Difficulty in keeping up with constantly changing trends and
-            technologies.
-          </li>
-        </ul>
-      </section>
-      <section>
-        <h2>Our Solution</h2>
-        <p>
-          We provide content in Hindi, making it easier to understand, with
-          step-by-step practical training, up-to-date information, and
-          interactive sessions.
-        </p>
-      </section>
-      <section>
-        <h2>Why Join Our Webinar?</h2>
-        <ul>
-          <li>Expert instruction in Hindi.</li>
-          <li>
-            Comprehensive curriculum covering all aspects of digital marketing.
-          </li>
-          <li>Networking opportunities with fellow learners.</li>
-          <li>Access to exclusive resources and materials.</li>
-        </ul>
-      </section>
-      <section>
-        <a href="whatsapp-group-link" class="btn btn-primary"
-          >Join Our WhatsApp Group</a
-        >
-        <a href="webinar-registration-link" class="btn btn-secondary"
-          >Register Now for the Webinar</a
-        >
-      </section>
-      <section>
-        <h2>Who Should Join This Webinar?</h2>
-        <h3>Should Join</h3>
-        <ul>
-          <li>Anyone looking to start a career in digital marketing.</li>
-          <li>Business owners wanting to grow their online presence.</li>
-          <li>Marketing professionals aiming to enhance their skills.</li>
-          <li>Students seeking practical knowledge and job readiness.</li>
-        </ul>
-        <h3>Should Not Join</h3>
-        <ul>
-          <li>People looking for quick fixes or shortcuts.</li>
-          <li>
-            Those not interested in putting in the effort to learn and practice.
-          </li>
-          <li>Individuals not open to new ideas and strategies.</li>
-        </ul>
-      </section>
-      <section>
-        <h2>Benefits of Joining Our Webinar</h2>
-        <ul>
-          <li>
-            Gain comprehensive knowledge of digital marketing in an
-            easy-to-understand language.
-          </li>
-          <li>
-            Practical tips and strategies that you can implement immediately.
-          </li>
-          <li>Access to a supportive community and continuous learning.</li>
-          <li>Certification of completion to enhance your resume.</li>
-        </ul>
-      </section>
+
+    <main class="container">
+        <section id="courses">
+            <h2>Available Courses</h2>
+            <ul id="course-list">
+                <!-- Course list will be populated by TypeScript -->
+            </ul>
+        </section>
     </main>
+
+    <footer class="container">
+        <p>&copy; 2024 My LMS. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js" defer>
+
+var courses = [
+    { id: 1, title: "Course 1", description: "Introduction to Course 1" },
+    { id: 2, title: "Course 2", description: "Introduction to Course 2" },
+    { id: 3, title: "Course 3", description: "Introduction to Course 3" },
+];
+document.addEventListener("DOMContentLoaded", function () {
+    var courseList = document.getElementById("course-list");
+    courses.forEach(function (course) {
+        var listItem = document.createElement("li");
+        listItem.className = "course-item";
+        listItem.textContent = course.title + ": " + course.description;
+        listItem.onclick = function () { return handleCourseClick(course.id); };
+        courseList.appendChild(listItem);
+    });
+});
+function handleCourseClick(courseId) {
+    // Navigate to the course page
+    alert("Navigating to Course " + courseId);
+    // window.location.href = `/course/${courseId}`;
+}
+
+
+
+    </script>
+</body>
+</html>

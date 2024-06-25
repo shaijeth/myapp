@@ -17,6 +17,8 @@ import { AboutComponent } from './about/about.component';
 import { ImgcrationComponent } from './imgcration/imgcration.component';
 import { UploadComponent } from './upload/upload.component';
 import { AdminpanelComponent } from './adminpanel/adminpanel.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {path:'',component:SignupComponent},
@@ -33,7 +35,9 @@ const routes: Routes = [
 {path:'about',component:AboutComponent},
 {path:'imgcration',component:ImgcrationComponent },
 {path:'upload',component:UploadComponent},
-{path:'adminpanel',component:AdminpanelComponent}
+{path:'adminpanel',component:AdminpanelComponent},
+{path:'landingpage',component:LandingpageComponent},
+{path:'profile',component:ProfileComponent}
 
 ];
 

@@ -24,6 +24,8 @@ import { AboutComponent } from './about/about.component';
 import { ImgcrationComponent } from './imgcration/imgcration.component';
 import { UploadComponent } from './upload/upload.component';
 import { AdminpanelComponent } from './adminpanel/adminpanel.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { AdminpanelComponent } from './adminpanel/adminpanel.component';
     AboutComponent,
     ImgcrationComponent,
     UploadComponent,
-    AdminpanelComponent
+    AdminpanelComponent,
+    LandingpageComponent,
+    ProfileComponent
   ],
   imports: [
     FormsModule,
