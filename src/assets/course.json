@@ -7,34 +7,34 @@
  },
  {
   "sno": 2,
-  "title": "Video Cration Skill",
+  "title": "Video Creation Skill",
   "type": "Silver Member",
-  "image": "Video Cration Skill.jpg"
+  "image": "Video Creation Skill.jpg"
   
  },
  {
   "sno": 3,
   "title": "Content Creation Mastery",
   "type": "Silver Member",
-   "image": "Video Cration Skill.jpg"
+   "image": "Content Creation Mastery.jpg"
  },
  {
   "sno": 4,
   "title": "Social Media Cartion",
   "type": "Silver Member",
-   "image": "social.jpg"
+   "image": "Social Media Cartion.jpg"
  },
  {
   "sno": 5,
   "title": "Website Building",
   "type": "Silver Member",
-   "image": "Video Cration Skill.jpg"
+   "image": "Website Building.jpg"
  },
  {
   "sno": 6,
   "title": "SEO",
   "type": "Silver Member",
-   "image": "SEOl.jpg"
+   "image": "SEO.jpg"
  },
  {
   "sno": 7,
@@ -46,24 +46,30 @@
   "sno": 8,
   "title": "Google Add",
   "type": "Silver Member",
-   "image": "google.png"
+   "image": "Google Add.jpg"
  },
  {
   "sno": 9,
   "title": "Facebook Add",
   "type": "Silver Member",
-   "image": "fb.jpeg"
+   "image": "Facebook Ad"
  },
  {
   "sno": 10,
-  "title": "marketing Skills",
+  "title": "Marketing Skills",
   "type": "Silver Member",
-   "image": "Video Cration Skill.jpg"
+   "image": "Marketing Skills.jpg"
  },
  {
   "sno": 11,
   "title": "Nich Clearty",
   "type": "Silver Member",
-   "image": "Video Cration Skill.jpg"
+   "image": "Nich Clearty.jpg"
+ }
+ {
+  "sno": 12,
+  "title": "Technical Support Mastermind",
+  "type": "Silver Member",
+   "image": "Technical Support Mastermind.jpg"
  }
 ]
