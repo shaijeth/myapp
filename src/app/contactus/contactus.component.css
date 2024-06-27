@@ -5,6 +5,34 @@
     font-family: Arial, sans-serif;
 }
 
+.dflex-rj {
+    background-color: rgb(129, 55, 6);
+  color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+nav a {
+    color: #060606;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -13,16 +41,16 @@ html, body {
     color: #cb1c1c;
     background-color: #f9f9f9;
 }
-
-header, footer {
-    background-color: #007BFF;
-    color: #fff;
+ footer {
+    background-color: #512a00;
+    
+    color: #f5f3f3;
     padding: 1em 0;
     text-align: center;
 }
 
 .container {
-    width: 100%;
+    /* width: 100%; */
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1em;
@@ -52,14 +80,14 @@ main {
 .video-controls button {
     margin: 0 0.5em;
     padding: 0.5em 1em;
-    background-color: #007BFF;
+    background-color: hsl(26, 100%, 50%);
     color: #fff;
     border: none;
     cursor: pointer;
 }
 
 .video-controls button:hover {
-    background-color: #0056b3;
+    background-color: #dab940;
 }
 
 .progress-bar {
@@ -73,7 +101,7 @@ main {
 .progress {
     width: 0;
     height: 100%;
-    background-color: #007BFF;
+    background-color: #767a7e;
 }
 
 .playlist {

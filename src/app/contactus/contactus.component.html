@@ -1,114 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My LMS</title>
-    <link rel="stylesheet" href="contactus.component.css">
-</head>
-<body>
-    <header class="container">
-        <h1>Course Title</h1>
-    </header>
+    <link rel="stylesheet" href="contactus.component.css" />
+  </head>
 
+  <header >
+    <div class="dflex-rj">
+      <button id="prev">Previous</button>
+      <h1>Welcome to My LMS</h1>
+      <body></body>
+      <nav>
+        <ul>
+          <li><a href="profile">Profile</a></li>
+          <li><a href="course">Courses</a></li>
+          <li><a href="logout">Logout</a></li>
+        </ul>
+      </nav>
+      <button id="next">Next</button>
+    </div>
+  </header>
+  <div>
+    .
+  </div>
+  <body >
     <main class="container">
-        <div class="video-container">
-            <video id="video-player" width="640" height="360" controls>
-                <source src="..//../assets/wellcome.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-controls">
-                <button id="prev">Previous</button>
-                <button id="play-pause">Play</button>
-                <button id="next">Next</button>
-            </div>
-            <div class="progress-bar">
-                <div id="progress" class="progress"></div>
-            </div>
+      <div class="video-container">
+        <video id="video-player" width="640" height="360" controls>
+          <source src="..//../assets/wellcome.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-controls">
+          <button id="prev">Previous</button>
+          <button id="play-pause">Play</button>
+          <button id="next">Next</button>
         </div>
-        <aside class="playlist">
-            <ul id="video-list">
-                <li class="section-title">Section 1</li>
-                <li class="video-item" data-video="..//../assets/wellcome.mp4">Video 1</li>
-                <li class="video-item" data-video="video2.mp4">Video 2</li>
-                <li class="section-title">Section 2</li>
-                <li class="video-item" data-video="video3.mp4">Video 3</li>
-                <li class="video-item" data-video="video4.mp4">Video 4</li>
-                <li class="section-title">Section 3</li>
-                <li class="video-item" data-video="video5.mp4">Video 5</li>
-                <li class="video-item" data-video="video6.mp4">Video 6</li>
-            </ul>
-        </aside>
+        <div class="progress-bar">
+          <div id="progress" class="progress"></div>
+        </div>
+      </div>
+      <aside class="playlist">
+        <ul id="video-list">
+          <li class="section-title">Section 1</li>
+          <li class="video-item" data-video="..//../assets/wellcome.mp4">
+            Video 1
+          </li>
+          <li class="video-item" data-video="video2.mp4">Video 2</li>
+          <li class="section-title">Section 2</li>
+          <li class="video-item" data-video="video3.mp4">Video 3</li>
+          <li class="video-item" data-video="video4.mp4">Video 4</li>
+          <li class="section-title">Section 3</li>
+          <li class="video-item" data-video="video5.mp4">Video 5</li>
+          <li class="video-item" data-video="video6.mp4">Video 6</li>
+        </ul>
+      </aside>
     </main>
 
     <footer class="container">
-        <p>&copy; 2024 My LMS. All rights reserved.</p>
+      <p>&copy; 2024 My LMS. All rights reserved.</p>
     </footer>
 
     <script src="app.js" defer>
 
-document.addEventListener("DOMContentLoaded", function () {
-    var videoPlayer = document.getElementById("video-player");
-    var playPauseButton = document.getElementById("play-pause");
-    var prevButton = document.getElementById("prev");
-    var nextButton = document.getElementById("next");
-    var progressBar = document.getElementById("progress");
-    var videoList = document.getElementById("video-list");
-    var videoItems = document.querySelectorAll(".video-item");
-    var currentVideoIndex = 0;
-    var videos = [
-        "..//../assets/wellcome.mp4",
-        "video2.mp4",
-        "video3.mp4",
-        "video4.mp4",
-        "video5.mp4",
-        "video6.mp4"
-    ];
-    playPauseButton.addEventListener("click", function () {
-        if (videoPlayer.paused) {
-            videoPlayer.play();
-            playPauseButton.textContent = "Pause";
-        }
-        else {
-            videoPlayer.pause();
-            playPauseButton.textContent = "Play";
-        }
-    });
-    prevButton.addEventListener("click", function () {
-        if (currentVideoIndex > 0) {
-            currentVideoIndex--;
-            loadVideo(currentVideoIndex);
-        }
-    });
-    nextButton.addEventListener("click", function () {
-        if (currentVideoIndex < videos.length - 1) {
-            currentVideoIndex++;
-            loadVideo(currentVideoIndex);
-        }
-    });
-    videoPlayer.addEventListener("timeupdate", function () {
-        var progressPercent = (videoPlayer.currentTime / videoPlayer.duration) * 100;
-        progressBar.style.width = progressPercent + "%";
-    });
-    videoItems.forEach(function (item, index) {
-        item.addEventListener("click", function () {
-            currentVideoIndex = index;
-            loadVideo(currentVideoIndex);
-        });
-    });
-    function loadVideo(index) {
-        videoPlayer.src = videos[index];
-        videoPlayer.play();
-        playPauseButton.textContent = "Pause";
-    }
-    // Initialize the first video
-    loadVideo(currentVideoIndex);
-});
-
-
-
-
-
+      document.addEventListener("DOMContentLoaded", function () {
+          var videoPlayer = document.getElementById("video-player");
+          var playPauseButton = document.getElementById("play-pause");
+          var prevButton = document.getElementById("prev");
+          var nextButton = document.getElementById("next");
+          var progressBar = document.getElementById("progress");
+          var videoList = document.getElementById("video-list");
+          var videoItems = document.querySelectorAll(".video-item");
+          var currentVideoIndex = 0;
+          var videos = [
+              "..//../assets/wellcome.mp4",
+              "video2.mp4",
+              "video3.mp4",
+              "video4.mp4",
+              "video5.mp4",
+              "video6.mp4"
+          ];
+          playPauseButton.addEventListener("click", function () {
+              if (videoPlayer.paused) {
+                  videoPlayer.play();
+                  playPauseButton.textContent = "Pause";
+              }
+              else {
+                  videoPlayer.pause();
+                  playPauseButton.textContent = "Play";
+              }
+          });
+          prevButton.addEventListener("click", function () {
+              if (currentVideoIndex > 0) {
+                  currentVideoIndex--;
+                  loadVideo(currentVideoIndex);
+              }
+          });
+          nextButton.addEventListener("click", function () {
+              if (currentVideoIndex < videos.length - 1) {
+                  currentVideoIndex++;
+                  loadVideo(currentVideoIndex);
+              }
+          });
+          videoPlayer.addEventListener("timeupdate", function () {
+              var progressPercent = (videoPlayer.currentTime / videoPlayer.duration) * 100;
+              progressBar.style.width = progressPercent + "%";
+          });
+          videoItems.forEach(function (item, index) {
+              item.addEventListener("click", function () {
+                  currentVideoIndex = index;
+                  loadVideo(currentVideoIndex);
+              });
+          });
+          function loadVideo(index) {
+              videoPlayer.src = videos[index];
+              videoPlayer.play();
+              playPauseButton.textContent = "Pause";
+          }
+          // Initialize the first video
+          loadVideo(currentVideoIndex);
+      });
     </script>
-</body>
+  </body>
 </html>
