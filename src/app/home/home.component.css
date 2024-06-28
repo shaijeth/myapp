@@ -14,29 +14,15 @@ html, body {
     background-color: #f9f9f9;
 }
 
-header, footer {
+/* header, footer {
     background-color: #007BFF;
     color: #fff;
     padding: 1em 0;
     text-align: center;
-}
+} */
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-}
 
-nav a {
-    color: #fff;
-    text-decoration: none;
-}
 
-nav a:hover {
-    text-decoration: underline;
-}
 
 .container {
     width: 100%;

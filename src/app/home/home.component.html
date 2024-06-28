@@ -1,61 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My LMS</title>
-    <link rel="stylesheet" href="home.component.css">
-</head>
-<body>
-    <header class="container">
-        <h1>Welcome to My LMS</h1>
-        <nav>
-            <ul>
-                <li><a href="profile">Profile</a></li>
-                <li><a href="course">Courses</a></li>
-                <li><a href="logout">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
+    <link rel="stylesheet" href="home.component.css" />
+  </head>
 
+  <header>
+    <h1>Welcome to My LMS</h1>
+    <nav>
+      <ul>
+        <li><a href="profile">Profile</a></li>
+        <li><a href="course">Courses</a></li>
+        <li><a href="logout">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+  <body>
     <main class="container">
-        <section id="courses">
-            <h2>Available Courses</h2>
-            <ul id="course-list">
-                <!-- Course list will be populated by TypeScript -->
-            </ul>
-        </section>
+      <section id="courses">
+        <h2>Available Courses</h2>
+        <ul id="course-list">
+          <!-- Course list will be populated by TypeScript -->
+        </ul>
+      </section>
     </main>
 
     <footer class="container">
-        <p>&copy; 2024 My LMS. All rights reserved.</p>
+      <p>&copy; 2024 My LMS. All rights reserved.</p>
     </footer>
 
     <script src="app.js" defer>
 
-var courses = [
-    { id: 1, title: "Course 1", description: "Introduction to Course 1" },
-    { id: 2, title: "Course 2", description: "Introduction to Course 2" },
-    { id: 3, title: "Course 3", description: "Introduction to Course 3" },
-];
-document.addEventListener("DOMContentLoaded", function () {
-    var courseList = document.getElementById("course-list");
-    courses.forEach(function (course) {
-        var listItem = document.createElement("li");
-        listItem.className = "course-item";
-        listItem.textContent = course.title + ": " + course.description;
-        listItem.onclick = function () { return handleCourseClick(course.id); };
-        courseList.appendChild(listItem);
-    });
-});
-function handleCourseClick(courseId) {
-    // Navigate to the course page
-    alert("Navigating to Course " + courseId);
-    // window.location.href = `/course/${courseId}`;
-}
-
-
-
+      var courses = [
+          { id: 1, title: "Course 1", description: "Introduction to Course 1" },
+          { id: 2, title: "Course 2", description: "Introduction to Course 2" },
+          { id: 3, title: "Course 3", description: "Introduction to Course 3" },
+      ];
+      document.addEventListener("DOMContentLoaded", function () {
+          var courseList = document.getElementById("course-list");
+          courses.forEach(function (course) {
+              var listItem = document.createElement("li");
+              listItem.className = "course-item";
+              listItem.textContent = course.title + ": " + course.description;
+              listItem.onclick = function () { return handleCourseClick(course.id); };
+              courseList.appendChild(listItem);
+          });
+      });
+      function handleCourseClick(courseId) {
+          // Navigate to the course page
+          alert("Navigating to Course " + courseId);
+          // window.location.href = `/course/${courseId}`;
+      }
     </script>
-</body>
+  </body>
 </html>
