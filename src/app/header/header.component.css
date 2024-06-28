@@ -3,8 +3,6 @@
   color: white;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   height: 70px;
-  
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,7 +14,9 @@
 .dflex-C {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  justify-content: center;
+  gap: 30px;
+  
 
 }
 
@@ -151,7 +151,7 @@ header {
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
+  /* background-color: red; */
 }
 
 .dropdown-content {
