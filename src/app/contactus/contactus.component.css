@@ -6,8 +6,8 @@
 }
 
 .dflex-rj {
-    background-color: rgb(129, 55, 6);
-  color: white;
+    /* background-color: rgb(129, 55, 6); */
+  /* color: white; */
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   height: 40px;
   display: flex;
@@ -41,13 +41,7 @@ html, body {
     color: #cb1c1c;
     background-color: #f9f9f9;
 }
- footer {
-    background-color: #512a00;
-    
-    color: #f5f3f3;
-    padding: 1em 0;
-    text-align: center;
-}
+
 
 .container {
     /* width: 100%; */
