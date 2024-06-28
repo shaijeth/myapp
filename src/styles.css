@@ -1,4 +1,27 @@
+/* //left right contener of mponline and service css // */
 
+
+.leftcontainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #b1b4b4;
+    border-radius:5px;
+    width: 30%;
+    height: 550px;
+    padding: 10px;
+    margin: 5px;
+}
+
+.rightcontainer {
+    background-color: #b1b4b4;
+    border-radius: 5px;
+    width: 70%;
+    height: 550px;
+    padding: 10px;
+    margin: 5px;
+    overflow-y: scroll;
+}
+/* //left right contener of mponline and service  css end  // */
 
 .custom-button {
     background-color: #ff5f03;
