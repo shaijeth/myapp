@@ -15,9 +15,9 @@ interface Course {
 }
 
 const courses: Course[] = [
-  { id: 1, title: "Course 1", description: "Introduction to Course 1" },
-  { id: 2, title: "Course 2", description: "Introduction to Course 2" },
-  { id: 3, title: "Course 3", description: "Introduction to Course 3" },
+  { id: 1, title: "Course 1", description: "Siver Membership" },
+  { id: 2, title: "Course 2", description: "Gold Membership" },
+  { id: 3, title: "Course 3", description: "Platinum Membership" },
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
