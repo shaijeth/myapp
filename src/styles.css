@@ -1,3 +1,93 @@
+/* //user header // */
+
+.mheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background: #e65100;
+    /* color: #b51a1a; */
+    /* text-align: center; */
+     /* gap: 30px; */
+}
+
+
+/* // button use in login sign up view course  next previous  // */
+.custom-button {
+    background-color: hsl(200, 100%, 48%);
+    /* Blue background color */
+    color: white;
+    /* White text color */
+    border: none;
+    /* Remove border */
+    padding: 10px 20px;
+    /* Padding */
+    font-size: 16px;
+    /* Font size */
+    border-radius: 5px;
+    /* Rounded corners */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+}
+
+.custom-button:hover {
+    background-color: #fbebbe;
+    /* Darker blue on hover */
+}
+
+.custom-button:disabled {
+    background-color: #cccccc;
+    /* Gray background when disabled */
+    cursor: not-allowed;
+    /* Not-allowed cursor when disabled */
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+/* //up batton css jo ki use nahi aa rahi hai // */
+
+
+
+/* CTA Buttons landing pagee */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 1.1em;
+    color: #fff;
+    background-color: #1e1916;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #005bb5;
+}
+
+/* Specific CTA Buttons */
+.btn-primary {
+    background-color: #a90ba4;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+}
+
+.btn-secondary {
+    background-color: #e64500;
+}
+
+.btn-secondary:hover {
+    background-color: #005bb5;
+}
+
+
+
 /* //left right contener of mponline and service css // */
 
 
@@ -50,8 +140,7 @@
     flex-direction: row;
     background-color: #5e5c58;
     width: 100%;
-    height: 700px;
- 
+    /* height: 700px; */
 }
 
 
@@ -108,42 +197,6 @@ h1 {
     color: #0da152;
 }
 
-/* // button use in login sign up // */
-.custom-button {
-    background-color: #ff5f03;
-    /* Blue background color */
-    color: white;
-    /* White text color */
-    border: none;
-    /* Remove border */
-    padding: 10px 20px;
-    /* Padding */
-    font-size: 16px;
-    /* Font size */
-    border-radius: 5px;
-    /* Rounded corners */
-    cursor: pointer;
-    /* Pointer cursor on hover */
-}
-
-.custom-button:hover {
-    background-color: #eebf3d;
-    /* Darker blue on hover */
-}
-
-.custom-button:disabled {
-    background-color: #cccccc;
-    /* Gray background when disabled */
-    cursor: not-allowed;
-    /* Not-allowed cursor when disabled */
-}
-
-.error {
-    color: red;
-    font-size: 12px;
-}
-/* //up batton css jo ki use nahi aa rahi hai // */
-
 
  .dflex-r{
 display: flex;
@@ -152,17 +205,7 @@ justify-content: space-between;
 padding: 10px;
  }
 
-/* //user header // */
 
-.dflex-rj {
-   
-    height: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-  }
- /* //four header user profile and otehr   end // */
 
 
 
@@ -260,12 +303,7 @@ label{
     padding: 1rem 0;
 } */
 
-footer,header {
-    background-color: #512a00;
-    color: #f5f3f3;
-    text-align: center;
-    padding: 1em 0;
-}
+
 
  /* //use in course video content // */
 /* html, body {
@@ -309,12 +347,14 @@ body {
 }
 
 /* Header Section */
-header {
-    background: #0073e6;
-    color: #fff;
-    padding: 20px 0;
+
+footer{
+    background-color: #512a00;
+    color: #f5f3f3;
     text-align: center;
+    padding: 1em 0;
 }
+
 
 header h1 {
     margin: 0;
@@ -322,8 +362,8 @@ header h1 {
 }
 
 header p {
-    font-size: 1.2em;
-}
+    font-size: 2.2em;
+} 
 
 /* Video Section */
 video {
@@ -362,41 +402,6 @@ section ul li {
     border-left: 5px solid #e65100;
 }
 
-/* CTA Buttons */
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 10px 0;
-    font-size: 1.1em;
-    color: #fff;
-    background-color: #0073e6;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
-
-.btn:hover {
-    background-color: #005bb5;
-}
-
-/* Specific CTA Buttons */
-.btn-primary {
-    background-color: #28a745;
-}
-
-.btn-primary:hover {
-    background-color: #218838;
-}
-
-.btn-secondary {
-    background-color: #0073e6;
-}
-
-.btn-secondary:hover {
-    background-color: #005bb5;
-}
 
 /* Footer Section */
 footer {

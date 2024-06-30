@@ -2,34 +2,32 @@
   width: 100%;
 }
 
-/* * {
+
+
+   /* color: white; */
+  /* height: 70px; */
+  /* border-radius: 5px; */
+  /* padding: 10px 20px; */
+  /* margin-right: 10px; */
+
+.user-header {
   background-color: rgb(241, 190, 156);
-  color: white;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-} */
-
-
-
-.hcontainer {
-  background-color: rgb(241, 190, 156);
-  color: white;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  height: 70px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border-radius: 5px;
-  padding: 10px 20px;
-  margin-right: 10px; */
 }
+
 
 .dflex-C {
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
-  /* gap: 30px; */
+  gap: 30px;
 }
+
+
 
 .lmslogo img{
   width: 65px;
