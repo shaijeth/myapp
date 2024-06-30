@@ -19,6 +19,7 @@ import { UploadComponent } from './upload/upload.component';
 import { AdminpanelComponent } from './adminpanel/adminpanel.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SitebarComponent } from './sitebar/sitebar.component';
 
 const routes: Routes = [
   {path:'',component:SignupComponent},
@@ -37,7 +38,8 @@ const routes: Routes = [
 {path:'upload',component:UploadComponent},
 {path:'adminpanel',component:AdminpanelComponent},
 {path:'landingpage',component:LandingpageComponent},
-{path:'profile',component:ProfileComponent}
+{path:'profile',component:ProfileComponent},
+{path:'sitebar',component:SitebarComponent}
 
 ];
 
