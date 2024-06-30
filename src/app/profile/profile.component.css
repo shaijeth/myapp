@@ -1,22 +1,22 @@
-/* body {
+body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #979797;
     margin: 0;
     padding: 0;
-} */
+}
 
-/* .container {
-    width: 50%;
-    margin: 50px auto;
+.container {
+    width: 70%;
+    /* margin: 50px auto; */
     background: #fff;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-} */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
 
-/* h1 {
+h1 {
     text-align: center;
-    color: #333;
-} */
+    color: #c82b2b;
+}
 
 .form-group {
     margin-bottom: 15px;
