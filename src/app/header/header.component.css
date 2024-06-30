@@ -1,3 +1,15 @@
+.customSearchBarWrapper {
+  width: 100%;
+}
+
+/* * {
+  background-color: rgb(241, 190, 156);
+  color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+} */
+
+
+
 .hcontainer {
   background-color: rgb(241, 190, 156);
   color: white;
@@ -14,10 +26,9 @@
 .dflex-C {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  gap: 30px;
-  
-
+  /* justify-content: center; */
+  align-items: center;
+  /* gap: 30px; */
 }
 
 .lmslogo img{
