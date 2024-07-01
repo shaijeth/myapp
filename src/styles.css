@@ -31,12 +31,12 @@
 }
 
 .custom-button:hover {
-    background-color: #fbebbe;
+    background-color: #979797;
     /* Darker blue on hover */
 }
 
 .custom-button:disabled {
-    background-color: #cccccc;
+    background-color: #a13a3a;
     /* Gray background when disabled */
     cursor: not-allowed;
     /* Not-allowed cursor when disabled */

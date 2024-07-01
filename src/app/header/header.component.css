@@ -11,26 +11,26 @@
   /* margin-right: 10px; */
 
 .user-header {
-  background-color: rgb(241, 190, 156);
+  background-color: rgb(245, 172, 123);
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-
+/* 
 .dflex-C {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 30px;
-}
+} */
 
 
 
 .lmslogo img{
-  width: 65px;
+  width: 80px;
   border-radius: 10px;
   margin-left: 20px;
 }
@@ -40,20 +40,20 @@ li {
   
 }
 
-a {
+a, i {
   text-decoration: none;
-  color: #022e3b;
+  color: #d0dce0;
   font-size: 1rem;
 }
 
 a:hover {
-  color: orange;
+  color: #e65100;
 }
 
-header {
+/* header {
   position: relative;
   /* padding: 0 2rem; */
-}
+} */
 
 
 

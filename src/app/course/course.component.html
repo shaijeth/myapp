@@ -1,13 +1,8 @@
-<header>
+
+
+<header style="margin-left: 30px;">
 <p class="font">Let‘s start learning, {{ loggedinuser }}</p>
 
-<nav>
-  <ul>
-    <li><a href="profile">Profile</a></li>
-    <li><a href="course">Courses</a></li>
-    <li><a href="logout">Logout</a></li>
-  </ul>
-</nav>
 </header>
 
 
@@ -25,10 +20,12 @@
               <li><a href="imgcration">{{item.title}} </a></li>
             </div>
             
-            <div>{{ item.title }}</div>
+            <div>{{ item.title }} Rs. 4999/-</div>
           </div>
 
-          <button type="button" class="custom-button"><span>View Course</span></button>
+          <button type="button" class="custom-button">
+            <span>View Course</span>
+          </button>
 
           
         </div>
