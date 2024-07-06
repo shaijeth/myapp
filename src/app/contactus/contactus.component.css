@@ -36,7 +36,7 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    color: #cb1c1c;
+    color: #030303;
     background-color: #f9f9f9;
 }
 .conh2{
@@ -72,14 +72,16 @@ main {
 .video-controls button {
     margin: 0 0.5em;
     padding: 0.5em 1em;
-    background-color: hsl(26, 100%, 50%);
+    background-color: #e65100;
+    border-radius: 10px;
     color: #fff;
     border: none;
     cursor: pointer;
+    width: 200px;
 }
 
 .video-controls button:hover {
-    background-color: #dab940;
+    background-color: #4e2013;
 }
 
 .progress-bar {

@@ -1,7 +1,10 @@
 .customSearchBarWrapper {
   width: 100%;
 }
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 
+}
 
 
    /* color: white; */
@@ -11,7 +14,7 @@
   /* margin-right: 10px; */
 
 .user-header {
-  background-color: rgb(245, 172, 123);
+  background-color: rgb(240, 240, 240);
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   justify-content: space-between;
@@ -42,7 +45,7 @@ li {
 
 a, i {
   text-decoration: none;
-  color: #d0dce0;
+  color: #010101;
   font-size: 1rem;
 }
 
