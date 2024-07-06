@@ -5,7 +5,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-    background: #e65100;
+    background: #dedddc;
+    /* border: 1px solid #00b1ed; */
+  
     /* color: #b51a1a; */
     /* text-align: center; */
      /* gap: 30px; */
@@ -14,7 +16,7 @@
 
 /* // button use in login sign up view course  next previous  // */
 .custom-button {
-    background-color: hsl(200, 100%, 48%);
+    background-color: #00b1ed;
     /* Blue background color */
     color: white;
     /* White text color */
@@ -36,7 +38,7 @@
 }
 
 .custom-button:disabled {
-    background-color: #a13a3a;
+    background-color: #c2c2c2;
     /* Gray background when disabled */
     cursor: not-allowed;
     /* Not-allowed cursor when disabled */
@@ -88,8 +90,31 @@
 
 
 
-/* //left right contener of mponline and service css // */
 
+/* // this css is given by w3 school  start // */
+.flex-container {
+    display: flex;
+    justify-content: center;
+    background-color: DodgerBlue;
+  }
+  .flex-container > div {
+    background-color: #f1f1f1;
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+  }
+
+  .flex-container > div {
+    background-color: #f1f1f1;
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+  }
+/* //left right contener of mponline and service css // */
 
 .leftcontainer {
     display: flex;
@@ -123,13 +148,13 @@
 .cont{
 
     display: flex;
-    flex-direction: row;
-    background-color: #545250;
+      
+    background-color: #ab7c4c;
     width: 100%;
-    height: 700px;
-    padding: 10px;
-    margin-top: 20px;
-    justify-content:space-around
+
+    margin: 0 0 0 20px ;
+  
+  
 }
 
 
