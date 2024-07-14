@@ -1,50 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My LMS</title>
-    <link rel="stylesheet" href="home.component.css" />
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Video Player</title>
+    <link rel="stylesheet" href="home.component.css">
+</head>
+<body>
+    <div class="container">
+        <div class="video-container">
+            <video id="videoPlayer" controls>
+                <source src="..//../assets/webinar_intro.mp4"type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-controls">
+                <button id="backwardButton">Backward</button>
+                <button id="forwardButton">Forward</button>
+                <button id="nextButton">Next</button>
+            </div>
+        </div>
+        <div class="course-list">
+            <h2>Course Titles</h2>
+            <ul id="courseTitles">
+                <li onclick="loadVideo('//../assets/webinar_intro.mp4')" >Course 1</li>
+                <li onclick="loadVideo('video2.mp4')">Course 2</li>
+                <li onclick="loadVideo('video3.mp4')">Course 3</li>
+                <!-- Add more courses as needed -->
+            </ul>
+        </div>
+    </div>
+    <script src="scripts.js">
+      function loadVideo(videoSrc) {
+    const videoPlayer = document.getElementById('videoPlayer');
+    videoPlayer.src = videoSrc;
+    videoPlayer.play();
+}
 
+document.getElementById('backwardButton').addEventListener('click', function() {
+    const videoPlayer = document.getElementById('videoPlayer');
+    videoPlayer.currentTime -= 10;
+});
 
-  <body>
-    <main class="container">
-      <section id="courses">
-        <h2>Available Courses</h2>
-        <ul id="course-list">
-          <!-- Course list will be populated by TypeScript -->
-        </ul>
-      
-      </section>
-    </main>
+document.getElementById('forwardButton').addEventListener('click', function() {
+    const videoPlayer = document.getElementById('videoPlayer');
+    videoPlayer.currentTime += 10;
+});
 
-    <footer class="container">
-      <p>&copy; 2024 My LMS. All rights reserved.</p>
-    </footer>
+document.getElementById('nextButton').addEventListener('click', function() {
+    // Implement your logic for loading the next video
+    // For example:
+    loadVideo('video2.mp4');
+});
 
-    <script src="app.js" defer>
+// Prevent screen recording (this is just a basic approach and not foolproof)
+document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') {
+        alert('Screen recording is not allowed!');
+        document.getElementById('videoPlayer').pause();
+    }
+});
 
-      var courses = [
-          { id: 1, title: "Course 1", description: "Siver Membership" },
-          { id: 2, title: "Course 2", description: "Gold Membership" },
-          { id: 3, title: "Course 3", description: "Platinum Membership" },
-      ];
-      document.addEventListener("DOMContentLoaded", function () {
-          var courseList = document.getElementById("course-list");
-          courses.forEach(function (course) {
-              var listItem = document.createElement("li");
-              listItem.className = "course-item";
-              listItem.textContent = course.title + ": " + course.description;
-              listItem.onclick = function () { return handleCourseClick(course.id); };
-              courseList.appendChild(listItem);
-          });
-      });
-      function handleCourseClick(courseId) {
-          // Navigate to the course page
-          alert("Navigating to Course " + courseId);
-          // window.location.href = `/course/${courseId}`;
-      }
     </script>
-  </body>
+</body>
 </html>

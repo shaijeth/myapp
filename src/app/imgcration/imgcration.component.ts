@@ -23,7 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const videos = [
       "..//../assets/wellcome.mp4",
-      "https://www.youtube.com/embed/9XX4UoUsQqQ",
+      "..//../assets/webinar_intro.mp4",
+      "..//../assets/webinar_intro.mp4",
+      "..//../assets/wellcome.mp4",
+      "..//../assets/wellcome.mp4",
+      "..//../assets/webinar_intro.mp4",
       "video3.mp4",
       "video4.mp4",
       "video5.mp4",
