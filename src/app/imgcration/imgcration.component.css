@@ -55,6 +55,7 @@ h1 {
 
 main {
     display: flex;
+    flex-direction: row;
     margin-top: 2em;
 }
 
@@ -126,4 +127,48 @@ main {
 
 .video-item:hover {
     background-color: #dee2e6;
+}
+
+
+
+.course-list {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    overflow-y: auto;
+}
+
+.course-list h2 {
+    margin-top: 0;
+}
+
+.course-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.course-list ul li {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #f8f9fa;
+    margin-bottom: 5px;
+}
+
+.course-list ul li:hover {
+    background-color: #e9ecef;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .video-container, .course-list {
+        flex: none;
+        width: 100%;
+    }
+
+    .course-list {
+        order: -1;
+    }
 }
