@@ -1,10 +1,6 @@
 .customSearchBarWrapper {
   width: 100%;
 }
-* {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-
-}
 
 
    /* color: white; */
@@ -52,13 +48,6 @@ a, i {
 a:hover {
   color: #e65100;
 }
-
-/* header {
-  position: relative;
-  /* padding: 0 2rem; */
-} */
-
-
 
 .navbar {
   display: flex;

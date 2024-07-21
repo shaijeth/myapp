@@ -1,43 +1,106 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { icoursemaster } from '../../assets/model/icoursemaster';
+import { ImageUploadService } from '../image-upload.service';
+import { CourseService } from '../course.service';
 
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
   styleUrl: './upload.component.css'
-  
+
 })
-export class UploadComponent {
+export class UploadComponent implements OnInit {
+
+  message: string = '';
+  selectedfiles!: FileList;
+  formData = new FormData();
+  imgURL: string[] = [];
+  files: File[] = [];
+  images: '';
+  pid: string = "0";
+  coursedata: icoursemaster = {
+    courseID: 0,
+    courseName: '',
+    imageName: '',
+    type: 'Basic',
+    price: 0,
+    createdDate: new Date()
+  };
+  courses: icoursemaster[] = [];
+
+  constructor(private http: HttpClient, private router: Router, private imageUploadService: ImageUploadService,
+    private courseService: CourseService
+  ) {
+    this.images = '';
+  }
+
+  ngOnInit(): void {
+    this.GetCourseList();
+  }
+
+  GetCourseList() {
+
+    this.courseService.getcoursemaster()
+      .subscribe(
+        (data: icoursemaster[]) => {
+          this.courses = data;
+          console.log(data);
+        }
+      );
+  }
+  CreatCourseMaster() {
+
+    this.courseService.newcoursemaster(this.coursedata)
+      .subscribe(
+        (data: icoursemaster) => {
+          this.message = 'Course Master Created';
+          this.upload("1");
+        }
+      );
+    console.warn(this.coursedata);
+  }
+  onChange(event: any) {
+    this.selectedfiles = event.target.files;
+    if (this.selectedfiles) {
+      for (let i = 0; i < this.selectedfiles.length; i++) {
+        let reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.imgURL.push(e.target.result);
+        }
+        reader.readAsDataURL(this.selectedfiles[i]);
+        this.coursedata.imageName = this.selectedfiles[i].name;
+        console.log(this.coursedata.imageName + this.coursedata.courseName);
+      }
+    }
+  }
+  upload(newpid: string): void {
+    const formData: FormData = new FormData;
+    for (let i = 0; i < this.selectedfiles.length; i++) {
+      let newfilename = this.selectedfiles[i].name.replace(/ /g, "_");
+      this.images += this.selectedfiles[i].name.replace(/ /g, "_") + ",";
+      formData.append('postedFiles', this.selectedfiles[i], newfilename);
+    }
+
+    this.imageUploadService.uploadImage(newpid, formData).subscribe((data: any) => {
+      console.log(data);
+    },
+      (error) => {
+        console.log('upload error : ', error);
+      })
+  }
+
+  deleteCourse(crsid: number) {
+    this.courseService.deleteCourse(crsid).subscribe(() => {
+      this.courses = this.courses.filter(course => course.courseID !== crsid);
+    });
+  }
+
+  AddCourseContent(coursetitle: string,crsid: number) {
+    localStorage['coursetitle']=coursetitle;
+    localStorage['courseid']=crsid;
+    this.router.navigate(["/coursecontent"]);
+  }
 
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const uploadButton = document.getElementById("upload-button") as HTMLButtonElement;
-  const uploadedList = document.getElementById("uploaded-list") as HTMLUListElement;
-
-  uploadButton.addEventListener("click", () => {
-      const courseName = (document.getElementById("course-name") as HTMLInputElement).value;
-      const videoTitle = (document.getElementById("video-title") as HTMLInputElement).value;
-      const videoSection = (document.getElementById("video-section") as HTMLInputElement).value;
-      const videoFile = (document.getElementById("video-file") as HTMLInputElement).files?.[0];
-
-      if (courseName && videoTitle && videoSection && videoFile) {
-          const listItem = document.createElement("li");
-
-          listItem.innerHTML = `
-              <span>${courseName} - ${videoTitle} (${videoSection})</span>
-              <button class="delete-button">Delete</button>
-          `;
-
-          listItem.querySelector(".delete-button")?.addEventListener("click", () => {
-              uploadedList.removeChild(listItem);
-          });
-
-          uploadedList.appendChild(listItem);
-
-          // Reset form
-          (document.getElementById("upload-form") as HTMLFormElement).reset();
-      } else {
-          alert("Please fill in all fields and select a video file.");
-      }
-  });
-});

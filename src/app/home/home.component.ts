@@ -20,17 +20,6 @@ const courses: Course[] = [
   { id: 3, title: "Course 3", description: "Platinum Membership" },
 ];
 
-document.addEventListener("DOMContentLoaded", () => {
-  const courseList = document.getElementById("course-list") as HTMLElement;
-
-  courses.forEach(course => {
-      const listItem = document.createElement("li");
-      listItem.className = "course-item";
-      listItem.textContent = `${course.title}: ${course.description}`;
-      listItem.onclick = () => handleCourseClick(course.id);
-      courseList.appendChild(listItem);
-  });
-});
 
 function handleCourseClick(courseId: number): void {
   // Navigate to the course page

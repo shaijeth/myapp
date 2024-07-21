@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
 
 
-<!-- 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My LMS</title>
-    <link rel="stylesheet" href="contactus.component.css" />
-  </head> -->
 <div >
   
-    <h2 class="conh2">Image cration Skills</h2>
- 
+    <h2 class="conh2">{{coursetitle}}</h2> 
 
-  <body>
     <main class="vdcontainer">
       <div class="video-container">
         <video id="video-player" width="854" height="480" controls>
@@ -50,66 +39,5 @@
     </main>
 
 
-    <script src="app.js" defer>
 
-      document.addEventListener("DOMContentLoaded", function () {
-          var videoPlayer = document.getElementById("video-player");
-          var playPauseButton = document.getElementById("play-pause");
-          var prevButton = document.getElementById("prev");
-          var nextButton = document.getElementById("next");
-          var progressBar = document.getElementById("progress");
-          var videoList = document.getElementById("video-list");
-          var videoItems = document.querySelectorAll(".video-item");
-          var currentVideoIndex = 0;
-          var videos = [
-              "..//../assets/wellcome.mp4",
-              "..//../assets/webinar_intro.mp4" ,
-              "video3.mp4",
-              "video4.mp4",
-              "video5.mp4",
-              "video6.mp4"
-          ];
-          playPauseButton.addEventListener("click", function () {
-              if (videoPlayer.paused) {
-                  videoPlayer.play();
-                  playPauseButton.textContent = "Pause";
-              }
-              else {
-                  videoPlayer.pause();
-                  playPauseButton.textContent = "Play";
-              }
-          });
-          prevButton.addEventListener("click", function () {
-              if (currentVideoIndex > 0) {
-                  currentVideoIndex--;
-                  loadVideo(currentVideoIndex);
-              }
-          });
-          nextButton.addEventListener("click", function () {
-              if (currentVideoIndex < videos.length - 1) {
-                  currentVideoIndex++;
-                  loadVideo(currentVideoIndex);
-              }
-          });
-          videoPlayer.addEventListener("timeupdate", function () {
-              var progressPercent = (videoPlayer.currentTime / videoPlayer.duration) * 100;
-              progressBar.style.width = progressPercent + "%";
-          });
-          videoItems.forEach(function (item, index) {
-              item.addEventListener("click", function () {
-                  currentVideoIndex = index;
-                  loadVideo(currentVideoIndex);
-              });
-          });
-          function loadVideo(index) {
-              videoPlayer.src = videos[index];
-              videoPlayer.play();
-              playPauseButton.textContent = "Pause";
-          }
-          // Initialize the first video
-          loadVideo(currentVideoIndex);
-      });
-    </script>
-  </body>
 </div>
-</html>

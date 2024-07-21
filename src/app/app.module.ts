@@ -26,6 +26,8 @@ import { UploadComponent } from './upload/upload.component';
 import { AdminpanelComponent } from './adminpanel/adminpanel.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AddcoursecontentComponent } from './addcoursecontent/addcoursecontent.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -50,13 +52,15 @@ import { ProfileComponent } from './profile/profile.component';
     UploadComponent,
     AdminpanelComponent,
     LandingpageComponent,
-    ProfileComponent
+    ProfileComponent,
+    AddcoursecontentComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

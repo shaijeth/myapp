@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LMS Video Player</title>
-    <link rel="stylesheet" href="home.component.css">
-</head>
+
 <body>
     <div class="container">
         <div class="video-container">
@@ -29,37 +22,4 @@
             </ul>
         </div>
     </div>
-    <script src="scripts.js">
-      function loadVideo(videoSrc) {
-    const videoPlayer = document.getElementById('videoPlayer');
-    videoPlayer.src = videoSrc;
-    videoPlayer.play();
-}
-
-document.getElementById('backwardButton').addEventListener('click', function() {
-    const videoPlayer = document.getElementById('videoPlayer');
-    videoPlayer.currentTime -= 10;
-});
-
-document.getElementById('forwardButton').addEventListener('click', function() {
-    const videoPlayer = document.getElementById('videoPlayer');
-    videoPlayer.currentTime += 10;
-});
-
-document.getElementById('nextButton').addEventListener('click', function() {
-    // Implement your logic for loading the next video
-    // For example:
-    loadVideo('video2.mp4');
-});
-
-// Prevent screen recording (this is just a basic approach and not foolproof)
-document.addEventListener('visibilitychange', function() {
-    if (document.visibilityState === 'hidden') {
-        alert('Screen recording is not allowed!');
-        document.getElementById('videoPlayer').pause();
-    }
-});
-
-    </script>
-</body>
-</html>
+   

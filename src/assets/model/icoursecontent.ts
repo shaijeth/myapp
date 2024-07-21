@@ -1,8 +1,8 @@
 export interface icoursecontent{
-    Courseno:number,
-    Videono:number
-    Section:string
-    day:number,
-    videotitile:string,
-    videolink:string,
+    courseContentID:number,
+    courseID:number
+    sectionName:string
+    contentName:string,
+    videoFileName:string,
+    createdDate:Date
 }

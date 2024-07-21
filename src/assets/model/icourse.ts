@@ -3,4 +3,5 @@ export interface icourse{
     title:string,
     type:string,
     image:string,
+    price:number
 }

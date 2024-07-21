@@ -20,6 +20,7 @@ import { AdminpanelComponent } from './adminpanel/adminpanel.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SitebarComponent } from './sitebar/sitebar.component';
+import { AddcoursecontentComponent } from './addcoursecontent/addcoursecontent.component';
 
 const routes: Routes = [
   {path:'',component:SignupComponent},
@@ -39,7 +40,8 @@ const routes: Routes = [
 {path:'adminpanel',component:AdminpanelComponent},
 {path:'landingpage',component:LandingpageComponent},
 {path:'profile',component:ProfileComponent},
-{path:'sitebar',component:SitebarComponent}
+{path:'sitebar',component:SitebarComponent},
+{path:'coursecontent',component:AddcoursecontentComponent}
 
 ];
 

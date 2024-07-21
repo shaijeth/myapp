@@ -10,24 +10,19 @@
   <div class="rightcontainer">
     <div class="appcontainer">
       <div class="app-grid">
-        <div class="app-item" *ngFor="let item of courselist">
-
-
-          <div>
-            <img class="img" src="/assets/course/{{ item.image }}" />
+        <div class="app-item" *ngFor="let item of coursemasterlist">
+          <div (click)="gotocourse(item.courseName)">
+            <img class="img" src="/assets/course/{{ item.imageName }}" />
 
             <div class="app-name">
-              <li><a href="imgcration">{{item.title}} </a></li>
+              <li><a href="imgcration">{{item.courseName}} </a></li>
             </div>
             
-            <div>{{ item.title }} Rs. 4999/-</div>
+            <div>{{ item.courseName }} Rs. {{item.price}}/-</div>
           </div>
-
           <button type="button" class="custom-button">
             <span>View Course</span>
           </button>
-
-          
         </div>
       </div>
     </div>
