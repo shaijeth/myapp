@@ -29,6 +29,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { AddcoursecontentComponent } from './addcoursecontent/addcoursecontent.component';
 import { DataTablesModule } from 'angular-datatables';
 import { SortPipe } from './pipes/sort.pipe';
+import { VideoPlayerComponent } from './video-player/video-player.component';
+import { VideoPlaylistComponent } from './video-playlist/video-playlist.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { SortPipe } from './pipes/sort.pipe';
     LandingpageComponent,
     ProfileComponent,
     AddcoursecontentComponent,
-    SortPipe
+    SortPipe,
+    VideoPlayerComponent,
+    VideoPlaylistComponent
   ],
   imports: [
     FormsModule,

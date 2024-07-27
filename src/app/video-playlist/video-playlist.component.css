@@ -1,0 +1,44 @@
+
+.video-list{
+    background-color: white;
+    border-radius:0 0 10px 10px;
+}
+.content-item{
+    cursor: pointer;
+    padding: 5px;
+    background-color: white;
+    color:black;
+    border-radius:0 0 10px 10px;
+    transition:  height .2s ease-in;    
+    height: 40px;
+}
+.content-item-selected{
+    cursor: pointer;
+    padding: 5px;
+    background-color:rgb(211, 75, 2);
+    color:white;
+    transition:  color .2s ease-in;
+    height: 40px;
+ }
+.content-item:hover{
+    background-color:rgb(211, 75, 2);
+    color: white;
+ /*    font-size: larger;*/
+    
+}
+.conh2{
+    font-size: larger;
+    font-weight: bolder;
+    text-align: center;
+    background-color:rgb(211, 75, 2);
+    color: white;
+    padding: 5px;
+    margin: 0;
+    border-radius: 10px;
+}
+.section-name{
+    font-weight: bold;
+    background-color: rgb(208, 187, 226);
+    padding: 5px;
+    border-radius: 10px 10px 0 0;
+}

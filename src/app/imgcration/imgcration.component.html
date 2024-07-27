@@ -1,40 +1,8 @@
-<div>
-
-  <h2 class="conh2">{{coursetitle}}</h2>
-
-  <main class="vdcontainer">
-    <div class="video-container">
-      <video id="video-player" width="854" height="480" controls>
-        <source src="{{vidofilename}}" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <div class="video-controls">
-        <button id="prev">Previous</button>
-        <button id="play-pause">Play</button>
-        <button id="next">Next</button>
-      </div>
-      <div class="progress-bar">
-        <div id="progress" class="progress"></div>
-      </div>
-    </div>
-    <!-- //VIDEO PASTH THIREE TIME UPADATE KARNA HAI FIRST TWO IN THIS PAGE AND OTHER IN TS FILE // -->
-    <aside class="playlist">
-      <ul>
-        <li *ngFor="let section of sectionlist ">
-          {{ section }} 
-          <br><span>===============</span>
-          <ul id="video-list">
-            <li *ngFor="let content of courseContents">
-              <span *ngIf="content.sectionName==section" (click)="setCurrentVideo(content.videoFileName)"> {{ content.contentName }}</span>
-            <li>
-          </ul>
-          </li>
-        <li>
-      </ul>
-     
-    </aside>
-  </main>
-
-
-
+<div class="player-container">
+  <div style="width: 70%;">
+    <app-video-player [currentVideo]="coursedata"></app-video-player>
+  </div>
+  <div style="width: 30%;margin: 20px;border: 1px solid grey;border-radius: 10px;padding:10px;">
+    <app-video-playlist (videoSelected)="onVideoSelected($event)"></app-video-playlist>
+  </div>
 </div>
