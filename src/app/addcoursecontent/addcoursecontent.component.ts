@@ -14,7 +14,7 @@ import DataTables from 'datatables.net';
 })
 export class AddcoursecontentComponent implements OnInit, AfterViewInit {
 
-   message: string = '';
+  message: string = '';
   selectedfiles!: FileList;
   formData = new FormData();
   imgURL: string[] = [];
@@ -23,8 +23,6 @@ export class AddcoursecontentComponent implements OnInit, AfterViewInit {
   courseid: number = 0;
   selectedcourse: string = '';
   images: '';
-
-
 
   coursedata: icoursecontent = {
     courseContentID: 0,
@@ -104,7 +102,7 @@ export class AddcoursecontentComponent implements OnInit, AfterViewInit {
       formData.append('postedFiles', this.selectedfiles[i], newfilename);
     }
 
-    this.imageUploadService.uploadImage(newpid, formData).subscribe((data: any) => {
+    this.imageUploadService.uploadImage( formData).subscribe((data: any) => {
       console.log(data);
     },
       (error) => {

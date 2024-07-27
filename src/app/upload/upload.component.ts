@@ -56,7 +56,7 @@ export class UploadComponent implements OnInit {
       .subscribe(
         (data: icoursemaster) => {
           this.message = 'Course Master Created';
-          this.upload("1");
+          this.upload();
         }
       );
     console.warn(this.coursedata);
@@ -75,7 +75,7 @@ export class UploadComponent implements OnInit {
       }
     }
   }
-  upload(newpid: string): void {
+  upload(): void {
     const formData: FormData = new FormData;
     for (let i = 0; i < this.selectedfiles.length; i++) {
       let newfilename = this.selectedfiles[i].name.replace(/ /g, "_");
@@ -83,7 +83,7 @@ export class UploadComponent implements OnInit {
       formData.append('postedFiles', this.selectedfiles[i], newfilename);
     }
 
-    this.imageUploadService.uploadImage(newpid, formData).subscribe((data: any) => {
+    this.imageUploadService.uploadImage( formData).subscribe((data: any) => {
       this.GetCourseList();
     },
       (error) => {

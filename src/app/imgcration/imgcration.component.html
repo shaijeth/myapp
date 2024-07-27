@@ -1,42 +1,39 @@
+<div>
 
+  <h2 class="conh2">{{coursetitle}}</h2>
 
-<div >
-  
-    <h2 class="conh2">{{coursetitle}}</h2> 
-
-    <main class="vdcontainer">
-      <div class="video-container">
-        <video id="video-player" width="854" height="480" controls>
-          <source src="..//../assets/wellcome.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <div class="video-controls">
-          <button id="prev">Previous</button>
-          <button id="play-pause">Play</button>
-          <button id="next">Next</button>
-        </div>
-        <div class="progress-bar">
-          <div id="progress" class="progress"></div>
-        </div>
+  <main class="vdcontainer">
+    <div class="video-container">
+      <video id="video-player" width="854" height="480" controls>
+        <source src="{{vidofilename}}" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-controls">
+        <button id="prev">Previous</button>
+        <button id="play-pause">Play</button>
+        <button id="next">Next</button>
       </div>
-<!-- //VIDEO PASTH THIREE TIME UPADATE KARNA HAI FIRST TWO IN THIS PAGE AND OTHER IN TS FILE // -->
-      <aside class="playlist">
-        <ul id="video-list">
-          <li class="section-title">Section 1</li>
-          <li class="video-item" data-video="..//../assets/wellcome.mp4">
-            Video 1
+      <div class="progress-bar">
+        <div id="progress" class="progress"></div>
+      </div>
+    </div>
+    <!-- //VIDEO PASTH THIREE TIME UPADATE KARNA HAI FIRST TWO IN THIS PAGE AND OTHER IN TS FILE // -->
+    <aside class="playlist">
+      <ul>
+        <li *ngFor="let section of sectionlist ">
+          {{ section }} 
+          <br><span>===============</span>
+          <ul id="video-list">
+            <li *ngFor="let content of courseContents">
+              <span *ngIf="content.sectionName==section" (click)="setCurrentVideo(content.videoFileName)"> {{ content.contentName }}</span>
+            <li>
+          </ul>
           </li>
-          <li class="video-item" data-video="..//../assets/webinar_intro.mp4">Video 2</li>
-          <li class="video-item" data-video="..//../assets/webinar_intro.mp4">Video 2</li>
-          <li class="section-title">Section 2</li>
-          <li class="video-item" data-video="video3.mp4">Video 3</li>
-          <li class="video-item" data-video="video4.mp4">Video 4</li>
-          <li class="section-title">Section 3</li>
-          <li class="video-item" data-video="video5.mp4">Video 5</li>
-          <li class="video-item" data-video="video6.mp4">Video 6</li>
-        </ul>
-      </aside>
-    </main>
+        <li>
+      </ul>
+     
+    </aside>
+  </main>
 
 
 

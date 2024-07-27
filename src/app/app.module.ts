@@ -28,6 +28,7 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddcoursecontentComponent } from './addcoursecontent/addcoursecontent.component';
 import { DataTablesModule } from 'angular-datatables';
+import { SortPipe } from './pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { DataTablesModule } from 'angular-datatables';
     AdminpanelComponent,
     LandingpageComponent,
     ProfileComponent,
-    AddcoursecontentComponent
+    AddcoursecontentComponent,
+    SortPipe
   ],
   imports: [
     FormsModule,

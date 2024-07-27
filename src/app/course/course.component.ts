@@ -18,8 +18,9 @@ interface Istudent {
 })
 export class CourseComponent implements OnInit {
 
-  gotocourse(arg0: string) {
+  gotocourse(arg0: string,arg1: string) {
     localStorage['coursetitle']=arg0;
+    localStorage['courseid']=arg1;
     this.router.navigate(['/imgcration']);
   }
 

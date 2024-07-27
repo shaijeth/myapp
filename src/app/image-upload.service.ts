@@ -11,9 +11,9 @@ export class ImageUploadService {
   private uploadURL = this.API_BASE_URL+'api/Image/UploadImage';
   constructor(private http: HttpClient) { }
 
-  uploadImage(pid: string, formData: FormData): Observable<HttpEvent<any>> {
-    console.log(pid);
-    const req = new HttpRequest('POST', `${this.uploadURL}?courseid=${pid}`, formData, {
+  uploadImage(formData: FormData): Observable<HttpEvent<any>> {
+    
+    const req = new HttpRequest('POST', `${this.uploadURL}`, formData, {
       reportProgress: true,
       responseType: 'json'
     });
