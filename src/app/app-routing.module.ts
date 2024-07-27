@@ -41,7 +41,8 @@ const routes: Routes = [
 {path:'landingpage',component:LandingpageComponent},
 {path:'profile',component:ProfileComponent},
 {path:'sitebar',component:SitebarComponent},
-{path:'coursecontent',component:AddcoursecontentComponent}
+{path:'coursecontent',component:AddcoursecontentComponent},
+{path:'adminpanel',component:AdminpanelComponent}
 
 ];
 

@@ -1,4 +1,3 @@
-
 <div class="cont">
   <div>
     <video width="640" height="480" controls autoplay>
@@ -9,19 +8,18 @@
   </div>
 
   <div class="left">
-    <h2>Registration Forms</h2>
+    <h2 style="text-align: center;">Registration Forms</h2>
 
     <form #signupform="ngForm" (submit)="createuser()">
       <div class="container">
-        <div class="row">
+        <div class="row p-3">
           <div class="col-sm">
-            <label for="type">User Type</label>
+            <label for="type" hidden="true">User Type</label>
           </div>
-          <div class="col-sm">
+          <div class="col-sm" hidden="true">
             <select [(ngModel)]="userdata.type" name="type">
               <option value="Student">Student</option>
               <option value="Guest">Guest</option>
-              <option value="Admin">Admin</option>
             </select>
           </div>
         </div>
@@ -29,17 +27,9 @@
         <div class="row">
           <div class="col-sm"><label for="userName">Full Name:</label></div>
           <div class="col-lg">
-            <input
-              [(ngModel)]="userdata.userName"
-              type="text"
-              id="userName"
-              name="userName"
-              placeholder="Enter your Full Name"
-              class="form-control"
-              style="width: 100%"
-              (input)="onNameInput()"
-              #userName="ngModel"
-            />
+            <input [(ngModel)]="userdata.userName" type="text" id="userName" name="userName"
+              placeholder="Enter your Full Name" class="form-control" style="width: 100%" (input)="onNameInput()"
+              #userName="ngModel" />
           </div>
         </div>
 
@@ -50,31 +40,15 @@
             <!-- <input [(ngModel)]="userdata.mobile" type="text" id="mobile" name="mobile"
             placeholder="1234567890" pattern="[0-9]{10}" required /> -->
 
-            <input
-              [(ngModel)]="userdata.mobile"
-              type="text"
-              id="mobile"
-              name="mobile"
-              placeholder="1234567890"
-              pattern="[0-9]{10}"
-              required
-              #mobileInput="ngModel"
-              class="form-control"
-            />
-            <div
-              *ngIf="
+            <input [(ngModel)]="userdata.mobile" type="text" id="mobile" name="mobile" placeholder="1234567890"
+              pattern="[0-9]{10}" required #mobileInput="ngModel" class="form-control" />
+            <div *ngIf="
                 mobileInput.invalid &&
                 (mobileInput.dirty || mobileInput.touched)
-              "
-            >
-              <small
-                class="text-danger"
-                *ngIf="mobileInput.errors?.['required']"
-                >Mobile number is required.</small
-              >
-              <small class="text-danger" *ngIf="mobileInput.errors?.['pattern']"
-                >Mobile number must be 10 digits.</small
-              >
+              ">
+              <small class="text-danger" *ngIf="mobileInput.errors?.['required']">Mobile number is required.</small>
+              <small class="text-danger" *ngIf="mobileInput.errors?.['pattern']">Mobile number must be 10
+                digits.</small>
             </div>
           </div>
         </div>
@@ -85,28 +59,15 @@
             placeholder="xyx001@gmail.com" class="form-control" /> -->
 
           <div class="col-sm">
-            <input
-              [(ngModel)]="userdata.userEmail"
-              type="email"
-              id="userEmail"
-              name="userEmail"
-              placeholder="xyz001@gmail.com"
-              class="form-control"
-              required
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-              #emailInput="ngModel"
-            />
-            <div
-              *ngIf="
+            <input [(ngModel)]="userdata.userEmail" type="email" id="userEmail" name="userEmail"
+              placeholder="xyz001@gmail.com" class="form-control" required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #emailInput="ngModel" />
+            <div *ngIf="
                 emailInput.invalid && (emailInput.dirty || emailInput.touched)
-              "
-            >
-              <small class="text-danger" *ngIf="emailInput.errors?.['required']"
-                >Email is required.</small
-              >
-              <small class="text-danger" *ngIf="emailInput.errors?.['email']"
-                >Please enter a valid email address.</small
-              >
+              ">
+              <small class="text-danger" *ngIf="emailInput.errors?.['required']">Email is required.</small>
+              <small class="text-danger" *ngIf="emailInput.errors?.['email']">Please enter a valid email
+                address.</small>
             </div>
 
             <div *ngIf="emailInput.errors?.['pattern']">
@@ -117,28 +78,14 @@
         <div class="row">
           <div class="col-sm"><label for="password">Password :</label></div>
           <div class="col-sm">
-            <input
-              [(ngModel)]="userdata.password"
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Password"
-              class="form-control"
-              required
-              #passwordInput="ngModel"
-            />
-            <div
-              *ngIf="
+            <input [(ngModel)]="userdata.password" type="password" id="password" name="password" placeholder="Password"
+              class="form-control" required #passwordInput="ngModel" />
+            <div *ngIf="
                 passwordInput.invalid &&
                 (passwordInput.dirty || passwordInput.touched)
-              "
-            >
-              <small
-                class="text-danger"
-                *ngIf="passwordInput.errors?.['required']"
-              >
-                Valid Password is required.</small
-              >
+              ">
+              <small class="text-danger" *ngIf="passwordInput.errors?.['required']">
+                Valid Password is required.</small>
             </div>
           </div>
         </div>
@@ -147,26 +94,24 @@
         </div>
 
         <div class="row">
-          <div class="col-sm">
-            <input
-              class="custom-button"
-              type="submit"
-              value="Signup"
-              [disabled]="signupform.invalid"
-            />
+          <div class="col">
+            <input class="custom-button" type="submit" value="Signup" [disabled]="signupform.invalid" />
           </div>
-          <div class="col-sm">
-            <input
-              class="custom-button"
-              type="button"
-              (click)="gotologin()"
-              value="User Log in "
-            />
+          <div class="col">
+            <input class="custom-button" type="button" (click)="gotologin()" value="User Log in " />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" >
+            <span style="color: brown;"> Enter user detail to create new Login.</span>
+          </div>
+          <div class="col">
+            <span style="color: brown;">Click to enter existing login detail.</span>
           </div>
         </div>
       </div>
     </form>
 
-    
+
   </div>
 </div>

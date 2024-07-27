@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminpanelComponent implements OnInit{
   loggedinuser: any;
+  
   ngOnInit(): void {
     this.loggedinuser = localStorage['loggedinuser'];
   }
-
 }

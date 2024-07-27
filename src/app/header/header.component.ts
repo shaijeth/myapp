@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   islogged: boolean = false;
   buttontext:string="";
   loggedinuser: any;
+  usertype:any='';
   /**
    *
    */
@@ -24,17 +25,19 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.islogged = localStorage['islogged'] == 'logged';
     this.loggedinuser = localStorage['loggedinuser'];
+    this.usertype = localStorage['usertype'];
   }
 
   login() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/signup']);
   }
   logout() {
     localStorage.removeItem('islogged');
     localStorage.removeItem('loggedinuser');
     localStorage.removeItem('token');
+    localStorage.removeItem('usertype');
     this.islogged = false;
-    this.router.navigate(['/login']);
+    this.router.navigate(['/signup']);
   }
   Joinwhatsapp() {
 

@@ -3,14 +3,11 @@
 }
 
 
-   /* color: white; */
-  /* height: 70px; */
-  /* border-radius: 5px; */
-  /* padding: 10px 20px; */
-  /* margin-right: 10px; */
-
+.mheader{
+  display: flex;
+  justify-content: center;
+}
 .user-header {
-  background-color: rgb(240, 240, 240);
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   justify-content: space-between;
@@ -181,7 +178,9 @@ a:hover {
   display: block;
 }
 
-
+.admin-header{
+ 
+}
 
 @media (max-width: 992px) {
   .navbar .links,

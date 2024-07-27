@@ -39,23 +39,32 @@ export class LoginComponent {
     this.checkLogin(this.userdata.userEmail, this.userdata.password);
   }
   checkLogin(userEmail: string, pswd: string) {
-    let DevApiUrl:string ="http://localhost/";
-    let ProdApiUrl:string ="http://learn.excelonlineservices.com/";
+    let DevApiUrl: string = "http://localhost/";
+    let ProdApiUrl: string = "http://learn.excelonlineservices.com/";
     this.http
       .get<user>(
-        ProdApiUrl+'api/Users/CheckLogin?useremail=' +
+        ProdApiUrl + 'api/Users/CheckLogin?useremail=' +
         userEmail +
         '&pswd=' +
         pswd
       )
       .subscribe(
         (response: any) => {
-          console.log(response);
+          console.log(response.userType);
+
           localStorage.setItem('islogged', 'logged');
           localStorage.setItem('loggedinuser', response.name);
+          localStorage.setItem('usertype', response.userType);
           localStorage.setItem('token', response.token);
           this.sharedservice.changetext('Logout');
-          this.router.navigate(['/course']);
+          
+          if (response.userType == "Admin") {
+            this.router.navigate(['/adminpanel']);
+          }
+          else if (response.userType == "Guest") {
+            this.router.navigate(['/course']);
+          }
+     
         },
         (error) => {
           console.log(error);
@@ -64,3 +73,4 @@ export class LoginComponent {
       );
   }
 }
+

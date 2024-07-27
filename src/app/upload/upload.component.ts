@@ -46,7 +46,7 @@ export class UploadComponent implements OnInit {
       .subscribe(
         (data: icoursemaster[]) => {
           this.courses = data;
-          console.log(data);
+        
         }
       );
   }
@@ -84,7 +84,7 @@ export class UploadComponent implements OnInit {
     }
 
     this.imageUploadService.uploadImage(newpid, formData).subscribe((data: any) => {
-      console.log(data);
+      this.GetCourseList();
     },
       (error) => {
         console.log('upload error : ', error);
