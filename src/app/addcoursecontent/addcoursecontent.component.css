@@ -53,3 +53,9 @@ form button:hover {
 #uploaded-list li button:hover {
     background-color: #CC0000;
 }
+
+
+  
+  .progress {
+    margin-top: 20px;
+  }

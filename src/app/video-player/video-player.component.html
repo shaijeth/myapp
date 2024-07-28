@@ -1,4 +1,6 @@
+
 <div class="div-container" (contextmenu)="disableRightClick($event)">
+    <h2 class="conh2" >{{currentVideo?.contentName}}</h2>
     <div>
         <div>
             <video #videoPlayer preload="auto" [src]="currentVideo?.videoFileName">

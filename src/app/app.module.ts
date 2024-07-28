@@ -27,10 +27,11 @@ import { AdminpanelComponent } from './adminpanel/adminpanel.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddcoursecontentComponent } from './addcoursecontent/addcoursecontent.component';
-import { DataTablesModule } from 'angular-datatables';
 import { SortPipe } from './pipes/sort.pipe';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { VideoPlaylistComponent } from './video-playlist/video-playlist.component';
+import { MediaComponent } from './media/media.component';
+import { MediaService } from './media.service';
 
 @NgModule({
   declarations: [
@@ -59,16 +60,16 @@ import { VideoPlaylistComponent } from './video-playlist/video-playlist.componen
     AddcoursecontentComponent,
     SortPipe,
     VideoPlayerComponent,
-    VideoPlaylistComponent
+    VideoPlaylistComponent,
+    MediaComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    DataTablesModule
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ MediaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

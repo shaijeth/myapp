@@ -12,7 +12,6 @@ export class ImageUploadService {
   constructor(private http: HttpClient) { }
 
   uploadImage(formData: FormData): Observable<HttpEvent<any>> {
-    
     const req = new HttpRequest('POST', `${this.uploadURL}`, formData, {
       reportProgress: true,
       responseType: 'json'

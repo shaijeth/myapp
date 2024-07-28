@@ -19,6 +19,7 @@ export class VideoPlayerComponent implements OnInit {
     event.preventDefault();
   }
   play() {
+    this.videoPlayer.nativeElement.currentTime=50;
     this.videoPlayer.nativeElement.play();
   }
   pause(): void {

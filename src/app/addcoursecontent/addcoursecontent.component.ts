@@ -1,18 +1,20 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { icoursecontent } from '../../assets/model/icoursecontent';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CourseService } from '../course.service';
 import { ImageUploadService } from '../image-upload.service';
-import {DataTablesModule} from 'angular-datatables';
+import { DataTablesModule } from 'angular-datatables';
 import DataTables from 'datatables.net';
+import { Subject, takeUntil } from 'rxjs';
+import { MediaService } from '../media.service';
 
 @Component({
   selector: 'app-addcoursecontent',
   templateUrl: './addcoursecontent.component.html',
   styleUrl: './addcoursecontent.component.css'
 })
-export class AddcoursecontentComponent implements OnInit, AfterViewInit {
+export class AddcoursecontentComponent implements OnInit {
 
   message: string = '';
   selectedfiles!: FileList;
@@ -23,6 +25,8 @@ export class AddcoursecontentComponent implements OnInit, AfterViewInit {
   courseid: number = 0;
   selectedcourse: string = '';
   images: '';
+  uploaded: boolean = false;
+  progress: number = -1;
 
   coursedata: icoursecontent = {
     courseContentID: 0,
@@ -35,18 +39,15 @@ export class AddcoursecontentComponent implements OnInit, AfterViewInit {
   courseContents: icoursecontent[] = [];
 
   constructor(private http: HttpClient, private router: Router, private imageUploadService: ImageUploadService,
-    private courseService: CourseService) {
+    private courseService: CourseService, private mediaService: MediaService) {
     this.images = '';
 
   }
-  ngAfterViewInit(): void {
-    // Initialize DataTable
-    
-  }
+
   ngOnInit(): void {
     this.selectedcourse = localStorage['coursetitle'];
     this.courseid = localStorage['courseid'];
-    this.coursedata.courseID= this.courseid;
+    this.coursedata.courseID = this.courseid;
     this.GetCourseList();
   }
 
@@ -70,15 +71,19 @@ export class AddcoursecontentComponent implements OnInit, AfterViewInit {
       );
   }
   CreatCourseContent() {
-
-    this.courseService.newcoursecontent(this.coursedata)
-      .subscribe(
-        (data: icoursecontent) => {
-          this.message = 'Course content Created';
-          this.upload("1");
-        }
-      );
-    console.warn(this.coursedata);
+    if (this.selectedfiles) {
+      this.uploaded = true;
+      this.courseService.newcoursecontent(this.coursedata)
+        .subscribe(
+          (data: icoursecontent) => {
+            this.upload();
+          }
+        );
+      console.warn(this.coursedata);
+    }
+    else {
+      this.message = 'Select video for content';
+    }
   }
   onChange(event: any) {
     this.selectedfiles = event.target.files;
@@ -89,24 +94,43 @@ export class AddcoursecontentComponent implements OnInit, AfterViewInit {
           this.imgURL.push(e.target.result);
         }
         reader.readAsDataURL(this.selectedfiles[i]);
-        this.coursedata.videoFileName = this.selectedfiles[i].name;
-        console.log(this.coursedata.videoFileName);
+        this.coursedata.videoFileName = 'assets/course/' + this.selectedfiles[i].name;
+
       }
     }
   }
-  upload(newpid: string): void {
+  upload(): void {
+    if (!this.selectedfiles) {
+      return;
+    }
+
     const formData: FormData = new FormData;
+    let newfilename: string = '';
     for (let i = 0; i < this.selectedfiles.length; i++) {
-      let newfilename = this.selectedfiles[i].name.replace(/ /g, "_");
+      newfilename = this.selectedfiles[i].name.replace(/ /g, "_");
       this.images += this.selectedfiles[i].name.replace(/ /g, "_") + ",";
       formData.append('postedFiles', this.selectedfiles[i], newfilename);
     }
 
-    this.imageUploadService.uploadImage( formData).subscribe((data: any) => {
-      console.log(data);
-    },
-      (error) => {
-        console.log('upload error : ', error);
-      })
+    this.imageUploadService.uploadImage(formData)
+      .subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          if (event.total) {
+            this.progress = Math.round(100 * (event.loaded / event.total));
+          }
+        } else if (event.type === HttpEventType.Response) {
+
+          this.uploaded = false;
+
+          this.message = 'File successfully uploaded!';
+          this.progress = 0; // Reset the progress bar after upload
+        }
+      },
+        (error) => {
+          console.log('upload error : ', error);
+        })
   }
+
+
+
 }

@@ -21,22 +21,28 @@
                     <input [(ngModel)]="coursedata.contentName" type="text" id="ContentName" name="ContentName"
                         required>
                 </div>
+                <div class="col">  
+                    
+                    <input class="btn-sm custom-button" style="height: 40px;" type="submit" value="Create Content" />
+                    <img *ngIf="uploaded" width="40" src="/assets/loading.gif">
+                </div>
+
             </div>
+          
             <div class="row">
                 <div class="col">
-                    <label for="imageName">Video :</label>
-                    <input class="form-control" required type="file" id="file" (change)="onChange($event)"
-                        accept="video/*">
+                   <input class="form-control" required type="file" id="file" (change)="onChange($event)"
+                        accept="video/*"> 
+                                       
                 </div>
                 <div class="col">
-                    <label>{{ message }}</label>
-                    <br>
-                    <input class="btn-sm custom-button" style="height: 40px;" type="submit" value="Upload" />
+                    <label  *ngIf="progress ==0">  {{ message }}</label>   
+                    <div class="progress" *ngIf="progress > 0">
+                        <div class="progress-bar" role="progressbar" [style.width.%]="progress" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100">{{ progress }}%</div>
+                      </div>
                 </div>
             </div>
-            <div class="field">
-                <img *ngFor="let file of imgURL" width="50" src="{{file}}">
-            </div>
+         
         </form>
     </section>
     <section id="Course-Content-List">
