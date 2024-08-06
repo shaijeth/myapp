@@ -9,6 +9,7 @@ import { SharedService } from '../shared.service';
 })
 export class HeaderComponent implements OnInit {
   islogged: boolean = false;
+  menuActive: boolean = true;
   buttontext:string="";
   loggedinuser: any;
   usertype:any='';
@@ -21,6 +22,10 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+
+  toggleMenu() {
+    this.menuActive = !this.menuActive;
+  }
 
   ngOnInit(): void {
     this.islogged = localStorage['islogged'] == 'logged';
@@ -43,19 +48,5 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  //   <script>
-  //   const toggleBtn = document.querySelector('.toggle_btn')
-  //   const toggleBtnIcon = document.querySelector('.toggle_btn i')
-  //   const dropDownMenu = document.querySelector('.dropdown_menu')
-  //   toggleBtn.onclick= function(){
-  //       dropDownMenu.classList.toggle('open')
-  //       const isopen= dropDownMenu.classList.contains('open')
-  //       toggleBtnIcon.classList = isopen ? 'fa fa-close' :'fa fa-bars'
-  //   }
-  // </script>
 
-  isopen: boolean = false;
-  clikevent() {
-    this.isopen = !this.isopen;
-  }
 }
