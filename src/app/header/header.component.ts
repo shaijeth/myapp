@@ -47,6 +47,9 @@ export class HeaderComponent implements OnInit {
   Joinwhatsapp() {
 
   }
-
+  isopen: boolean = false;
+  clikevent() {
+    this.isopen = !this.isopen;
+  }
 
 }

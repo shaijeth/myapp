@@ -6,5 +6,49 @@
     <div><a href="contact">Contact</a></div>
     <div><a href="signup">Join Free Course</a></div>
   </div>
+  <div>
+    <div class="actionbuttongroup">
+      <div (click)="Joinwhatsapp()" class="action_btn">Join Whatsapp Group</div>
 
+
+      <div *ngIf="!islogged" (click)="login()" class="action_btn">
+        {{ buttontext }}
+      </div>
+      <div *ngIf="islogged" (click)="logout()" class="action_btn">Log out</div>
+    </div>
+
+  </div>
 </nav>
+
+<header class="mheader">
+  <div *ngIf="usertype=='Admin'" class="admin-header">
+    <nav>
+      <ul>
+        <li> <a href="home">Home</a> </li>
+        <li> <a href="temp">Temp</a> </li>
+        <li> <a href="course">Courses</a> </li>
+        <li> <a href="services">Services</a> </li>
+        <li> <a href="mponline">MP Online</a> </li>
+        <li> <a href="signup">Signup</a> </li>
+        <li> <a href="sitebar">Sitebar</a> </li>
+        <li> <a href="imgcration">Content</a> </li>
+        <li> <a href="upload">Upload New Course</a> </li>
+        <li> <a href="dashboard">User List</a> </li>
+        
+      </ul>
+    </nav>
+  </div>
+  <div  *ngIf="usertype=='Guest'"  class="user-header">
+    <nav>
+      <ul>
+        <li><a href="profile">Profile</a></li>
+        <li><a href="course">Courses</a></li>
+        <li><a href="dashboard">Dashboard</a></li>
+        <li><a href="dashboard">Membership-Silver </a></li>
+      </ul>
+    </nav>
+  </div>
+  <div>
+
+  </div>
+</header>
