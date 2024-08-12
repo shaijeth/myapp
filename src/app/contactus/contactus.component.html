@@ -1,57 +1,43 @@
+<div class="contact-us">
+  <h2>Contact Us</h2>
+  <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        name="name"
+        [(ngModel)]="contact.name"
+        required
+      />
+    </div>
 
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        name="email"
+        [(ngModel)]="contact.email"
+        required
+      />
+    </div>
 
-<!-- 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My LMS</title>
-    <link rel="stylesheet" href="contactus.component.css" />
-  </head> -->
-<div >
-  
-    <h2 class="conh2">Image creation Skills</h2>
- 
+    <div class="form-group">
+      <label for="message">Message:</label>
+      <textarea
+        id="message"
+        class="form-control"
+        name="message"
+        [(ngModel)]="contact.message"
+        required
+      ></textarea>
+    </div>
 
-    <main class="vdcontainer">
-      
-      <div class="video-container">
-        
-        <video id="video-player" width="854" height="480" controls>
-          <source src="..//../assets/wellcome.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-
-        <div class="video-controls">
-          <button id="prev">Previous</button>
-          <button id="play-pause">Play</button>
-          <button id="next">Next</button>
-        </div>
-
-        <div class="progress-bar">
-          <div id="progress" class="progress"></div>
-        </div>
-
-      </div>
-
-      <aside class="playlist">
-
-        <h4> Image Image cration Skills</h4>
-        <ul id="video-list">
-          
-          <li class="section-title">Section 1</li>
-          <li class="video-item" data-video="..//../assets/wellcome.mp4">
-            Video 1
-          </li>
-          <li class="video-item" data-video="https://www.youtube.com/embed/nqO6cEbXyKM ">Video 2</li>
-          <li class="section-title">Section 2</li>
-          <li class="video-item" data-video="video3.mp4">Video 3</li>
-          <li class="video-item" data-video="video4.mp4">Video 4</li>
-          <li class="section-title">Section 3</li>
-          <li class="video-item" data-video="video5.mp4">Video 5</li>
-          <li class="video-item" data-video="video6.mp4">Video 6</li>
-        </ul>
-      </aside>
-    </main>
-
-
+    <button type="submit" class="btn btn-primary" [disabled]="!contactForm.valid">
+      Send
+    </button>
+  </form>
 </div>

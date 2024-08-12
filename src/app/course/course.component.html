@@ -1,8 +1,5 @@
-
-
-<header style="margin-left: 30px;">
-<p class="font">Let‘s start learning, {{ loggedinuser }}</p>
-
+<header style="margin-left: 30px;font-size: 30px;">
+  <p class="font">Let‘s start learning, {{ loggedinuser }}</p>
 </header>
 
 
@@ -17,12 +14,14 @@
             <div class="app-name">
               <li>{{item.courseName}} </li>
             </div>
-            
-            <div>{{ item.courseName }} Rs. {{item.price}}/-</div>
-          </div>
-          
+
+            <div>{{ item.courseName }} {{item.price | currency:'INR':'symbol':'1.2-2'}}/-</div>
+            <br>
             <span class="custom-button">View Course</span>
-        
+            
+          </div>
+
+
         </div>
       </div>
     </div>
@@ -32,4 +31,3 @@
 
 
 <!-- /white/ -->
-

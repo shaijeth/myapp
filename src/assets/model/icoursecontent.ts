@@ -4,5 +4,7 @@ export interface icoursecontent{
     sectionName:string
     contentName:string,
     videoFileName:string,
-    createdDate:Date
+    createdDate:Date,
+    duration:number,
+    order:number
 }

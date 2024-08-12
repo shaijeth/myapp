@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { icoursemaster } from '../../assets/model/icoursemaster';
 import { ImageUploadService } from '../image-upload.service';
 import { CourseService } from '../course.service';
+import localeIn from '@angular/common/locales/en-IN';
 
 @Component({
   selector: 'app-upload',
@@ -12,6 +13,7 @@ import { CourseService } from '../course.service';
 
 })
 export class UploadComponent implements OnInit {
+
 
   message: string = '';
   selectedfiles!: FileList;
@@ -102,5 +104,7 @@ export class UploadComponent implements OnInit {
     localStorage['courseid']=crsid;
     this.router.navigate(["/coursecontent"]);
   }
-
+  ViewourseContent(arg0: number) {
+    this.router.navigate(["/imgcration"]);
+    }
 }

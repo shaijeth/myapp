@@ -20,6 +20,10 @@
   background-color: aliceblue;
   width: 30%; 
 }
+.content-text{
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 15px 15px;
+}
 
 @media only screen and (max-width: 600px) {
 

@@ -71,4 +71,14 @@ export class MediaService {
         })
       );
   }
+  convertSeconds(seconds: number): string {
+    const hrs = Math.floor(seconds / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
+    const secs = Math.floor(seconds % 60);
+
+    return `${this.pad(hrs)}:${this.pad(mins)}:${this.pad(secs)}`;
+  }
+  pad(value: number): string {
+    return value < 10 ? '0' + value : value.toString();
+  }
 }

@@ -1,7 +1,8 @@
 <header class="container">
     <h1>Upload Course</h1>
+    <a class="btn-sm btn-info" href="adminpanel">Admin Panel</a>
 </header>
-
+<hr>
 <main class="container">
     <section id="upload-section">
         <h2>Add Course</h2>
@@ -42,6 +43,7 @@
             </div>
         </form>
     </section>
+    <hr >
     <section id="Course-List">
         <h2>Course List</h2>
         <table class="table table-bordered">
@@ -54,7 +56,9 @@
                     <th>Price</th>
                     <th>Created Date</th>
                     <th>Add Content</th>
+                    <th>View Content</th>
                     <th>Delete</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -63,13 +67,16 @@
                     <td>{{ course.courseName }}</td>
                     <td> <img width="50" [src]="'assets/course/' + course.imageName" alt="{{ course.courseName }}"></td>
                     <td>{{ course.type }}</td>
-                    <td>{{ course.price | currency }}</td>
+                    <td>{{ course.price | currency:'INR':'symbol':'1.2-2' }}</td>
                     <td>{{ course.createdDate | date:'mediumDate' }}</td>
                     <td>
-                        <button (click)="AddCourseContent(course.courseName,course.courseID)" class="btn-sm btn-info">Add Content</button>
+                        <button (click)="AddCourseContent(course.courseName,course.courseID)" class="btn btn-link">Add Content</button>
                     </td>
                     <td>
-                        <button (click)="deleteCourse(course.courseID)" class="btn-sm btn-danger">Delete</button>
+                        <button (click)="ViewourseContent(course.courseID)" class="btn btn-link">View Content</button>
+                    </td>
+                    <td>
+                        <button (click)="deleteCourse(course.courseID)" class="btn btn-link">Delete</button>
                     </td>
                 </tr>
             </tbody>

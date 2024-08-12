@@ -5,34 +5,60 @@ import { CourseService } from '../course.service';
 import { ImageUploadService } from '../image-upload.service';
 import { icoursecontent } from '../../assets/model/icoursecontent';
 import { __values } from 'tslib';
+import { MediaService } from '../media.service';
 
 @Component({
   selector: 'app-imgcration',
   templateUrl: './imgcration.component.html',
   styleUrl: './imgcration.component.css'
 })
-export class ImgcrationComponent {
+export class ImgcrationComponent implements OnInit {
 
   @Output() videoSelected = new EventEmitter<icoursecontent>();
 
 
-  constructor(private http: HttpClient, private router: Router, private imageUploadService: ImageUploadService,
-    private courseService: CourseService) {
 
-  }
- 
- 
+  courseid: number = 0;
   coursedata: icoursecontent = {
     courseContentID: 0,
     courseID: 0,
     sectionName: '',
     contentName: '',
     videoFileName: '',
-    createdDate: new Date
+    createdDate: new Date,
+    duration: 0,
+    order: 0
   };
- 
-  onVideoSelected(video:icoursecontent) {
-    this.coursedata = video;
+  courseContents: icoursecontent[] = [];
+  sectionlist: string[] = [];
+  contenttext: string = '';
+
+  constructor(private http: HttpClient, private router: Router, private imageUploadService: ImageUploadService,
+    private courseService: CourseService,public mediaservice :MediaService) {
+
   }
-  
+  ngOnInit(): void {
+    this.courseid = localStorage['courseid'];
+    this.GetCourseList(this.courseid);
+  }
+  onVideoSelected(video: icoursecontent) {
+    this.coursedata = video;
+
+  }
+  public GetCourseList(courseid: number) {
+    this.courseService.getcourscontentbyid(courseid)
+      .subscribe(
+        (data: icoursecontent[]) => {
+          this.courseContents = data.filter(d => d.courseID == courseid);
+          this.sectionlist = this.courseContents.map(item => item.sectionName)
+            .filter((__values, index, self) => self.indexOf(__values) === index);
+          this.contenttext = 'Total Sections : ' + this.sectionlist.length.toString() +  ' Total Lessons : ' + this.courseContents.length.toString();
+          const toaltime = this.courseContents.reduce((sum, item) => sum + item.duration, 0);
+          
+          this.contenttext += ' Total Time : '+this.mediaservice.convertSeconds(toaltime);
+        }
+      );
+  }
+
+
 }

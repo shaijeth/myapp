@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,6 +32,10 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
 import { VideoPlaylistComponent } from './video-playlist/video-playlist.component';
 import { MediaComponent } from './media/media.component';
 import { MediaService } from './media.service';
+import { registerLocaleData } from '@angular/common';
+import localeIn from '@angular/common/locales/en-IN';
+import { MembershiphomeComponent } from './membershiphome/membershiphome.component';
+registerLocaleData(localeIn, 'en-IN');
 
 @NgModule({
   declarations: [
@@ -61,7 +65,8 @@ import { MediaService } from './media.service';
     SortPipe,
     VideoPlayerComponent,
     VideoPlaylistComponent,
-    MediaComponent
+    MediaComponent,
+    MembershiphomeComponent
   ],
   imports: [
     FormsModule,
@@ -69,7 +74,7 @@ import { MediaService } from './media.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ MediaService],
+  providers: [ MediaService,{ provide: LOCALE_ID, useValue: 'en-IN' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

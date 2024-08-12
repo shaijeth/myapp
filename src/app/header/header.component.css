@@ -1,5 +1,5 @@
 .lmslogo img {
-  width: 100px;
+  width: 120px;
   border-radius: 10px;
 }
 .navbar {
@@ -64,6 +64,10 @@
 }
 
 .admin-header {
+  display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 50px;
 }
 @media (max-width: 768px) {
   .navbar {

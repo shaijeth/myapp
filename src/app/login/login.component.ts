@@ -32,11 +32,13 @@ export class LoginComponent {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private sharedservice: SharedService
+    private sharedservice: SharedService,
+    
   ) { }
 
   userLogin() {
     this.checkLogin(this.userdata.userEmail, this.userdata.password);
+
   }
   checkLogin(userEmail: string, pswd: string) {
     let DevApiUrl: string = "http://localhost/";

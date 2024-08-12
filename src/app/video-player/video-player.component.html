@@ -1,15 +1,23 @@
-
 <div class="div-container" (contextmenu)="disableRightClick($event)">
-    <h2 class="conh2" >{{currentVideo?.contentName}}</h2>
+    <h2 class="conh2">{{currentVideo?.contentName}}</h2>
     <div>
         <div>
-            <video #videoPlayer preload="auto" [src]="currentVideo?.videoFileName">
+            <video #videoPlayer preload="auto" [src]="currentVideo?.videoFileName" (timeupdate)="setCurrentTime($event)"
+                (timeupdate)="updateProgressBar()" (loadedmetadata)="initializeVideo()" (click)="togglePlayPause()">
                 Your browser does not support the video tag.
             </video>
+            <div class="progress-bar-container">
+                <input type="range" min="0" max="100" step="0.1" [(ngModel)]="progress" (change)="seekVideo($event)" />
+            </div>
         </div>
-        <div  class="div-buttons">
-            <button (click)="play()" type="button" class="btn btn-dark">Play</button>
-            <button (click)="pause()" type="button" class="btn btn-dark">Pause</button>
+        <div class="div-buttons">
+            <button (click)="play()" type="button" class="btn-playpause">Play</button>
+            <button (click)="pause()" type="button" class="btn-playpause">Pause</button>
         </div>
+        <div style="color: gray;font-size: 10px;">For Developers Testing [Total Time : {{totalTime}} Current Time : {{currentTime}} Pause At :{{bookmark}}]
+          
+        </div>
+        
     </div>
+
 </div>

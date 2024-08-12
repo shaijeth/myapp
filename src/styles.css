@@ -38,41 +38,20 @@
 
 
 
-/* CTA Buttons landing pagee */
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 10px 0;
-    font-size: 1.1em;
-    color: #fff;
-    background-color: #1e1916;
-    border: none;
-    border-radius: 25px;
-    text-align: center;
+.back-button {
     text-decoration: none;
-    transition: background-color 0.3s;
+    font-size: 17px;
+    font-weight: bold;
+    color: rgb(246, 250, 255);
+    display: block;
+    background-color: #80a0a6;
+    width: 160px;
+    border-radius: 10px;
+    margin: 10px;
 }
 
-.btn:hover {
-    background-color: #005bb5;
+.back-button:hover{
+    text-decoration: none;
+    background-color:  #0056b3;;
+    color: rgb(246, 250, 255);
 }
-
-/* Specific CTA Buttons */
-.btn-primary {
-    background-color: #a90ba4;
-}
-
-.btn-primary:hover {
-    background-color: #218838;
-}
-
-.btn-secondary {
-    background-color: #e64500;
-}
-
-.btn-secondary:hover {
-    background-color: #005bb5;
-}
-
-
-

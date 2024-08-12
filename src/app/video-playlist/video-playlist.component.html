@@ -1,9 +1,17 @@
 <h2 class="conh2">{{coursetitle}}</h2>
+<a class="back-button" href="course"><img width="24px" src="/assets/backarrow.png">Back to courses</a>
 <div *ngFor="let section of sectionlist ">
     <div class="section-name"> {{ section }}</div>
     <div class="video-list">
         <div *ngFor="let content of courseContents" (click)="setCurrentVideo(content)">
-            <div *ngIf="content.sectionName== section" [ngClass]="content.courseContentID==selectedcontent ? 'content-item-selected' : 'content-item'" > {{ content.contentName }}</div>
+            <div *ngIf="content.sectionName== section"
+                [ngClass]="content.courseContentID==selectedcontent ? 'content-item-selected' : 'contenttext'">
+                <div> {{
+                    content.contentName }}
+                </div>
+                <div>
+                    {{mediaservice.convertSeconds(content.duration)}}
+                </div>
+            </div>
         </div>
     </div>
-</div>

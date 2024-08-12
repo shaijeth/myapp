@@ -4,6 +4,7 @@ import { icourse } from '../../assets/model/icourse';
 import { Router } from '@angular/router';
 import { CourseService } from '../course.service';
 import { icoursemaster } from '../../assets/model/icoursemaster';
+import { icoursecontent } from '../../assets/model/icoursecontent';
 
 interface Istudent {
   coursename: string;
@@ -17,6 +18,11 @@ interface Istudent {
   styleUrl: './course.component.css',
 })
 export class CourseComponent implements OnInit {
+  
+  courseContents: icoursecontent[] = [];
+  courselist: icourse[] = [];
+  coursemasterlist: icoursemaster[] = [];
+  sectionlist: string[] = [];
 
   gotocourse(arg0: string,arg1: string) {
     localStorage['coursetitle']=arg0;
@@ -24,8 +30,6 @@ export class CourseComponent implements OnInit {
     this.router.navigate(['/imgcration']);
   }
 
-  courselist: icourse[] = [];
-  coursemasterlist: icoursemaster[] = [];
   ngOnInit(): void {
     this.loggedinuser = localStorage['loggedinuser'];
     this.courseservice.getcourselist().subscribe((response: icourse[]) => {
@@ -36,12 +40,11 @@ export class CourseComponent implements OnInit {
       this.coursemasterlist = response;
       console.log(response);
     });
-
+   
   }
-  /**
-   *
-   */
+  
   constructor(private router: Router, private courseservice: CourseService) { }
   loggedinuser: any = '';
 
+ 
 }

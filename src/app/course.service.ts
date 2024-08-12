@@ -52,6 +52,10 @@ private ProdApiUrl: string = "http://learn.excelonlineservices.com";
     let productObservale = this.http.post<icoursecontent>(this.ProdApiUrl+this.coursecontentrurl+"/Create",newproduct);
     return productObservale.pipe(catchError(error => of<icoursecontent>()));
   }
+  updtaecoursecontent(coursecontentID: number,newproduct :  icoursecontent){
+    let productObservale = this.http.post<icoursecontent>(this.ProdApiUrl+this.coursecontentrurl+"/Edit?id="+coursecontentID,newproduct);
+    return productObservale.pipe(catchError(error => of<icoursecontent>()));
+  }
   deleteCourseContent(coursecontentID: number): Observable<any> {
     const url =this.ProdApiUrl+this.coursecontentrurl+"/Delete?id="+coursecontentID;
     return this.http.post(url, { coursecontentID });

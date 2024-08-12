@@ -21,6 +21,7 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SitebarComponent } from './sitebar/sitebar.component';
 import { AddcoursecontentComponent } from './addcoursecontent/addcoursecontent.component';
+import { MembershiphomeComponent } from './membershiphome/membershiphome.component';
 
 const routes: Routes = [
   {path:'',component:SignupComponent},
@@ -42,7 +43,9 @@ const routes: Routes = [
 {path:'profile',component:ProfileComponent},
 {path:'sitebar',component:SitebarComponent},
 {path:'coursecontent',component:AddcoursecontentComponent},
-{path:'adminpanel',component:AdminpanelComponent}
+{path:'adminpanel',component:AdminpanelComponent},
+{path:'users',component:UserlistComponent},
+{path:'membershipcard',component:MembershiphomeComponent},
 
 ];
 

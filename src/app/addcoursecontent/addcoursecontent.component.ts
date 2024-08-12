@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { icoursecontent } from '../../assets/model/icoursecontent';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -16,6 +16,8 @@ import { MediaService } from '../media.service';
 })
 export class AddcoursecontentComponent implements OnInit {
 
+  @ViewChild('videoElement') videoElement!: ElementRef<HTMLVideoElement>;
+  videoDuration: number = 0;
   message: string = '';
   selectedfiles!: FileList;
   formData = new FormData();
@@ -27,6 +29,7 @@ export class AddcoursecontentComponent implements OnInit {
   images: '';
   uploaded: boolean = false;
   progress: number = -1;
+  btntext: string = 'Add Content';
 
   coursedata: icoursecontent = {
     courseContentID: 0,
@@ -34,12 +37,16 @@ export class AddcoursecontentComponent implements OnInit {
     sectionName: '',
     contentName: '',
     videoFileName: '',
-    createdDate: new Date
+    createdDate: new Date,
+    duration: 0.00,
+    order: 0
   };
   courseContents: icoursecontent[] = [];
+  selectedItem: icoursecontent | null = null;
+  ccoursedata: icoursecontent | undefined;
 
   constructor(private http: HttpClient, private router: Router, private imageUploadService: ImageUploadService,
-    private courseService: CourseService, private mediaService: MediaService) {
+    private courseService: CourseService, public mediaService: MediaService) {
     this.images = '';
 
   }
@@ -58,35 +65,67 @@ export class AddcoursecontentComponent implements OnInit {
   }
 
   EditCourseContent(arg0: number) {
-    alert("Work In Progress");
+    this.ccoursedata = this.courseContents.find(x => x.courseContentID == arg0);
+    this.coursedata = this.ccoursedata as icoursecontent;
+    this.btntext = 'Update Content';
+    this.selectedItem = this.coursedata;
+    this.videoDuration = this.coursedata.duration;
   }
 
   GetCourseList() {
-    this.courseService.getcourscontent(this.courseid)
+    this.courseService.getcourscontentbyid(this.courseid)
       .subscribe(
         (data: icoursecontent[]) => {
-          this.courseContents = data;
-          console.log(this.courseContents[1]);
+          this.courseContents = data.sort((a, b) => a.order - b.order);
+
         }
       );
   }
+
   CreatCourseContent() {
-    if (this.selectedfiles) {
-      this.uploaded = true;
+
+    if (this.btntext == 'Update Content') {
+
+      this.courseService.updtaecoursecontent(this.coursedata.courseContentID, this.coursedata)
+        .subscribe(
+          (data: icoursecontent) => {
+            this.uploaded = true;
+            if (this.selectedfiles) {
+              this.upload();
+            }
+            else {
+              this.uploaded = false;
+              this.progress = 0;
+              if (!this.uploaded) {
+                this.message = 'Content updated';
+              }
+            }
+          }
+        );
+
+    }
+    else {
       this.courseService.newcoursecontent(this.coursedata)
         .subscribe(
           (data: icoursecontent) => {
-            this.upload();
+            if (this.selectedfiles) {
+              this.uploaded = true;
+              this.upload();
+            }
+            else {
+              this.message = 'Select video for content';
+            }
           }
         );
-      console.warn(this.coursedata);
     }
-    else {
-      this.message = 'Select video for content';
-    }
+
+
   }
   onChange(event: any) {
+
     this.selectedfiles = event.target.files;
+    const input = event.target as HTMLInputElement;
+
     if (this.selectedfiles) {
       for (let i = 0; i < this.selectedfiles.length; i++) {
         let reader = new FileReader();
@@ -95,15 +134,26 @@ export class AddcoursecontentComponent implements OnInit {
         }
         reader.readAsDataURL(this.selectedfiles[i]);
         this.coursedata.videoFileName = 'assets/course/' + this.selectedfiles[i].name;
+        const url = URL.createObjectURL(this.selectedfiles[i]);
 
+        // Load the video file into the video element
+        this.videoElement.nativeElement.src = url;
+        // Add an event listener to get the duration once metadata is loaded
+        this.videoElement.nativeElement.onloadedmetadata = () => {
+          this.videoDuration = Math.fround(this.videoElement.nativeElement.duration);
+          URL.revokeObjectURL(url); // Clean up the object URL
+          this.coursedata.duration = this.videoDuration;
+        };
       }
+
     }
   }
+
+
   upload(): void {
     if (!this.selectedfiles) {
       return;
     }
-
     const formData: FormData = new FormData;
     let newfilename: string = '';
     for (let i = 0; i < this.selectedfiles.length; i++) {
@@ -131,6 +181,19 @@ export class AddcoursecontentComponent implements OnInit {
         })
   }
 
-
+  clearForm() {
+    this.coursedata = {
+      courseContentID: 0,
+      courseID: 0,
+      sectionName: '',
+      contentName: '',
+      videoFileName: '',
+      createdDate: new Date,
+      duration: 0.00,
+      order: 0
+    };
+    this.btntext = 'Add Content';
+    this.selectedItem = null;
+  }
 
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { icoursecontent } from '../../assets/model/icoursecontent';
 import { CourseService } from '../course.service';
 import { ImageUploadService } from '../image-upload.service';
+import { MediaService } from '../media.service';
 
 @Component({
   selector: 'app-video-playlist',
@@ -12,11 +13,11 @@ import { ImageUploadService } from '../image-upload.service';
 })
 export class VideoPlaylistComponent {
 
+
   @Output() videoSelected = new EventEmitter<icoursecontent>();
 
-
   constructor(private http: HttpClient, private router: Router, private imageUploadService: ImageUploadService,
-    private courseService: CourseService) {
+    private courseService: CourseService, public mediaservice: MediaService) {
 
   }
   vidofilename: any = '';
@@ -28,11 +29,13 @@ export class VideoPlaylistComponent {
     sectionName: '',
     contentName: '',
     videoFileName: '',
-    createdDate: new Date
+    createdDate: new Date,
+    duration: 0,
+    order: 0
   };
   courseContents: icoursecontent[] = [];
   sectionlist: string[] = [];
-  selectedcontent: number=0;
+  selectedcontent: number = 0;
 
   ngOnInit(): void {
     this.coursetitle = localStorage['coursetitle'];
@@ -44,15 +47,17 @@ export class VideoPlaylistComponent {
     this.courseService.getcourscontentbyid(this.courseid)
       .subscribe(
         (data: icoursecontent[]) => {
-          this.courseContents = data.filter(d => d.courseID == this.courseid);
+          this.courseContents = data.filter(d => d.courseID == this.courseid).sort((a, b) => a.order - b.order);
           this.sectionlist = this.courseContents.map(item => item.sectionName)
             .filter((__values, index, self) => self.indexOf(__values) === index);
         }
       );
   }
   setCurrentVideo(selectedvideofilename: icoursecontent) {
-    this.selectedcontent= selectedvideofilename.courseContentID;
-    console.log(" this.selectedcontent : " +this.selectedcontent);
+    this.selectedcontent = selectedvideofilename.courseContentID;
+    console.log(" this.selectedcontent : " + this.selectedcontent);
     this.videoSelected.emit(selectedvideofilename);
   }
+
+  
 }
