@@ -35,6 +35,7 @@ import { MediaService } from './media.service';
 import { registerLocaleData } from '@angular/common';
 import localeIn from '@angular/common/locales/en-IN';
 import { MembershiphomeComponent } from './membershiphome/membershiphome.component';
+import { CouponComponent } from './coupon/coupon.component';
 registerLocaleData(localeIn, 'en-IN');
 
 @NgModule({
@@ -66,7 +67,8 @@ registerLocaleData(localeIn, 'en-IN');
     VideoPlayerComponent,
     VideoPlaylistComponent,
     MediaComponent,
-    MembershiphomeComponent
+    MembershiphomeComponent,
+    CouponComponent
   ],
   imports: [
     FormsModule,

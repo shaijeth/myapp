@@ -16,8 +16,6 @@ export class ImgcrationComponent implements OnInit {
 
   @Output() videoSelected = new EventEmitter<icoursecontent>();
 
-
-
   courseid: number = 0;
   coursedata: icoursecontent = {
     courseContentID: 0,

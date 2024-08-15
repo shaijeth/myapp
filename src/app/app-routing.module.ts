@@ -22,6 +22,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { SitebarComponent } from './sitebar/sitebar.component';
 import { AddcoursecontentComponent } from './addcoursecontent/addcoursecontent.component';
 import { MembershiphomeComponent } from './membershiphome/membershiphome.component';
+import { CouponComponent } from './coupon/coupon.component';
+
 
 const routes: Routes = [
   {path:'',component:SignupComponent},
@@ -46,6 +48,7 @@ const routes: Routes = [
 {path:'adminpanel',component:AdminpanelComponent},
 {path:'users',component:UserlistComponent},
 {path:'membershipcard',component:MembershiphomeComponent},
+{path:'coupon',component:CouponComponent},
 
 ];
 
