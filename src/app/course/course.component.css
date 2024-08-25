@@ -7,8 +7,9 @@
 .mpcontainer {
     display: flex;
     flex-direction: row;
-    
-    width: 100%;
+    width: 80%;
+    margin: auto;
+    justify-content: center;
     /* height: 700px; */
 }
 

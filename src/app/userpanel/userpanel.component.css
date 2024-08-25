@@ -1,6 +1,6 @@
 .admin-button-container{
     width: 80%;
-    margin: 20px auto;
+    margin: 5px auto;
     display: flex;
     flex-direction: row;
     justify-content:space-evenly;
@@ -48,10 +48,9 @@
         margin: auto;
     }
     .admin-button-container{
-        margin-top: 50px;
+        margin-top: 5px;
         width: 90%;
-        margin-top: 50px;
-        padding: 20px;
+        padding: 5px;
         display: flex;
         flex-wrap: wrap;
     }
