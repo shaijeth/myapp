@@ -5,7 +5,10 @@
     <div><a href="about">About</a></div>
     <div><a href="contact">Contact</a></div>
     <div><a href="signup">Join Free Course</a></div>
+
+    <div><a href="landingpage">landingpage</a></div>
     <div *ngIf="usertype=='Admin'"><a href="adminpanel">Dashboard</a></div>
+    
   </div>
   <div>
     <div class="actionbuttongroup">
@@ -20,3 +23,9 @@
 
   </div>
 </nav>
+
+
+<div *ngIf="usertype=='Guest'">
+
+  <app-userpanel></app-userpanel>
+</div>

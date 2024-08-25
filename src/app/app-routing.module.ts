@@ -23,6 +23,7 @@ import { SitebarComponent } from './sitebar/sitebar.component';
 import { AddcoursecontentComponent } from './addcoursecontent/addcoursecontent.component';
 import { MembershiphomeComponent } from './membershiphome/membershiphome.component';
 import { CouponComponent } from './coupon/coupon.component';
+import { UserpanelComponent } from './userpanel/userpanel.component';
 
 
 const routes: Routes = [
@@ -49,6 +50,7 @@ const routes: Routes = [
 {path:'users',component:UserlistComponent},
 {path:'membershipcard',component:MembershiphomeComponent},
 {path:'coupon',component:CouponComponent},
+{path:'userpanel',component:UserpanelComponent}
 
 ];
 

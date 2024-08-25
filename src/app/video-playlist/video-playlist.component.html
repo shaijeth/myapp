@@ -10,6 +10,11 @@
                     content.contentName }}
                 </div>
                 <div>
+            
+                    <img *ngIf="content.duration==0" width="24px" src="/assets/completed.png">
+                    <img *ngIf="content.duration>0" width="24px" src="/assets/inprogress.png">
+                </div>
+                <div>
                     {{mediaservice.convertSeconds(content.duration)}}
                 </div>
             </div>
