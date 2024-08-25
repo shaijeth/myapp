@@ -15,6 +15,7 @@ export class VideoPlaylistComponent {
 
 
   @Output() videoSelected = new EventEmitter<icoursecontent>();
+  contenttext: string = '';
 
   constructor(private http: HttpClient, private router: Router, private imageUploadService: ImageUploadService,
     private courseService: CourseService, public mediaservice: MediaService) {
@@ -50,6 +51,10 @@ export class VideoPlaylistComponent {
           this.courseContents = data.filter(d => d.courseID == this.courseid).sort((a, b) => a.order - b.order);
           this.sectionlist = this.courseContents.map(item => item.sectionName)
             .filter((__values, index, self) => self.indexOf(__values) === index);
+            this.contenttext = 'Total Sections : ' + this.sectionlist.length.toString() +  ' Total Lessons : ' + this.courseContents.length.toString();
+          const toaltime = this.courseContents.reduce((sum, item) => sum + item.duration, 0);
+          
+          this.contenttext += ' Total Time : '+this.mediaservice.convertSeconds(toaltime);
         }
       );
   }

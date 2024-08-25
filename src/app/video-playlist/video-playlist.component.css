@@ -29,7 +29,7 @@ height: 25px;
     flex-direction: row;
     justify-content: space-between;
     cursor: pointer;
-    background-color:rgb(240, 92, 12);
+    background-color:#a9a8a7;
     transition:  color .2s ease-in;
  }
  .contenttext:hover{
