@@ -18,33 +18,38 @@ interface Istudent {
   styleUrl: './course.component.css',
 })
 export class CourseComponent implements OnInit {
-  
+
   courseContents: icoursecontent[] = [];
   courselist: icourse[] = [];
   coursemasterlist: icoursemaster[] = [];
   sectionlist: string[] = [];
 
-  gotocourse(arg0: string,arg1: string) {
-    localStorage['coursetitle']=arg0;
-    localStorage['courseid']=arg1;
+  gotocourse(arg0: string, arg1: string) {
+    localStorage['coursetitle'] = arg0;
+    localStorage['courseid'] = arg1;
     this.router.navigate(['/imgcration']);
   }
 
   ngOnInit(): void {
     this.loggedinuser = localStorage['loggedinuser'];
-    this.courseservice.getcourselist().subscribe((response: icourse[]) => {
-      this.courselist = response;
-    });
+    if (this.loggedinuser == null) {
+      this.router.navigate(['/signup']);
+    }
+    else {
+      this.courseservice.getcourselist().subscribe((response: icourse[]) => {
+        this.courselist = response;
+      });
 
-    this.courseservice.getcoursemaster().subscribe((response: icoursemaster[]) => {
-      this.coursemasterlist = response;
-      console.log(response);
-    });
-   
+      this.courseservice.getcoursemaster().subscribe((response: icoursemaster[]) => {
+        this.coursemasterlist = response;
+
+      });
+    }
+
   }
-  
+
   constructor(private router: Router, private courseservice: CourseService) { }
   loggedinuser: any = '';
 
- 
+
 }

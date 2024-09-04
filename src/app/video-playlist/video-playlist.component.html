@@ -17,13 +17,14 @@
                 <div class="textleft">
                     <span class="content-name">{{ content.contentName }}</span>
                     <br>
-                    <span class="content-time"> {{mediaservice.convertSeconds(content.duration)}}</span>
+                    <span class="content-time"> {{content.watchedDuration}}/{{mediaservice.convertSeconds(content.duration)}}</span>
                 </div>
                 <div class="textright">
-                    <img *ngIf="content.duration>=0" width="24px" src="/assets/completed.png">
-                    <img *ngIf="content.duration==0" width="24px" src="/assets/inprogress.png">
+                    <img *ngIf="content.watchedDuration<=content.duration" width="24px" src="/assets/completed.png">
+                    <img *ngIf="content.watchedDuration==0" width="24px" src="/assets/inprogress.png">
                 </div>
 
             </div>
         </div>
+        
     </div>

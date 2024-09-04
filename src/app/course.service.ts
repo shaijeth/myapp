@@ -14,7 +14,7 @@ export class CourseService {
 //ourseMaster
 private coursemasterurl: string = '/api/CourseMaster';
 private coursecontentrurl: string = '/api/CourseContent';
-private coursecontentbyidurl: string = '/api/CourseContent/CourseContentByID';
+private coursecontentbyidurl: string = '/api/UsersProgress/ProgressDetails';
 private createcoursemasternurl: string = '/api/CourseMaster/Create';
 private DevApiUrl: string = "http://localhost/";
 private ProdApiUrl: string = "http://learn.excelonlineservices.com";
@@ -43,8 +43,8 @@ private ProdApiUrl: string = "http://learn.excelonlineservices.com";
     let courselist = this.http.get<icoursecontent[]>(this.ProdApiUrl+this.coursecontentrurl);
     return courselist.pipe(catchError((error) => of<icoursecontent[]>([])));
   }
-  getcourscontentbyid(courseID: number): Observable<icoursecontent[]> {
-    let courselist = this.http.get<icoursecontent[]>(this.ProdApiUrl+this.coursecontentbyidurl+"?cid="+courseID);
+  getcourscontentbyid(userID:number, courseID: number): Observable<icoursecontent[]> {
+    let courselist = this.http.get<icoursecontent[]>(this.ProdApiUrl+this.coursecontentbyidurl+"?userid="+userID+"&courseid="+courseID);
     return courselist.pipe(catchError((error) => of<icoursecontent[]>([])));
   }
 

@@ -19,7 +19,7 @@ interface user {
   styleUrl: './signup.component.css',
 })
 export class SignupComponent {
-  //http://learn.excelonlineservices.com/api/users/getusers
+  
   message: string = '';
 
   userdata: user = {

@@ -6,5 +6,9 @@ export interface icoursecontent{
     videoFileName:string,
     createdDate:Date,
     duration:number,
-    order:number
+    order:number,
+    userName:string,
+    userId:number,
+    watchedDuration:number,
+    completed:boolean
 }

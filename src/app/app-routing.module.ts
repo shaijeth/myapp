@@ -27,7 +27,7 @@ import { UserpanelComponent } from './userpanel/userpanel.component';
 
 
 const routes: Routes = [
-  {path:'',component:SignupComponent},
+  {path:'',component:CourseComponent},
 {path:'services',component:ServicesComponent,canActivate:[authGuard]},
 {path:'contact',component:ContactusComponent},
 {path:'home',component:HomeComponent},

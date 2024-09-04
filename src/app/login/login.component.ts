@@ -52,12 +52,13 @@ export class LoginComponent {
       )
       .subscribe(
         (response: any) => {
-          console.log(response.userType);
+          
 
           localStorage.setItem('islogged', 'logged');
           localStorage.setItem('loggedinuser', response.name);
           localStorage.setItem('usertype', response.userType);
           localStorage.setItem('token', response.token);
+          localStorage.setItem('userid', response.userID);
           this.sharedservice.changetext('Logout');
           
           if (response.userType == "Admin") {

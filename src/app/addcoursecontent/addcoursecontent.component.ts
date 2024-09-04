@@ -25,6 +25,7 @@ export class AddcoursecontentComponent implements OnInit {
   files: File[] = [];
   pid: string = "0";
   courseid: number = 0;
+  userid: number = 0;
   selectedcourse: string = '';
   images: '';
   uploaded: boolean = false;
@@ -39,7 +40,11 @@ export class AddcoursecontentComponent implements OnInit {
     videoFileName: '',
     createdDate: new Date,
     duration: 0.00,
-    order: 0
+    order: 0,
+    userName: '',
+    userId: 0,
+    watchedDuration: 0,
+    completed: false
   };
   courseContents: icoursecontent[] = [];
   selectedItem: icoursecontent | null = null;
@@ -54,6 +59,7 @@ export class AddcoursecontentComponent implements OnInit {
   ngOnInit(): void {
     this.selectedcourse = localStorage['coursetitle'];
     this.courseid = localStorage['courseid'];
+    this.userid = localStorage['userid'];
     this.coursedata.courseID = this.courseid;
     this.GetCourseList();
   }
@@ -73,7 +79,7 @@ export class AddcoursecontentComponent implements OnInit {
   }
 
   GetCourseList() {
-    this.courseService.getcourscontentbyid(this.courseid)
+    this.courseService.getcourscontentbyid(this.userid, this.courseid)
       .subscribe(
         (data: icoursecontent[]) => {
           this.courseContents = data.sort((a, b) => a.order - b.order);
@@ -190,7 +196,11 @@ export class AddcoursecontentComponent implements OnInit {
       videoFileName: '',
       createdDate: new Date,
       duration: 0.00,
-      order: 0
+      order: 0,
+      userName: '',
+      userId: 0,
+      watchedDuration: 0,
+      completed: false
     };
     this.btntext = 'Add Content';
     this.selectedItem = null;

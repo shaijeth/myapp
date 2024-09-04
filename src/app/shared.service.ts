@@ -8,7 +8,7 @@ export class SharedService {
 
   constructor() { }
 
-private headerbtntext=new BehaviorSubject<string>('Login');
+private headerbtntext=new BehaviorSubject<string>('Login / Signup');
 headerbtntext$=this.headerbtntext.asObservable();
 changetext(newtext:string){
   this.headerbtntext.next(newtext);
