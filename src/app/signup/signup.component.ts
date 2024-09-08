@@ -1,9 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Guid } from 'guid-typescript';
-//[{"userId":"1e29f8ce-9343-46d9-b7f1-a5b590be4e26","userName":"Diensh Verma","userEmail":"dinesh@gmail.com","password":"123","type":"Level1"},
 
 interface user {
   userId: number;

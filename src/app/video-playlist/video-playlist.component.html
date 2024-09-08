@@ -17,7 +17,7 @@
                 <div class="textleft">
                     <span class="content-name">{{ content.contentName }}</span>
                     <br>
-                    <span class="content-time"> {{content.watchedDuration}}/{{mediaservice.convertSeconds(content.duration)}}</span>
+                    <span class="content-time"> {{mediaservice.convertSeconds(content.watchedDuration)}}/{{mediaservice.convertSeconds(content.duration)}}</span>
                 </div>
                 <div class="textright">
                     <img *ngIf="content.watchedDuration<=content.duration" width="24px" src="/assets/completed.png">

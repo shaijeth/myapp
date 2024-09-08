@@ -9,6 +9,7 @@ export class ImageUploadService {
   private DevApiUrl: string = "http://localhost/";
   private API_BASE_URL= 'http://learn.excelonlineservices.com/';
   private uploadURL = this.API_BASE_URL+'api/Image/UploadImage';
+ 
   constructor(private http: HttpClient) { }
 
   uploadImage(formData: FormData): Observable<HttpEvent<any>> {
