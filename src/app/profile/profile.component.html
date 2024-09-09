@@ -1,21 +1,22 @@
 <div class="container">
     <h1>User Profile</h1>
+    <a class="btn-sm btn-info" href="users">Back to User List</a>
     <form #profileform="ngForm" (submit)="CreateUserProfile()">
         <div class="row">
             <div class="col">
                 <div class="profile-photo">
-
-                    <img src="{{imgURL}}" style="border-radius: 150px;width: 100px;width: 100px;object-fit: cover;">
-
-                    <input class="form-control" required type="file" id="file" (change)="onFileSelected($event)"
-                        style="width: 150px;">
-
-                    <button type="button" id="updateporfileimage" class="custom-button" (click)="upload()">Change
-                        Picture</button>
+                    <img src="{{imgURL}}" class="profilepic">
                     {{message}}
                 </div>
+                <div class="input-group mb-3">
+                    
+                    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03" (click)="upload()">Upload</button>
+                    <input type="file" class="form-control" id="file" aria-describedby="file" aria-label="Upload"
+                        (change)="onFileSelected($event)">
+                </div>
+
             </div>
-            
+
         </div>
         <div class="row">
             <div class="col">
@@ -65,7 +66,7 @@
             </div>
         </div>
 
-        <div class="row">          
+        <div class="row">
             <div class="col-3">
                 <div class="form-group">
                     <label for="personalEmail">Personal Email:</label>
@@ -145,8 +146,11 @@
         </div>
 
         <div class="row">
-            <div class="col"> <button type="submit" class="custom-button">Update Profile</button>
+
+            <div class="col-6 offset-md-3 text-center"> <button type="submit" class="custom-button">Update
+                    Profile</button>
                 {{message}}</div>
+
         </div>
 
 

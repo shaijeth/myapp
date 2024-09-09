@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { IUserProfile } from '../../assets/model/iuserprofile';
 import { UserprofileService } from '../userprofile.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ImageUploadService } from '../image-upload.service';
 
 
@@ -30,20 +30,24 @@ export class ProfileComponent implements OnInit {
 
   };
   islogged: boolean = false;
-  loggedinuser: any;
+  loggedinuser: string ='';
   usertype: any;
   message: string = "";
   selectedfiles!: FileList;
   imgURL: string = '';
   isProfileExist: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router, private userprofileservice: UserprofileService, private imageUploadService: ImageUploadService) { }
+  constructor(private route:ActivatedRoute, private http: HttpClient, private router: Router, private userprofileservice: UserprofileService, private imageUploadService: ImageUploadService) { }
   ngOnInit(): void {
     this.islogged = localStorage['islogged'] == 'logged';
-    this.loggedinuser = localStorage['userid'];
+    //this.loggedinuser = localStorage['userid'];
     this.usertype = localStorage['usertype'];
-    this.userprofile.userid = this.loggedinuser;
-    this.GetUserProfile();
+    
+    this.route.queryParams.subscribe(params => {
+      this.loggedinuser = params['userid'];
+      console.log('Selected user :'+this.loggedinuser);  // Should log "10"
+    });
+   this.GetUserProfile(this.loggedinuser );
   }
 
   onFileSelected(event: any) {
@@ -60,8 +64,8 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  GetUserProfile() {
-    this.userprofileservice.getUserProfile(this.loggedinuser)
+  GetUserProfile(userid:string) {
+    this.userprofileservice.getUserProfile(userid)
       .subscribe(
         (data: IUserProfile) => {
           this.userprofile = data;
@@ -99,6 +103,7 @@ export class ProfileComponent implements OnInit {
     const formData: FormData = new FormData;
     let newfilename = this.selectedfiles[0].name;
     formData.append('postedFiles', this.selectedfiles[0], newfilename);
+    this.userprofile.profilePhoto= newfilename;
     this.imageUploadService.uploadImage(formData).subscribe((data: any) => {
     },
       (error) => {

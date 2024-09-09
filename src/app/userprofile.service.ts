@@ -15,7 +15,7 @@ export class UserprofileService {
   
     constructor(private http: HttpClient) {}
 
-    getUserProfile(userid:number): Observable<IUserProfile> {
+    getUserProfile(userid:string): Observable<IUserProfile> {
       let courselist = this.http.get<IUserProfile>(this.ProdApiUrl+this.userprofiledetail+'?userid='+userid);
      
       return courselist.pipe(catchError((error) => of<IUserProfile>()));

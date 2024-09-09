@@ -55,3 +55,20 @@
     background-color:  #0056b3;;
     color: rgb(246, 250, 255);
 }
+
+.custom-button-sm {
+    background-color: #00b1ed;
+    /* Blue background color */
+    color: white;
+    /* White text color */
+    border: none;
+    /* Remove border */
+    padding: 5px 5px;
+    /* Padding */
+    font-size: 14px;
+    /* Font size */
+    border-radius: 5px;
+    /* Rounded corners */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+}

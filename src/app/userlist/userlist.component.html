@@ -8,6 +8,7 @@
     <th>password</th>
     <th>mobile</th>
     <th>type</th>
+    <th>profile</th>
     <tbody>
         <tr  *ngFor="let u of users"> 
             <td>{{u.userName}}</td>
@@ -15,6 +16,9 @@
             <td>{{u.password}}</td>
             <td>{{u.mobile}}</td>
             <td>{{u.type}}</td>
+            <td>
+                <a [routerLink]="['/profile']" [queryParams]="{ userid:u.userId}">Go to Profile</a>
+            </td>
         </tr>
        
     </tbody>
