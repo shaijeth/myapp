@@ -80,7 +80,9 @@ export class ProfileComponent implements OnInit {
   }
 
   CreateUserProfile() {
+
     if (this.isProfileExist) {
+      this.upload();
       this.userprofileservice.updateUserProfile(this.userprofile, this.userprofile.id)
         .subscribe(
           (data: IUserProfile) => {
@@ -101,10 +103,11 @@ export class ProfileComponent implements OnInit {
   }
   upload(): void {
     const formData: FormData = new FormData;
-    let newfilename = this.selectedfiles[0].name;
+    let newfilename = this.loggedinuser+'_'+ this.selectedfiles[0].name;
     formData.append('postedFiles', this.selectedfiles[0], newfilename);
     this.userprofile.profilePhoto= newfilename;
     this.imageUploadService.uploadImage(formData).subscribe((data: any) => {
+      
     },
       (error) => {
         console.log('upload error : ', error);
