@@ -44,7 +44,7 @@ private ProdApiUrl: string = "http://learn.excelonlineservices.com";
     return courselist.pipe(catchError((error) => of<icoursecontent[]>([])));
   }
   getcourscontentbyid(userID:number, courseID: number): Observable<icoursecontent[]> {
-    let courselist = this.http.get<icoursecontent[]>(this.ProdApiUrl+this.coursecontentbyidurl+"?userid="+userID+"&courseid="+courseID);
+    let courselist = this.http.get<icoursecontent[]>(this.ProdApiUrl+this.coursecontentrurl+"?userid="+userID+"&courseid="+courseID);
     return courselist.pipe(catchError((error) => of<icoursecontent[]>([])));
   }
 

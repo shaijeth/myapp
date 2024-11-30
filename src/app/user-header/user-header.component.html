@@ -1,0 +1,24 @@
+<nav class="navbar">
+    <div class="lmslogo"> <img src="/assets/lms_logo.jpg" alt="Excelonline" /> </div>
+    <div class="nav-links" id="nav-links">
+     
+    <a href="course" class="app-button">
+        <img width="30px" src="/assets/video_library.png">
+        <span>View Course</span>
+      </a>
+      <a href="profile?userid={{loggedinuser}}" class="app-button">
+        <img width="30px" src="/assets/manage_accounts.png">
+        <span>Profile</span>
+      </a>
+      <a href="users" class="app-button">
+        <img width="30px" src="/assets/membership.png">
+        <span>Subscription</span>
+      </a>
+      <a href="users"  (click)="logout()" class="app-button">
+        <img width="30px" src="/assets/logout.png">
+        <span>LogOut</span>
+      </a>
+    </div>
+    
+  </nav>
+  

@@ -22,7 +22,8 @@ export class VideoPlaylistComponent {
 
   }
   vidofilename: any = '';
-  courseid: number = 0;
+  courseid: number = 0;  
+  userid: number = 0;
   coursetitle: string = "";
   coursedata: icoursecontent = {
     courseContentID: 0,
@@ -45,16 +46,16 @@ export class VideoPlaylistComponent {
   ngOnInit(): void {
     this.coursetitle = localStorage['coursetitle'];
     this.courseid = localStorage['courseid'];
-    
+    this.userid = localStorage['userid'];
     this.GetCourseList();
   }
 
   GetCourseList() {
-    this.courseService.getcourscontentbyid(this.courseid, this.courseid)
+    this.courseService.getcourscontentbyid(this.userid, this.courseid)
       .subscribe(
         (data: icoursecontent[]) => {
           this.courseContents = data.filter(d => d.courseID == this.courseid).sort((a, b) => a.order - b.order);
-       
+          
           this.sectionlist = this.courseContents.map(item => item.sectionName)
             .filter((__values, index, self) => self.indexOf(__values) === index);
             this.contenttext = 'Total Sections : ' + this.sectionlist.length.toString() +  ' Total Lessons : ' + this.courseContents.length.toString();

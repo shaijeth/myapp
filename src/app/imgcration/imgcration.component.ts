@@ -60,6 +60,8 @@ export class ImgcrationComponent implements OnInit {
       .subscribe(
         (data: icoursecontent[]) => {
           this.courseContents = data.filter(d => d.courseID == courseid);
+         
+
           this.sectionlist = this.courseContents.map(item => item.sectionName)
             .filter((__values, index, self) => self.indexOf(__values) === index);
           this.contenttext = 'Total Sections : ' + this.sectionlist.length.toString() + ' Total Lessons : ' + this.courseContents.length.toString();

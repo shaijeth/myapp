@@ -37,6 +37,7 @@ import localeIn from '@angular/common/locales/en-IN';
 import { MembershiphomeComponent } from './membershiphome/membershiphome.component';
 import { CouponComponent } from './coupon/coupon.component';
 import { UserpanelComponent } from './userpanel/userpanel.component';
+import { UserHeaderComponent } from './user-header/user-header.component';
 registerLocaleData(localeIn, 'en-IN');
 
 @NgModule({
@@ -70,7 +71,8 @@ registerLocaleData(localeIn, 'en-IN');
     MediaComponent,
     MembershiphomeComponent,
     CouponComponent,
-    UserpanelComponent
+    UserpanelComponent,
+    UserHeaderComponent
   ],
   imports: [
     FormsModule,

@@ -80,6 +80,7 @@ export class AddcoursecontentComponent implements OnInit {
 
   GetCourseList() {
     this.courseService.getcourscontentbyid(this.userid, this.courseid)
+    
       .subscribe(
         (data: icoursecontent[]) => {
           this.courseContents = data.sort((a, b) => a.order - b.order);

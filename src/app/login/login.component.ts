@@ -66,6 +66,8 @@ export class LoginComponent {
           }
           else if (response.userType == "Guest") {
             this.router.navigate(['/course']);
+          }else if (response.userType == "Paid") {
+            this.router.navigate(['/course']);
           }
      
         },

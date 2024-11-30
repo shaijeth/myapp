@@ -13,31 +13,42 @@ export class VideoPlayerComponent implements OnInit {
   @ViewChild('videoPlayer', { static: true })
   videoPlayer!: ElementRef<HTMLVideoElement>;
 
-  currentTime: number | undefined;
+  currentTime: string | undefined;
   bookmark: string = '';
   progress: number = 0;
   totalTime: number | undefined;
 
   setCurrentTime(data: any) {
     this.currentTime = data.target.currentTime;
-    
+
   }
   ngOnInit(): void {
     this.totalTime = 0;
-    this.currentTime= localStorage["lastTimeFrame"];
-    
+    this.currentTime = localStorage["lastTimeFrame"];
   }
+  
   disableRightClick(event: MouseEvent): void {
     event.preventDefault();
   }
+
   play() {
-    // this.videoPlayer.nativeElement.currentTime=50;
+    const savedTime = localStorage.getItem('lastTimeFrame');
+    if (savedTime) {
+      this.videoPlayer.nativeElement.currentTime = parseFloat(savedTime);
+    }
     this.videoPlayer.nativeElement.play();
   }
+
+  start() {
+    this.videoPlayer.nativeElement.currentTime = 0;
+    this.videoPlayer.nativeElement.play();
+  }
+
   pause(): void {
     this.bookmark = this.videoPlayer.nativeElement.currentTime.toString();
     this.videoPlayer.nativeElement.pause();
-    localStorage["lastTimeFrame"]=this.currentTime;
+    localStorage["lastTimeFrame"] = this.currentTime;
+
   }
 
   initializeVideo() {
@@ -67,6 +78,6 @@ export class VideoPlayerComponent implements OnInit {
     } else {
       video.pause();
     }
-    this.bookmark=video.currentTime.toString();
+    this.bookmark = video.currentTime.toString();
   }
 }

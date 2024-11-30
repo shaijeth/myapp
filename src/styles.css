@@ -44,7 +44,7 @@
     font-weight: bold;
     color: rgb(246, 250, 255);
     display: block;
-    background-color: #80a0a6;
+    background-color: #0f5fcf;
     width: 160px;
     border-radius: 10px;
     margin: 10px;
@@ -52,7 +52,7 @@
 
 .back-button:hover{
     text-decoration: none;
-    background-color:  #0056b3;;
+    background-color:  #b312f8;;
     color: rgb(246, 250, 255);
 }
 
