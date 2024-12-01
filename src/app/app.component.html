@@ -1,3 +1,3 @@
-<app-header  *ngIf="!islogged" > </app-header>
-<app-user-header  *ngIf="islogged" > </app-user-header>
+<app-header  *ngIf="isFreeUser()" > </app-header>
+<app-user-header  *ngIf="isPaidUser() || isAdmin()" > </app-user-header>
 <router-outlet></router-outlet>

@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { CourseService } from '../course.service';
 import { icoursemaster } from '../../assets/model/icoursemaster';
 import { icoursecontent } from '../../assets/model/icoursecontent';
+import { HttpClient } from '@angular/common/http';
+import { SharedService } from '../shared.service';
 
 interface Istudent {
   coursename: string;
@@ -23,6 +25,7 @@ export class CourseComponent implements OnInit {
   courselist: icourse[] = [];
   coursemasterlist: icoursemaster[] = [];
   sectionlist: string[] = [];
+  usertype: any;
 
   gotocourse(arg0: string, arg1: string) {
     localStorage['coursetitle'] = arg0;
@@ -32,6 +35,9 @@ export class CourseComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedinuser = localStorage['loggedinuser'];
+    this.usertype = localStorage['usertype'];
+     this.sharedService.changeUserType(localStorage['usertype']);
+
     if (this.loggedinuser == null) {
       this.router.navigate(['/signup']);
     }
@@ -48,7 +54,7 @@ export class CourseComponent implements OnInit {
 
   }
 
-  constructor(private router: Router, private courseservice: CourseService) { }
+  constructor(private router: Router, private courseservice: CourseService, private sharedService: SharedService) { }
   loggedinuser: any = '';
 
 

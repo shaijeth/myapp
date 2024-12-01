@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { authGuard } from '../auth.guard';
+import { AuthService } from '../auth.service';
+import { SharedService } from '../shared.service';
 
 interface user {
   userId: number;
@@ -15,7 +18,7 @@ interface user {
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
   
   message: string = '';
 
@@ -30,7 +33,12 @@ export class SignupComponent {
   /**
    *
    */
-  constructor(private http: HttpClient,private router:Router) {}
+  constructor(private http: HttpClient,private router:Router,private shareService: SharedService) {}
+  ngOnInit(): void {
+    localStorage.setItem('usertype', 'Free');
+    //this.shareService.changeUserType('Free');
+   // this.shareService.changetext('Login/Signup');
+  }
 
   chekemail(userEmail:string){
     this.http.get("http://learn.excelonlineservices.com/api/Users/Details?useremail="+userEmail,{responseType:'text'}).subscribe(

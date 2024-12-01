@@ -72,9 +72,10 @@ export class MediaService {
       );
   }
   convertSeconds(seconds: number): string {
-    const hrs = Math.floor(seconds / 3600);
-    const mins = Math.floor((seconds % 3600) / 60);
-    const secs = Math.floor(seconds % 60);
+    
+    const hrs = seconds>0 ? Math.floor(seconds/ 3600) :0;
+    const mins =seconds>0 ? Math.floor((seconds % 3600) / 60) :0;
+    const secs = seconds>0 ?Math.floor(seconds % 60) :0;
 
     return `${this.pad(hrs)}:${this.pad(mins)}:${this.pad(secs)}`;
   }

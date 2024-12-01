@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
+import { AuthService } from '../auth.service';
 
 interface user {
   userId: number;
@@ -33,7 +34,8 @@ export class LoginComponent {
     private http: HttpClient,
     private router: Router,
     private sharedservice: SharedService,
-    
+    private authService: AuthService
+
   ) { }
 
   userLogin() {
@@ -52,24 +54,27 @@ export class LoginComponent {
       )
       .subscribe(
         (response: any) => {
-          
+
 
           localStorage.setItem('islogged', 'logged');
           localStorage.setItem('loggedinuser', response.name);
           localStorage.setItem('usertype', response.userType);
           localStorage.setItem('token', response.token);
           localStorage.setItem('userid', response.userID);
-          this.sharedservice.changetext('Logout');
-          
+
+
+          //this.sharedservice.changetext('Logout');
+          this.sharedservice.changeUserType(response.userType);
+        
           if (response.userType == "Admin") {
             this.router.navigate(['/adminpanel']);
           }
           else if (response.userType == "Guest") {
             this.router.navigate(['/course']);
-          }else if (response.userType == "Paid") {
+          } else if (response.userType == "Paid") {
             this.router.navigate(['/course']);
           }
-     
+
         },
         (error) => {
           console.log(error);

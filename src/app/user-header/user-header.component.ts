@@ -17,9 +17,7 @@ export class UserHeaderComponent {
    *
    */
   constructor(private router: Router,private sharedservice:SharedService ) {
-    this.sharedservice.headerbtntext$.subscribe((newtext:string)=>{
-      this.buttontext=newtext;
-    });
+
   }
 
 
@@ -31,8 +29,11 @@ export class UserHeaderComponent {
     this.islogged = localStorage['islogged'] == 'logged';
     this.loggedinuser = localStorage['loggedinuser'];
     this.usertype = localStorage['usertype'];
+    
   }
-
+  isAdmin(): boolean {
+    return this.usertype==="Admin";
+  }
   login() {
     this.router.navigate(['/signup']);
   }
@@ -42,6 +43,8 @@ export class UserHeaderComponent {
     localStorage.removeItem('token');
     localStorage.removeItem('usertype');
     this.islogged = false;
+   // this.sharedservice.changetext('Login/Signup');
+   // this.sharedservice.changeUserType('Free');
     this.router.navigate(['/signup']);
   }
   Joinwhatsapp() {

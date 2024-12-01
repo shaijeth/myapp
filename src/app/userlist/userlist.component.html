@@ -3,6 +3,7 @@
 <button (click)="onclick()">Export in excel</button>
 
 <table id="customers">
+    <th>User ID</th>
     <th>Name</th>
     <th>email</th>
     <th>password</th>
@@ -11,7 +12,7 @@
     <th>Action</th>
     <th>profile</th>
     <tbody>
-        <tr  *ngFor="let u of users"> 
+        <tr  *ngFor="let u of users">   <td>{{u.userId}}</td>
             <td>{{u.userName}}</td>
             <td>{{u.userEmail}}</td>
             <td>{{u.password}}</td>
@@ -23,7 +24,7 @@
                 'border': 'none', 
                 'padding': '5px 10px', 
                 'cursor': 'pointer' 
-              }">{{ u.type === 'Paid' ? 'Paid' : 'Free' }}</button></td>
+              }" (click)="onChangeTypeClick(u.userId,u.type)">{{ u.type === 'Paid' ? 'Paid' : 'Free' }}</button></td>
             <td>
                 <a [routerLink]="['/profile']" [queryParams]="{ userid:u.userId}">Go to Profile</a>
             </td>

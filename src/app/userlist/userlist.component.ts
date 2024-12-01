@@ -1,15 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
+import { UserprofileService } from '../userprofile.service';
+import { iuser } from '../../assets/model/Iuser';
 
-interface user {
-  userId: string;
-  userName: string;
-  mobile: string;
-  userEmail: string;
-  password: string;
-  type: string;
-}
+
 @Component({
   selector: 'app-userlist',
   templateUrl: './userlist.component.html',
@@ -17,21 +12,25 @@ interface user {
 })
 export class UserlistComponent implements OnInit {
   message: string = "";
+  users: iuser[] = [];
+  updateuser: iuser | undefined;
+  DevApiUrl: string = "http://localhost/";
+  ProdApiUrl: string = "http://learn.excelonlineservices.com/";
 
-  users: user[] = [];
-
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userService: UserprofileService) {
 
   }
   ngOnInit(): void {
-    let DevApiUrl: string = "http://localhost/";
-    let ProdApiUrl: string = "http://learn.excelonlineservices.com/";
+    this.getUser();
+  }
 
+  getUser() {
     let headers = new HttpHeaders();
+
     headers = headers.append("Authorization", `Bearer ${localStorage['token']}`);
-    this.http.get<user[]>(ProdApiUrl + "api/Users", { headers: headers }).subscribe(
+    this.http.get<iuser[]>(this.ProdApiUrl + "api/Users", { headers }).subscribe(
       (response) => {
-        console.log(response);
+
         this.users = response;
       },
       (errors) => {
@@ -40,8 +39,24 @@ export class UserlistComponent implements OnInit {
       }
     );
 
-
   }
+
+
+
+  onChangeTypeClick(updateuserId: string, updatedUserType: string): void {
+
+    const newUserType = updatedUserType === 'Paid' ? 'Free' : 'Paid';
+
+    let updateuser = this.users.filter(c => c.userId === updateuserId);
+    updateuser[0].type = newUserType;
+   
+    this.userService.updateUserType(updateuserId, newUserType, updateuser[0]).subscribe(
+      (data: iuser) => {
+         console.log(data);
+      }
+    );;
+  }
+
   onclick(): void {
     this.exportToExcel();
     this.message = "Data exports";
@@ -55,3 +70,4 @@ export class UserlistComponent implements OnInit {
   }
 
 }
+

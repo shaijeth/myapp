@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
 
@@ -16,10 +16,18 @@ export class HeaderComponent implements OnInit {
   /**
    *
    */
-  constructor(private router: Router,private sharedservice:SharedService ) {
-    this.sharedservice.headerbtntext$.subscribe((newtext:string)=>{
-      this.buttontext=newtext;
-    });
+  constructor(private router: Router,private sharedService:SharedService,  private cdr: ChangeDetectorRef ) {
+   // Subscribe to header button text updates
+   this.sharedService.headerbtntext$.subscribe((text) => {
+    this.buttontext = text;
+   // this.cdr.detectChanges();
+  });
+
+  // // Subscribe to user type text updates
+  // this.sharedService.usertypetext$.subscribe((type) => {
+  //   this.usertype = type;
+  //  // this.cdr.detectChanges();
+  // });
   }
 
 
@@ -42,6 +50,8 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('usertype');
     this.islogged = false;
+    this.sharedService.changetext('Login/Signup');
+    this.sharedService.changeUserType('Free');
     this.router.navigate(['/signup']);
   }
   Joinwhatsapp() {
