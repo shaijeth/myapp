@@ -18,7 +18,6 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
-    "@types/video.js": "^7.3.58",
     "angular-datatables": "^17.1.0",
     "datatables.net": "^2.0.3",
     "datatables.net-dt": "^2.0.3",
@@ -26,7 +25,6 @@
     "jquery": "^3.6.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "video.js": "^8.16.1",
     "xlsx": "^0.18.5",
     "zone.js": "~0.14.3"
   },
@@ -37,6 +35,7 @@
     "@types/datatables.net": "^1.12.0",
     "@types/jasmine": "~5.1.0",
     "@types/jquery": "^3.5.30",
+    "@types/video.js": "^7.3.58",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

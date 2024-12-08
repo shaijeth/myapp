@@ -21,8 +21,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 25px;
+  height: 30px;
   margin-bottom: 10px;
+  padding: 10px;
 }
 .textleft {
   padding: 10px;
@@ -35,6 +36,7 @@
   font-size: 10px;
   font-weight: bold;
   color: rgb(17, 17, 17);
+  padding: 5px;
 }
 .content-time {
   margin-top: -5px;
@@ -50,9 +52,10 @@
   cursor: pointer;
   background-color: #a9a8a7;
   transition: color 0.2s ease-in;
+  margin-bottom: 5px;
 }
 .contenttext:hover {
-  background-color: rgb(93, 93, 93);
+  background-color: rgb(160, 160, 160);
   color: white;
 }
 .section-name {

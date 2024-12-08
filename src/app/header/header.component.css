@@ -30,7 +30,7 @@
   justify-content: center;
 }
 .user-header {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
   display: flex;
   justify-content: space-between;
 }
@@ -40,7 +40,7 @@
   justify-content: space-between;
 }
 .action_btn {
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
   background-color: rgb(250, 121, 0);
   color: #ebebeb;
   padding: 0.5rem 1rem;

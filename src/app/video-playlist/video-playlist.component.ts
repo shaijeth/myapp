@@ -67,7 +67,7 @@ export class VideoPlaylistComponent {
   }
   setCurrentVideo(selectedvideofilename: icoursecontent) {
     this.selectedcontent = selectedvideofilename.courseContentID;
-    console.log(" this.selectedcontent : " + this.selectedcontent);
+    console.log(" this.selectedcontent : " + selectedvideofilename.videoFileName);
     this.videoSelected.emit(selectedvideofilename);
   }
 

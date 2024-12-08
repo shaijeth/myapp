@@ -17,7 +17,7 @@
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
     transition: background-color 0.3s, box-shadow 0.3s; /* Smooth hover effect */
-    font-family: Arial, sans-serif; /* Font styling */
+   /*  font-family: Arial, sans-serif; Font styling */
     font-size: 12px; /* Font size */
     height: 70px;
     width: 100px;

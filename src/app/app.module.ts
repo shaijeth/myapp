@@ -38,6 +38,7 @@ import { MembershiphomeComponent } from './membershiphome/membershiphome.compone
 import { CouponComponent } from './coupon/coupon.component';
 import { UserpanelComponent } from './userpanel/userpanel.component';
 import { UserHeaderComponent } from './user-header/user-header.component';
+
 registerLocaleData(localeIn, 'en-IN');
 
 @NgModule({

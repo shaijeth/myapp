@@ -1,23 +1,26 @@
 <div class="div-container" (contextmenu)="disableRightClick($event)">
-    <h2 class="conh2">{{currentVideo?.contentName}}</h2>
+    <h2 class="conh2">{{currentVideo?.contentName}}</h2> 
     <div>
-        <div>
-            <video #videoPlayer preload="auto" [src]="currentVideo?.videoFileName" (timeupdate)="setCurrentTime($event)"
-                (timeupdate)="updateProgressBar()" (loadedmetadata)="initializeVideo()" (click)="togglePlayPause()">
+        <div style="padding:5px;">
+            <video  #videoPlayer  id="videoPlayer" preload="auto"  controls controlsList="nodownload" poster="../../assets/Content Creation Mastery.jpg">
                 Your browser does not support the video tag.
+                <source src="../../{{currentVideo?.videoFileName
+                }}" type="video/mp4">
             </video>
-            <div class="progress-bar-container">
-                <input type="range" min="0" max="100" step="0.1" [(ngModel)]="progress" (change)="seekVideo($event)" />
-            </div>
+           
         </div>
         <div class="div-buttons">
             <button (click)="play()" type="button" class="btn-playpause">Previous</button>
-            <button (click)="start()" type="button" class="btn-playpause">Start</button>
+            <!-- <button (click)="start()" type="button" class="btn-playpause">Start</button>
             <button (click)="play()" type="button" class="btn-playpause">Play</button>
-            <button (click)="pause()" type="button" class="btn-playpause">Pause</button>
+            <button (click)="pause()" type="button" class="btn-playpause">Pause</button> -->
             <button (click)="play()" type="button" class="btn-playpause">Next</button>
+            <button (click)="changeVideoSource('assets/videos/video1.mp4')">Load Video 1</button>
+   
         </div>
-        <div style="color: gray;font-size: 10px;">For Developers Testing [Total Time : {{totalTime}} Current Time : {{currentTime}} Pause At :{{bookmark}}]
+        <div style="color: gray;font-size: 10px;padding: 10px;">
+            For Developers Testing [Total Time : {{totalTime}} Current Time : {{currentTime}} Pause At :{{bookmark}}] 
+            ( {{currentVideo?.videoFileName}} )
           
         </div>
         

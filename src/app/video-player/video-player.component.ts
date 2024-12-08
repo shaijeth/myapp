@@ -1,22 +1,24 @@
-import { Component, Input, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { icoursecontent } from '../../assets/model/icoursecontent';
+import videojs from 'video.js';
 
 @Component({
   selector: 'app-video-player',
   templateUrl: './video-player.component.html',
   styleUrl: './video-player.component.css'
 })
-export class VideoPlayerComponent implements OnInit {
+export class VideoPlayerComponent implements AfterViewInit, OnInit ,OnDestroy {
 
 
   @Input() currentVideo: icoursecontent | undefined;
-  @ViewChild('videoPlayer', { static: true })
+  @ViewChild('videoPlayer', { static: false })
   videoPlayer!: ElementRef<HTMLVideoElement>;
 
   currentTime: string | undefined;
   bookmark: string = '';
   progress: number = 0;
   totalTime: number | undefined;
+  currentVideoSource: string = '../../assets/course/StreetCafe3DSketch.mp4';
 
   setCurrentTime(data: any) {
     this.currentTime = data.target.currentTime;
@@ -25,12 +27,26 @@ export class VideoPlayerComponent implements OnInit {
   ngOnInit(): void {
     this.totalTime = 0;
     this.currentTime = localStorage["lastTimeFrame"];
+    let newSource ='../../assets/course/StreetCafe3DSketch.mp4';
+    
   }
   
+  ngAfterViewInit(): void {
+
+  }
+  ngOnDestroy(): void {
+    if (this.videoPlayer) {
+      // this.videoPlayer.nativeElement.; // Clean up player instance
+    }
+  }
+
   disableRightClick(event: MouseEvent): void {
     event.preventDefault();
   }
-
+  disableContextMenu(event: MouseEvent): void {
+    event.preventDefault(); // Prevent the context menu
+    //alert('Right-click is disabled on this video.');
+  }
   play() {
     const savedTime = localStorage.getItem('lastTimeFrame');
     if (savedTime) {
@@ -44,7 +60,7 @@ export class VideoPlayerComponent implements OnInit {
     this.videoPlayer.nativeElement.play();
   }
 
-  pause(): void {
+  onPause(): void {
     this.bookmark = this.videoPlayer.nativeElement.currentTime.toString();
     this.videoPlayer.nativeElement.pause();
     localStorage["lastTimeFrame"] = this.currentTime;
@@ -79,5 +95,13 @@ export class VideoPlayerComponent implements OnInit {
       video.pause();
     }
     this.bookmark = video.currentTime.toString();
+  }
+  changeVideoSource(newSource: string) {
+    this.currentVideoSource = newSource;
+
+    // Reload the video after changing the source
+    const videoElement = this.videoPlayer.nativeElement;
+    videoElement.load();
+    videoElement.play();
   }
 }
