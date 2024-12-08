@@ -2,9 +2,9 @@
   <div class="signup-left">
     <!-- <app-video-player [currentVideo]="coursedata"></app-video-player> -->
     <div class="div-container" (contextmenu)="disableRightClick($event)">
-      <h2 class="conh2">{{currentVideoSource}}</h2> 
+      <h2 class="conhleft">{{selectedcontentname}}</h2> 
       <div>
-          <div style="padding:5px;">
+          <div style="padding:0px;">
               <video  #videoPlayer  id="videoPlayer" preload="auto"  controls controlsList="nodownload" poster="../../assets/Content Creation Mastery.jpg">
                   Your browser does not support the video tag.
                   <source src="../../{{currentVideoSource}}" type="video/mp4">
@@ -30,32 +30,31 @@
   </div>
   </div>
 
-  <div class="signup-right">
-    <!-- <app-video-playlist (videoSelected)="onVideoSelected($event)"></app-video-playlist> -->
+  <div class="signup-right">    <!-- <app-video-playlist (videoSelected)="onVideoSelected($event)"></app-video-playlist> -->
 
     <div class="conh2">
       <div>
-          <a style="display: block; background-color: black;height: 29px;width: 28px;border-radius: 10px 0 0 0;margin-right: 10px;" href="course">
+          <a style="display: block; background-color: black;height: 30px;width: 28px;border-radius: 10px 0 0 0;margin-right: 10px;" href="course">
               <img width="18px" src="/assets/backarrow.png"></a>
       </div>
       <div>
           {{coursetitle}}
       </div>
   </div>
-  <span class="content-name"> {{contenttext}}</span>
+  <div class="content-total-name"> {{contenttext}}</div>
   <div *ngFor="let section of sectionlist ">
       <div class="section-name"> {{ section }}</div>
       <div class="video-list">
-          <div *ngFor="let content of courseContents" (click)="changeVideoSource(content.videoFileName)">
+          <div *ngFor="let content of courseContents let i=index" (click)="changeVideoSource(content.contentName, content.videoFileName)">
               <div *ngIf="content.sectionName== section"
                   [ngClass]="content.courseContentID==selectedcontent ? 'content-item-selected' : 'contenttext'">
                   <div class="textleft">
-                      <span class="content-name">{{ content.contentName }}</span>
+                      <span class="content-name">{{ i+1 }} - {{ content.contentName }}</span>
                       <br>
                       <span class="content-time"> {{mediaservice.convertSeconds(content.watchedDuration)}}/{{mediaservice.convertSeconds(content.duration)}}</span>
                   </div>
                   <div class="textright">
-                      <img *ngIf="content.watchedDuration<=content.duration" width="24px" src="/assets/completed.png">
+                      <img *ngIf="content.watchedDuration!=content.duration" width="24px" src="/assets/completed.png">
                       <img *ngIf="content.watchedDuration==0" width="24px" src="/assets/inprogress.png">
                   </div>
   

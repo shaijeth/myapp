@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component,ViewChild,  OnInit, ElementRef } from '@angular/core';
+import { Component, ViewChild, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { CourseService } from '../course.service';
 import { ImageUploadService } from '../image-upload.service';
@@ -23,7 +23,7 @@ export class ImgcrationComponent implements OnInit {
   progress: number = 0;
   totalTime: number | undefined;
   currentVideoSource: string = '../../assets/course/StreetCafe3DSketch.mp4';
-
+  selectedcontentname: String = '';
   courseid: number = 0;
   userid: number = 0;
   coursedata: icoursecontent = {
@@ -71,16 +71,14 @@ export class ImgcrationComponent implements OnInit {
       .subscribe(
         (data: icoursecontent[]) => {
           this.courseContents = data.filter(d => d.courseID == courseid);
-         
-
           this.sectionlist = this.courseContents.map(item => item.sectionName)
             .filter((__values, index, self) => self.indexOf(__values) === index);
           this.contenttext = 'Total Sections : ' + this.sectionlist.length.toString() + ' Total Lessons : ' + this.courseContents.length.toString();
           const toaltime = this.courseContents.reduce((sum, item) => sum + item.duration, 0);
-
           this.contenttext += ' Total Time : ' + this.mediaservice.convertSeconds(toaltime);
         }
       );
+    
   }
 
   // GetCourseList() {
@@ -88,21 +86,22 @@ export class ImgcrationComponent implements OnInit {
   //     .subscribe(
   //       (data: icoursecontent[]) => {
   //         this.courseContents = data.filter(d => d.courseID == this.courseid).sort((a, b) => a.order - b.order);
-          
+
   //         this.sectionlist = this.courseContents.map(item => item.sectionName)
   //           .filter((__values, index, self) => self.indexOf(__values) === index);
   //           this.contenttext = 'Total Sections : ' + this.sectionlist.length.toString() +  ' Total Lessons : ' + this.courseContents.length.toString();
   //         const toaltime = this.courseContents.reduce((sum, item) => sum + item.duration, 0);          
   //         this.contenttext += ' Total Time : '+this.mediaservice.convertSeconds(toaltime);
-          
+
   //       }
   //     );
   // }
   setCurrentVideo(selectedvideofilename: icoursecontent) {
     this.selectedcontent = selectedvideofilename.courseContentID;
-    console.log(" this.selectedcontent : " + selectedvideofilename.videoFileName);
+    this.selectedcontentname= selectedvideofilename.contentName;
+    //console.log(" this.selectedcontent : " + selectedvideofilename.videoFileName);
     //this.videoSelected.emit(selectedvideofilename);
-    
+
   }
 
   setCurrentTime(data: any) {
@@ -113,9 +112,9 @@ export class ImgcrationComponent implements OnInit {
   //   this.totalTime = 0;
   //   this.currentTime = localStorage["lastTimeFrame"];
   //   let newSource ='../../assets/course/StreetCafe3DSketch.mp4';
-    
+
   // }
-  
+
   ngAfterViewInit(): void {
 
   }
@@ -181,8 +180,10 @@ export class ImgcrationComponent implements OnInit {
     }
     this.bookmark = video.currentTime.toString();
   }
-  changeVideoSource(newSource: string) {
-    this.currentVideoSource = newSource;
+  changeVideoSource(contenttext:string,contentfile:string) {
+      
+    this.currentVideoSource =contentfile;
+    this.selectedcontentname = contenttext;
     // Reload the video after changing the source
     const videoElement = this.videoPlayer.nativeElement;
     videoElement.load();
