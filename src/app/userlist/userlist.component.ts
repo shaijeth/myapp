@@ -14,8 +14,9 @@ export class UserlistComponent implements OnInit {
   message: string = "";
   users: iuser[] = [];
   updateuser: iuser | undefined;
-  DevApiUrl: string = "http://localhost/";
-  ProdApiUrl: string = "http://learn.excelonlineservices.com/";
+  // DevApiUrl: string = "https://192.168.1.4:5555";
+  //private ProdApiUrl: string = "http://localhost:5555";
+   ProdApiUrl: string = "http://learn.excelonlineservices.com/";
 
   constructor(private http: HttpClient, private userService: UserprofileService) {
 

@@ -22,10 +22,16 @@
       <img width="30px" src="/assets/membership.png">
       <span>Subscription</span>
     </a>
-    <a href="#" (click)="logout()" class="app-button">
+    <a href="" *ngIf="islogged"  (click)="logout()" class="app-button">
       <img width="30px" src="/assets/logout.png">
-      <span>LogOut</span>
+      <span> {{ buttontext }}</span>
     </a>
+
+    <a href="" *ngIf="!islogged" (click)="login()" class="app-button">
+      <img width="30px" src="/assets/login.png">
+      <span> {{ buttontext }}</span>     
+    </a>
+
   </div>
   
 </nav>

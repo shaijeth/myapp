@@ -24,6 +24,7 @@ import { AddcoursecontentComponent } from './addcoursecontent/addcoursecontent.c
 import { MembershiphomeComponent } from './membershiphome/membershiphome.component';
 import { CouponComponent } from './coupon/coupon.component';
 import { UserpanelComponent } from './userpanel/userpanel.component';
+import { NotifierComponent } from './notifier/notifier.component';
 
 
 const routes: Routes = [
@@ -50,7 +51,8 @@ const routes: Routes = [
   { path: 'users', component: UserlistComponent },
   { path: 'membershipcard', component: MembershiphomeComponent },
   { path: 'coupon', component: CouponComponent },
-  { path: 'userpanel', component: UserpanelComponent }
+  { path: 'userpanel', component: UserpanelComponent },
+  { path: 'toastr', component: NotifierComponent }
 
 ];
 

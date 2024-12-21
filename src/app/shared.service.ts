@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,15 +7,14 @@ import { BehaviorSubject } from 'rxjs';
 export class SharedService {
 
   constructor() { }
-
-  private headerbtntext = new BehaviorSubject<string>('Login / Signup');
+  private headerBtnTextSubject = new BehaviorSubject<string>('Login/Signup');
+  public headerbtntext$: Observable<string> = this.headerBtnTextSubject.asObservable();
+  //private headerbtntext = new BehaviorSubject<string>('Login / Signup');
   private usertypetext = new BehaviorSubject<string>('Free');
-
-  headerbtntext$ = this.headerbtntext.asObservable();
   usertypetext$ = this.usertypetext.asObservable();
 
-  changetext(newtext: string) {
-    this.headerbtntext.next(newtext);
+  changetext(newText: string) {
+    this.headerBtnTextSubject.next(newText);
   }
   changeUserType(usertext: string) {
     this.usertypetext.next(usertext);

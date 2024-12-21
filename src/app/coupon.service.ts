@@ -8,8 +8,8 @@ import { icoupon } from '../assets/model/icoupon';
   providedIn: 'root'
 })
 export class CouponService {
-  private DevApiUrl: string = "http://localhost/";
-  private ProdApiUrl: string = "http://learn.excelonlineservices.com";
+  //private ProdApiUrl: string = "http://localhost:5555";
+   private ProdApiUrl: string = "http://learn.excelonlineservices.com";
   private getcouponnurl: string = '/api/coupon';
 
   constructor(private http: HttpClient) {}

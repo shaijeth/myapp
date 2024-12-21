@@ -10,17 +10,18 @@
             <div class="row">
                 <div class="col">
                     <label for="courseName">Course Name:</label>
-                    <input [(ngModel)]="coursedata.courseName" type="text" id="courseName" name="courseName" required>
+                    <input [(ngModel)]="coursedata.courseName" type="text" id="courseName" name="courseName" required  appFocus
+                    #nameInput>
                 </div>
                 <div class="col">
-                    <label for="type">Type:</label>                  
+                    <label for="type">Type:</label>
                     <select id="typelsit" name="type" [(ngModel)]="coursedata.type">
                         <option value="Bronze">Bronze</option>
                         <option value="Silver">Silver</option>
                         <option value="Gold">Gold</option>
                         <option value="Platinum">Platinum</option>
                         <option value="Diamond">Diamond</option>
-                      </select>
+                    </select>
                 </div>
                 <div class="col">
                     <label for="type">Price:</label>
@@ -30,7 +31,8 @@
             <div class="row">
                 <div class="col">
                     <label for="imageName">Image :</label>
-                    <input class="form-control" required type="file" id="file" (change)="onChange($event)"  >
+                    <input class="form-control" required type="file" id="file" (change)="onChange($event)"
+                        accept=".jpg,.jpeg,.bmp">
                 </div>
                 <div class="col">
                     <label>{{ message }}</label>
@@ -43,7 +45,7 @@
             </div>
         </form>
     </section>
-    <hr >
+    <hr>
     <section id="Course-List">
         <h2>Course List</h2>
         <table class="table table-bordered">
@@ -58,7 +60,7 @@
                     <th>Add Content</th>
                     <th>View Content</th>
                     <th>Delete</th>
-                    
+
                 </tr>
             </thead>
             <tbody>
@@ -70,7 +72,8 @@
                     <td>{{ course.price | currency:'INR':'symbol':'1.2-2' }}</td>
                     <td>{{ course.createdDate | date:'mediumDate' }}</td>
                     <td>
-                        <button (click)="AddCourseContent(course.courseName,course.courseID)" class="btn btn-link">Add Content</button>
+                        <button (click)="AddCourseContent(course.courseName,course.courseID)" class="btn btn-link">Add
+                            Content</button>
                     </td>
                     <td>
                         <button (click)="ViewourseContent(course.courseID)" class="btn btn-link">View Content</button>

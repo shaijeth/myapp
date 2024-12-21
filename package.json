@@ -23,6 +23,7 @@
     "datatables.net-dt": "^2.0.3",
     "guid-typescript": "^1.0.9",
     "jquery": "^3.6.0",
+    "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",

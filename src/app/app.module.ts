@@ -32,15 +32,13 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
 import { VideoPlaylistComponent } from './video-playlist/video-playlist.component';
 import { MediaComponent } from './media/media.component';
 import { MediaService } from './media.service';
-import { registerLocaleData } from '@angular/common';
-import localeIn from '@angular/common/locales/en-IN';
 import { MembershiphomeComponent } from './membershiphome/membershiphome.component';
 import { CouponComponent } from './coupon/coupon.component';
 import { UserpanelComponent } from './userpanel/userpanel.component';
 import { UserHeaderComponent } from './user-header/user-header.component';
-
-registerLocaleData(localeIn, 'en-IN');
-
+import { ToastrModule } from 'ngx-toastr';
+import { NotifierComponent } from './notifier/notifier.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,15 +71,24 @@ registerLocaleData(localeIn, 'en-IN');
     MembershiphomeComponent,
     CouponComponent,
     UserpanelComponent,
-    UserHeaderComponent
+    UserHeaderComponent,
+    NotifierComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: "toast-center-center",
+      preventDuplicates: true,
+      timeOut:3000,
+      easing: 'ease-in',
+      easeTime :1000
+    })
   ],
-  providers: [ MediaService,{ provide: LOCALE_ID, useValue: 'en-IN' }],
+  providers: [MediaService, { provide: LOCALE_ID, useValue: 'en-IN' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

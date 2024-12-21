@@ -8,6 +8,7 @@ import { DataTablesModule } from 'angular-datatables';
 import DataTables from 'datatables.net';
 import { Subject, takeUntil } from 'rxjs';
 import { MediaService } from '../media.service';
+import { NotifierService } from '../notifier.service';
 
 @Component({
   selector: 'app-addcoursecontent',
@@ -51,7 +52,7 @@ export class AddcoursecontentComponent implements OnInit {
   ccoursedata: icoursecontent | undefined;
 
   constructor(private http: HttpClient, private router: Router, private imageUploadService: ImageUploadService,
-    private courseService: CourseService, public mediaService: MediaService) {
+    private courseService: CourseService, public mediaService: MediaService, private notifyservice: NotifierService) {
     this.images = '';
 
   }
@@ -61,12 +62,16 @@ export class AddcoursecontentComponent implements OnInit {
     this.courseid = localStorage['courseid'];
     this.userid = localStorage['userid'];
     this.coursedata.courseID = this.courseid;
+    this.coursedata.order = 1;
     this.GetCourseList();
   }
 
   DeleteCourseContent(ccntid: number) {
+    
     this.courseService.deleteCourseContent(ccntid).subscribe(() => {
       this.courseContents = this.courseContents.filter(course => course.courseID !== ccntid);
+      this.GetCourseList();
+      this.notifyservice.ShowSuccess("Course Content Upload", "Content successfully deleted.");
     });
   }
 
@@ -79,7 +84,7 @@ export class AddcoursecontentComponent implements OnInit {
   }
 
   GetCourseList() {
-    this.courseService.getcourscontentbyid(this.userid, this.courseid)    
+    this.courseService.getcourscontentbyid(this.userid, this.courseid)
       .subscribe(
         (data: icoursecontent[]) => {
           this.courseContents = data.sort((a, b) => a.order - b.order);
@@ -89,40 +94,66 @@ export class AddcoursecontentComponent implements OnInit {
   }
 
   CreatCourseContent() {
-
-    if (this.btntext == 'Update Content') {
-
-      this.courseService.updtaecoursecontent(this.coursedata.courseContentID, this.coursedata)
-        .subscribe(
-          (data: icoursecontent) => {
-            this.uploaded = true;
-            if (this.selectedfiles) {
-              this.upload();
-            }
-            else {
-              this.uploaded = false;
-              this.progress = 0;
-              if (!this.uploaded) {
-                this.message = 'Content updated';
+    
+    //update existing content
+    if (this.btntext == 'Update Content' && this.coursedata.contentName != "" && this.coursedata.sectionName != "") {
+      if (!(this.selectedfiles)) {
+        this.message = 'Select video for content';
+        this.notifyservice.ShowError("Upload", this.message);
+      }
+      else {
+        this.courseService.updtaecoursecontent(this.coursedata.courseContentID, this.coursedata)
+          .subscribe(
+            (data: icoursecontent) => {
+              this.uploaded = true;
+              if (this.selectedfiles) {
+                this.upload();
+              }
+              else if (!(this.selectedfiles)) {
+                this.message = 'Select video for content';
+                this.notifyservice.ShowError("Upload", this.message);
+              }
+              else {
+                this.uploaded = false;
+                this.progress = 0;
+                if (!this.uploaded) {
+                  this.message = 'Content updated';
+                  this.notifyservice.ShowSuccess("Upload", this.message);
+                }
               }
             }
-          }
-        );
-
+          );
+      }
     }
+    /// add new content
     else {
-      this.courseService.newcoursecontent(this.coursedata)
-        .subscribe(
-          (data: icoursecontent) => {
-            if (this.selectedfiles) {
-              this.uploaded = true;
-              this.upload();
-            }
-            else {
-              this.message = 'Select video for content';
-            }
-          }
-        );
+      if (this.coursedata.contentName != "" && this.coursedata.sectionName != "") {
+        if (!(this.selectedfiles)) {
+          this.message = 'Select video for content';
+          this.notifyservice.ShowError("Upload", this.message);
+        }
+        else {
+          this.courseService.newcoursecontent(this.coursedata)
+            .subscribe(
+              (data: icoursecontent) => {
+                if (this.selectedfiles) {
+                  this.uploaded = true;
+                  this.upload();
+                }
+                else if (!this.selectedfiles) {
+                  this.message = 'Select video for content';
+                  this.notifyservice.ShowError("Upload", this.message);
+                }
+                else {
+                  this.message = 'Select video for content';
+                  this.notifyservice.ShowError("Upload", this.message);
+                }
+              }
+            );
+        }
+      } else {
+        this.notifyservice.ShowError("Upload", "Fill all required fields.");
+      }
     }
 
 
@@ -139,7 +170,8 @@ export class AddcoursecontentComponent implements OnInit {
           this.imgURL.push(e.target.result);
         }
         reader.readAsDataURL(this.selectedfiles[i]);
-        this.coursedata.videoFileName = 'assets/course/' + this.selectedfiles[i].name;
+        var newfilename = this.selectedfiles[i].name.replace(/ /g, "_");
+        this.coursedata.videoFileName = 'assets/course/' + newfilename;
         const url = URL.createObjectURL(this.selectedfiles[i]);
 
         // Load the video file into the video element
@@ -157,15 +189,20 @@ export class AddcoursecontentComponent implements OnInit {
 
 
   upload(): void {
-    if (!this.selectedfiles) {
+    if (!(this.selectedfiles.length > 0)) {
       return;
     }
-    const formData: FormData = new FormData;
+    const formData: FormData = new FormData();
     let newfilename: string = '';
+    this.images = ''; // Ensure `this.images` is initialized properly.    
     for (let i = 0; i < this.selectedfiles.length; i++) {
+      // Replace spaces in the filename with underscores.
       newfilename = this.selectedfiles[i].name.replace(/ /g, "_");
-      this.images += this.selectedfiles[i].name.replace(/ /g, "_") + ",";
+      // Add to `formData` with the updated filename.
       formData.append('postedFiles', this.selectedfiles[i], newfilename);
+      // Update `this.images` with the sanitized filename.
+      this.images += newfilename + (i < this.selectedfiles.length - 1 ? "," : "");
+      this.coursedata.videoFileName = newfilename;
     }
 
     this.imageUploadService.uploadImage(formData)
@@ -177,13 +214,16 @@ export class AddcoursecontentComponent implements OnInit {
         } else if (event.type === HttpEventType.Response) {
 
           this.uploaded = false;
-
           this.message = 'File successfully uploaded!';
           this.progress = 0; // Reset the progress bar after upload
         }
+        if (this.progress > 99) {
+          this.GetCourseList();
+          this.notifyservice.ShowSuccess("Upload", "File successfully uploaded.");
+        }
       },
         (error) => {
-          console.log('upload error : ', error);
+          this.notifyservice.ShowError("Upload", "Error in File uploading.");
         })
   }
 
@@ -196,7 +236,7 @@ export class AddcoursecontentComponent implements OnInit {
       videoFileName: '',
       createdDate: new Date,
       duration: 0.00,
-      order: 0,
+      order: 1,
       userName: '',
       userId: 0,
       watchedDuration: 0,

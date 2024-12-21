@@ -5,6 +5,7 @@ import { icoursemaster } from '../../assets/model/icoursemaster';
 import { ImageUploadService } from '../image-upload.service';
 import { CourseService } from '../course.service';
 import localeIn from '@angular/common/locales/en-IN';
+import { NotifierService } from '../notifier.service';
 
 @Component({
   selector: 'app-upload',
@@ -26,14 +27,14 @@ export class UploadComponent implements OnInit {
     courseID: 0,
     courseName: '',
     imageName: '',
-    type: 'Basic',
+    type: '',
     price: 0,
     createdDate: new Date()
   };
   courses: icoursemaster[] = [];
 
   constructor(private http: HttpClient, private router: Router, private imageUploadService: ImageUploadService,
-    private courseService: CourseService
+    private courseService: CourseService, private notifyservice: NotifierService
   ) {
     this.images = '';
   }
@@ -43,25 +44,33 @@ export class UploadComponent implements OnInit {
   }
 
   GetCourseList() {
-
     this.courseService.getcoursemaster()
       .subscribe(
         (data: icoursemaster[]) => {
           this.courses = data;
-        
         }
       );
   }
   CreatCourseMaster() {
+    
+    var msg: String = "";
+    if (this.coursedata.courseName != "" && this.coursedata.price > 0 && this.coursedata.type != "" && this.coursedata.imageName != "") {
+      this.courseService.newcoursemaster(this.coursedata)
+        .subscribe(
+          (data: icoursemaster) => {
+            this.upload();
+            this.notifyservice.ShowSuccess("Upload", "Course created successfully.");
+          }
+        );
+    }
+    else {
 
-    this.courseService.newcoursemaster(this.coursedata)
-      .subscribe(
-        (data: icoursemaster) => {
-          this.message = 'Course Master Created';
-          this.upload();
-        }
-      );
-    console.warn(this.coursedata);
+      msg += this.coursedata.courseName == "" ? " [Course Name ]" : "";
+      msg += this.coursedata.price <= 0 ? " [Course Price]" : "";
+      msg += this.coursedata.type == "" ? " [Course Type]" : "";
+      msg += this.coursedata.imageName == "" ? " [Course Image]" : "";
+      this.notifyservice.ShowError("Upload", "Fill all required  " + msg + " fields. ");
+    }
   }
   onChange(event: any) {
     this.selectedfiles = event.target.files;
@@ -78,19 +87,23 @@ export class UploadComponent implements OnInit {
     }
   }
   upload(): void {
+ 
+    var msg: String = "";
     const formData: FormData = new FormData;
+
     for (let i = 0; i < this.selectedfiles.length; i++) {
       let newfilename = this.selectedfiles[i].name.replace(/ /g, "_");
       this.images += this.selectedfiles[i].name.replace(/ /g, "_") + ",";
       formData.append('postedFiles', this.selectedfiles[i], newfilename);
     }
 
-    this.imageUploadService.uploadImage( formData).subscribe((data: any) => {
+    this.imageUploadService.uploadImage(formData).subscribe((data: any) => {
       this.GetCourseList();
     },
       (error) => {
         console.log('upload error : ', error);
       })
+
   }
 
   deleteCourse(crsid: number) {
@@ -99,12 +112,12 @@ export class UploadComponent implements OnInit {
     });
   }
 
-  AddCourseContent(coursetitle: string,crsid: number) {
-    localStorage['coursetitle']=coursetitle;
-    localStorage['courseid']=crsid;
+  AddCourseContent(coursetitle: string, crsid: number) {
+    localStorage['coursetitle'] = coursetitle;
+    localStorage['courseid'] = crsid;
     this.router.navigate(["/coursecontent"]);
   }
   ViewourseContent(arg0: number) {
     this.router.navigate(["/imgcration"]);
-    }
+  }
 }

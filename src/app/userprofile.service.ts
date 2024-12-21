@@ -12,7 +12,8 @@ export class UserprofileService {
   private userprofiledetail: string = '/api/UserProfile/UserProfileDetails';
   private userprofileupdate: string = '/api/UserProfile/Edit';
   private userupdate: string = '/api/Users/Edit';
-  private DevApiUrl: string = "http://localhost/";
+  private DevApiUrl: string = "https://localhost/";
+//  private ProdApiUrl: string = "http://localhost:5555";
   private ProdApiUrl: string = "http://learn.excelonlineservices.com";
   
     constructor(private http: HttpClient) {}

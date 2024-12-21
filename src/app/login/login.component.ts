@@ -27,13 +27,13 @@ export class LoginComponent {
     mobile: '',
     userEmail: '',
     password: '',
-    type: 'Guest',
+    type: 'Free',
   };
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private sharedservice: SharedService,
+    private sharedService: SharedService,
     private authService: AuthService
 
   ) { }
@@ -43,8 +43,9 @@ export class LoginComponent {
 
   }
   checkLogin(userEmail: string, pswd: string) {
-    let DevApiUrl: string = "http://localhost/";
-    let ProdApiUrl: string = "http://learn.excelonlineservices.com/";
+  //  let DevApiUrl: string = "https://192.168.1.4:5555";
+    //let   ProdApiUrl: string = "http://localhost:5555";
+     let ProdApiUrl: string = "http://learn.excelonlineservices.com/";
     this.http
       .get<user>(
         ProdApiUrl + 'api/Users/CheckLogin?useremail=' +
@@ -55,7 +56,6 @@ export class LoginComponent {
       .subscribe(
         (response: any) => {
 
-
           localStorage.setItem('islogged', 'logged');
           localStorage.setItem('loggedinuser', response.name);
           localStorage.setItem('usertype', response.userType);
@@ -63,18 +63,17 @@ export class LoginComponent {
           localStorage.setItem('userid', response.userID);
 
 
-          //this.sharedservice.changetext('Logout');
-          this.sharedservice.changeUserType(response.userType);
+          this.sharedService.changetext('Logout');
+          this.sharedService.changeUserType(response.userType);
         
           if (response.userType == "Admin") {
             this.router.navigate(['/adminpanel']);
           }
-          else if (response.userType == "Guest") {
-            this.router.navigate(['/course']);
-          } else if (response.userType == "Paid") {
+          else
+          {
             this.router.navigate(['/course']);
           }
-
+          
         },
         (error) => {
           console.log(error);

@@ -6,8 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ImageUploadService {
-  private DevApiUrl: string = "http://localhost/";
-  private API_BASE_URL= 'http://learn.excelonlineservices.com/';
+  private DevApiUrl: string = "https://192.168.1.4:5555";
+  //private API_BASE_URL: string = "http://localhost:5555";
+   private API_BASE_URL= 'http://learn.excelonlineservices.com/';
   private uploadURL = this.API_BASE_URL+'api/Image/UploadImage';
  
   constructor(private http: HttpClient) { }

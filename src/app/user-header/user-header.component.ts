@@ -1,31 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-header',
   templateUrl: './user-header.component.html',
   styleUrl: './user-header.component.css'
 })
-export class UserHeaderComponent {
+export class UserHeaderComponent implements OnInit, OnDestroy{
   islogged: boolean = false;
   menuActive: boolean = true;
   buttontext:string="";
   loggedinuser: any;
   usertype:any='';
-  /**
-   *
-   */
-  constructor(private router: Router,private sharedservice:SharedService ) {
-
+  subscription!: Subscription;
+  
+  constructor(private router: Router,private sharedService:SharedService ) {
+    this.sharedService.headerbtntext$.subscribe((text) => {
+      this.buttontext = text;
+     // this.cdr.detectChanges();
+    });
   }
 
+  ngOnDestroy(): void {
+    // Unsubscribe to prevent memory leaks
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 
   toggleMenu() {
     this.menuActive = !this.menuActive;
   }
 
   ngOnInit(): void {
+    this.subscription = this.sharedService.headerbtntext$.subscribe((text) => {
+      this.buttontext = text;
+      // Optionally detect changes if needed
+      // this.cdr.detectChanges();
+    });
     this.islogged = localStorage['islogged'] == 'logged';
     this.loggedinuser = localStorage['loggedinuser'];
     this.usertype = localStorage['usertype'];

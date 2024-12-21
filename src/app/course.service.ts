@@ -17,8 +17,9 @@ private coursecontentrurl: string = '/api/CourseContent';
 
 private coursecontentbyidurl: string = '/api/CourseContent/CourseContentByID';
 private createcoursemasternurl: string = '/api/CourseMaster/Create';
-private DevApiUrl: string = "http://localhost/";
-private ProdApiUrl: string = "http://learn.excelonlineservices.com";
+// private DevApiUrl: string = "http://localhost/";
+//private ProdApiUrl: string = "http://localhost:5555";
+ private ProdApiUrl: string = "http://learn.excelonlineservices.com";
 
   constructor(private http: HttpClient) {}
 

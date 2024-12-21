@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { authGuard } from '../auth.guard';
 import { AuthService } from '../auth.service';
 import { SharedService } from '../shared.service';
+import { NotifierService } from '../notifier.service';
 
 interface user {
   userId: number;
@@ -28,12 +29,12 @@ export class SignupComponent implements OnInit {
     mobile: '',
     userEmail: '',
     password: '',
-    type: 'Guest',
+    type: 'Free',
   };
   /**
    *
    */
-  constructor(private http: HttpClient,private router:Router,private shareService: SharedService) {}
+  constructor(private http: HttpClient,private router:Router,private shareService: SharedService, private notifyservice: NotifierService) {}
   ngOnInit(): void {
     localStorage.setItem('usertype', 'Free');
     //this.shareService.changeUserType('Free');
@@ -46,6 +47,8 @@ export class SignupComponent implements OnInit {
         // console.log(response);
         if(response=='No User'){
           this.createlogin();
+          this.notifyservice.ShowSuccess("Register User", "You have registered successfully.Please login for free courses.");
+          this.router.navigate(['/login']);
         }
         else{this.message="This Email is Already Exist.";}
         
@@ -84,7 +87,7 @@ export class SignupComponent implements OnInit {
     this.userdata.userName=this.userdata.userName.toUpperCase();
   }
   gotologin(){
-    this.router.navigate(['/login']);
+    this.router.navigate(['/course']);
   }
 
 }

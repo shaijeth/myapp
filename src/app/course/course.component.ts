@@ -7,6 +7,7 @@ import { icoursemaster } from '../../assets/model/icoursemaster';
 import { icoursecontent } from '../../assets/model/icoursecontent';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from '../shared.service';
+import { NotifierService } from '../notifier.service';
 
 interface Istudent {
   coursename: string;
@@ -54,7 +55,7 @@ export class CourseComponent implements OnInit {
 
   }
 
-  constructor(private router: Router, private courseservice: CourseService, private sharedService: SharedService) { }
+  constructor(private router: Router, private courseservice: CourseService, private sharedService: SharedService, private notifyservice: NotifierService) { }
   loggedinuser: any = '';
 
 

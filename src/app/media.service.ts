@@ -47,7 +47,9 @@ export class MediaService {
 
   uploadMedia(formData: any) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    // const API_BASE_URL= 'http://learn.excelonlineservices.com/';
     const API_BASE_URL= 'http://learn.excelonlineservices.com/';
+    //const API_BASE_URL:  string = "http://localhost:5555";
     const uploadURL = API_BASE_URL+'api/Image/UploadImage';
 
     return this.http
